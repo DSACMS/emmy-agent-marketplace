@@ -1,0 +1,11 @@
+{
+  "name": "emmy-agent-marketplace",
+  "owner": {
+    "name": "Emmy Development Team"
+  },
+  "metadata": {
+    "description": "Shared agent plugins, skills, and tool integrations for the Emmy development team.",
+    "version": "0.1.0"
+  },
+  "plugins": []
+}

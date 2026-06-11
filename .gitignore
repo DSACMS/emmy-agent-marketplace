@@ -1,0 +1,46 @@
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Editor and workspace noise
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Logs and temporary output
+*.log
+logs/
+tmp/
+temp/
+.cache/
+
+# Node and frontend artifacts
+node_modules/
+dist/
+build/
+coverage/
+.next/
+.vite/
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+venv/
+
+# Agent local state
+.codex-log/
+.codex/cache/
+.codex/sessions/
+.claude/settings.local.json
+.claude/tmp/
+.copilot/
