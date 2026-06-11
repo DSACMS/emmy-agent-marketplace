@@ -1,7 +1,7 @@
 {
   "name": "emmy-knowledge-store",
-  "version": "0.3.1",
-  "description": "Ambient Emmy context lookup, source ingestion, durable knowledge capture, and controlled Confluence updates.",
+  "version": "0.4.0",
+  "description": "Ambient Emmy context lookup, source ingestion, queue curation, durable knowledge capture, and controlled Confluence updates.",
   "author": {
     "name": "Emmy Development Team"
   },
@@ -14,6 +14,8 @@
     "ambient-context",
     "source-ingest",
     "artifact-ingest",
+    "queue-curation",
+    "human-review",
     "repo-provenance",
     "mcp",
     "atlassian"
@@ -23,7 +25,7 @@
   "interface": {
     "displayName": "Emmy Knowledge Store",
     "shortDescription": "Use Emmy shared knowledge while agents work.",
-    "longDescription": "Adds a Confluence-backed workflow for ambient Emmy context lookup, explicit source ingestion, durable knowledge capture, fleet-safe queueing, and controlled updates to the Emmy Agent Knowledge Store.",
+    "longDescription": "Adds a Confluence-backed workflow for ambient Emmy context lookup, explicit source ingestion, human queue curation, durable knowledge capture, fleet-safe queueing, and controlled updates to the Emmy Agent Knowledge Store.",
     "developerName": "Emmy Development Team",
     "category": "Productivity",
     "capabilities": [
@@ -32,11 +34,14 @@
       "Knowledge",
       "Ambient Context",
       "Source Ingestion",
+      "Queue Curation",
+      "Human Review",
       "Repository Provenance"
     ],
     "defaultPrompt": [
       "Use the Emmy knowledge store while working this task.",
       "Use $emmy-artifact-ingest to ingest this source into the knowledge store.",
+      "Use $emmy-queue-curate to process the next Emmy Knowledge Ingestion Queue entry with me.",
       "Capture durable knowledge from this completed task.",
       "Curate pending Emmy knowledge-store updates."
     ]

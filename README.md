@@ -98,6 +98,7 @@ symlinks in the cached plugin. For Codex installability, the
 `emmy-knowledge-store` plugin includes materialized runtime copies at
 `plugins/emmy-knowledge-store/skills/emmy-knowledge-store/`,
 `plugins/emmy-knowledge-store/skills/emmy-artifact-ingest/`,
+`plugins/emmy-knowledge-store/skills/emmy-queue-curate/`,
 `plugins/emmy-knowledge-store/agents/`, and
 `plugins/emmy-knowledge-store/.mcp.json`. Keep those runtime copies aligned with
 the top-level `skills/`, agent, and `mcp/` sources whenever the canonical
@@ -153,6 +154,35 @@ Confluence page, or Emmy repository checkout.
 - Every extracted claim links back to a Knowledge Source Registry record, and
   every source record links forward to generated queue entries or canonical
   pages.
+
+## Queue Curation Pattern
+
+The `emmy-queue-curate` skill and `emmy-queue-curator` agent provide the
+human-in-the-loop workflow for validating existing Knowledge Ingestion Queue
+entries. Use this after source ingestion has already created `needs-review`
+entries and a human reviewer is ready to decide whether a single entry should
+become canonical knowledge.
+
+- The curator processes one queue entry at a time, using the queue index order
+  unless the human names a specific entry.
+- The reviewer sees a compact packet with summary, scope, confidence, source
+  record, source locator, proposed destination, extracted claims, and open
+  questions.
+- The default interaction is hybrid: start with whole-entry truth confirmation,
+  then drill into specific claims only when the human flags uncertainty,
+  correction, missing context, or conflict.
+- No Confluence writes happen until explicit final approval for that entry.
+- Promotion writes narrowly update the canonical destination, set the queue
+  entry status to `promoted`, update the queue index row, and re-read or diff
+  changed pages before reporting URLs or page IDs.
+- If the human says they do not know, wants a teammate to answer, or says the
+  item needs discussion, v1 pauses without writing Confluence changes.
+
+Future teammate-collaboration features may add discussion queues, Confluence
+comments, assignee-style mentions, or statuses such as `needs-discussion`,
+`needs-teammate-review`, and `answered-by-teammate`. The current v1 workflow
+reserves those concepts but does not write those statuses or create discussion
+artifacts.
 
 ## Local Development Setup
 
