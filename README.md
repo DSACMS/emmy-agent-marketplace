@@ -17,12 +17,14 @@ the same plugin directory can be installed by multiple tools.
 |-- README.md
 |-- .agents/plugins/marketplace.json
 |-- .claude-plugin/marketplace.json
+|-- skills/
+|   `-- <skill-name>/SKILL.md
 `-- plugins/
     `-- <plugin-name>/
         |-- .codex-plugin/plugin.json
         |-- .claude-plugin/plugin.json
         |-- plugin.json
-        |-- skills/<skill-name>/SKILL.md
+        |-- skills/<skill-name> -> ../../../skills/<skill-name>
         |-- agents/
         |-- hooks.json
         `-- .mcp.json
@@ -44,6 +46,36 @@ to support.
 
 When you add a plugin under `plugins/<plugin-name>/`, add matching entries to
 both marketplace catalogs.
+
+## Component Reuse Standard
+
+Reusable skills and other portable components should have one canonical source
+in this repository. Plugins should usually be thin installable bundles that
+expose those components with relative symlinks.
+
+For example, a skill can be offered as its own plugin and also included in a
+larger suite without copying the skill files:
+
+```text
+skills/evidence-review/SKILL.md
+plugins/evidence-review/skills/evidence-review -> ../../../skills/evidence-review
+plugins/ato-suite/skills/evidence-review -> ../../../skills/evidence-review
+```
+
+Use this pattern so teammates can install only the components they need, while
+larger plugins can still group related workflows.
+
+Rules for plugin composition:
+
+- Author reusable skills under `skills/<skill-name>/`.
+- Link reusable skills into plugins with relative symlinks from the plugin's
+  component directories.
+- Keep symlink targets inside this repository so installed plugins can be copied
+  or cached safely by target tools.
+- Put plugin manifests and product-specific wrappers directly in
+  `plugins/<plugin-name>/`.
+- Avoid hand-maintained duplicate skill files. If duplication is unavoidable for
+  a target tool, document why and prefer a generated packaging step.
 
 ## Local Development Setup
 
@@ -196,15 +228,16 @@ copilot plugin list
 ## Add A Plugin
 
 1. Create `plugins/<plugin-name>/`.
-2. Add portable skills under
-   `plugins/<plugin-name>/skills/<skill-name>/SKILL.md`.
-3. Add the manifests needed by your target tools:
+2. Add portable skills under `skills/<skill-name>/`.
+3. Link the needed skills into `plugins/<plugin-name>/skills/<skill-name>` with
+   relative symlinks.
+4. Add the manifests needed by your target tools:
    - Codex: `.codex-plugin/plugin.json`
    - Claude Code: `.claude-plugin/plugin.json`
    - GitHub Copilot CLI: `plugin.json`
-4. Add entries to `.agents/plugins/marketplace.json` and
+5. Add entries to `.agents/plugins/marketplace.json` and
    `.claude-plugin/marketplace.json`.
-5. Test local install in the target tools.
+6. Test local install in the target tools.
 
 ## References
 

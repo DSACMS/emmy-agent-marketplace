@@ -14,20 +14,51 @@ formats.
   matches the skill directory.
 - Put portable instructions in `skills/<skill-name>/SKILL.md`; put
   product-specific behavior in product manifests, settings, or wrapper scripts.
+- Keep reusable components in one canonical location and expose them from
+  plugins with relative symlinks whenever practical.
 - Use Model Context Protocol (MCP) for external tools and live service
   integrations when a workflow needs private data or actions.
 - Keep generated or local cache files out of the repository.
+
+## Component Reuse Standard
+
+Plugins should be thin installable bundles over shared components, not the
+primary place where reusable component source is authored.
+
+- Author reusable skills in top-level component directories, such as
+  `skills/<skill-name>/SKILL.md`.
+- In `plugins/<plugin-name>/`, link to those canonical components with relative
+  symlinks so the same skill can be offered as an individual plugin and inside
+  larger bundles without copying files.
+- Keep symlink targets inside this marketplace repository. Do not point plugin
+  symlinks at absolute paths, user home directories, or files outside the
+  marketplace root.
+- Put plugin-only manifests, metadata, and wrapper configuration directly in the
+  plugin directory.
+- If a component cannot be safely symlinked for a target tool, document the
+  reason and prefer a generated packaging step over hand-maintained duplicate
+  source.
+
+Example:
+
+```text
+skills/evidence-review/SKILL.md
+plugins/evidence-review/skills/evidence-review -> ../../../skills/evidence-review
+plugins/ato-suite/skills/evidence-review -> ../../../skills/evidence-review
+```
 
 ## Marketplace Layout
 
 Use this structure for shared plugins:
 
 ```text
+skills/<skill-name>/SKILL.md
+
 plugins/<plugin-name>/
   .codex-plugin/plugin.json
   .claude-plugin/plugin.json
   plugin.json
-  skills/<skill-name>/SKILL.md
+  skills/<skill-name> -> ../../../skills/<skill-name>
   agents/
   hooks.json
   .mcp.json
