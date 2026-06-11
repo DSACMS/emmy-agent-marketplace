@@ -1,0 +1,5 @@
+{
+  "proseWrap": "always",
+  "singleQuote": false,
+  "trailingComma": "es5"
+}

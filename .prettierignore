@@ -1,0 +1,8 @@
+node_modules/
+.cache/
+.venv/
+coverage/
+dist/
+build/
+.git/
+.codex-log/

@@ -1,0 +1,60 @@
+name: Marketplace Smoke
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  installability:
+    name: Codex And Claude Installability
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      CODEX_CLI_PACKAGE: "@openai/codex@0.139.0"
+      CLAUDE_CLI_PACKAGE: "@anthropic-ai/claude-code@2.1.173"
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 26.x
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install pnpm dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Add pinned agent CLIs to PATH
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/agent-cli-bin"
+
+          cat > "$RUNNER_TEMP/agent-cli-bin/codex" <<'EOF'
+          #!/usr/bin/env bash
+          exec pnpm dlx "$CODEX_CLI_PACKAGE" "$@"
+          EOF
+
+          cat > "$RUNNER_TEMP/agent-cli-bin/claude" <<'EOF'
+          #!/usr/bin/env bash
+          exec pnpm dlx "$CLAUDE_CLI_PACKAGE" "$@"
+          EOF
+
+          chmod +x "$RUNNER_TEMP/agent-cli-bin/codex"
+          chmod +x "$RUNNER_TEMP/agent-cli-bin/claude"
+          echo "$RUNNER_TEMP/agent-cli-bin" >> "$GITHUB_PATH"
+
+      - name: Run marketplace smoke tests
+        run: pnpm run smoke:marketplace

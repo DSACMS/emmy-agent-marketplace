@@ -22,6 +22,7 @@ temp/
 
 # Node and frontend artifacts
 node_modules/
+.pnpm-store/
 dist/
 build/
 coverage/

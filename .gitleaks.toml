@@ -1,0 +1,4 @@
+title = "Emmy Agent Marketplace Gitleaks Configuration"
+
+[extend]
+useDefault = true

@@ -1,0 +1,7 @@
+# Replace @DSACMS/<team-name> with the GitHub team that should own marketplace changes.
+# Uncomment these rules before enabling required CODEOWNERS reviews.
+#
+# * @DSACMS/<team-name>
+# /.agents/plugins/marketplace.json @DSACMS/<team-name>
+# /.claude-plugin/marketplace.json @DSACMS/<team-name>
+# /plugins/ @DSACMS/<team-name>
