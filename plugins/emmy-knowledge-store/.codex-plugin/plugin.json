@@ -1,6 +1,6 @@
 {
   "name": "emmy-knowledge-store",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Ambient Emmy context lookup, source ingestion, durable knowledge capture, and controlled Confluence updates.",
   "author": {
     "name": "Emmy Development Team"
