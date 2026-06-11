@@ -1,0 +1,53 @@
+{
+  "skill_name": "emmy-queue-curate",
+  "evals": [
+    {
+      "id": "curate-next-entry",
+      "prompt": "Let's process the next item in the Emmy Knowledge Ingestion Queue together.",
+      "should_trigger": true,
+      "expected_behavior": "Read the queue, select one needs-review entry, present a compact review packet, and ask whether it is true enough to ingest."
+    },
+    {
+      "id": "named-entry-review",
+      "prompt": "Curate the queue entry about iv-cbv-payroll payroll aggregator integration model.",
+      "should_trigger": true,
+      "expected_behavior": "Review the named queue entry with the human and avoid Confluence writes until final approval."
+    },
+    {
+      "id": "promote-after-validation",
+      "prompt": "I reviewed this queue item and it is accurate. Promote it into the proposed canonical page.",
+      "should_trigger": true,
+      "expected_behavior": "Draft the canonical update, confirm final approval, then apply write-safety checks before updating canonical and queue pages."
+    },
+    {
+      "id": "human-does-not-know",
+      "prompt": "I don't know whether this queue item is true. Someone else needs to weigh in.",
+      "should_trigger": true,
+      "expected_behavior": "Stop processing the entry without Confluence writes and explain that teammate discussion is a future workflow."
+    },
+    {
+      "id": "needs-discussion",
+      "prompt": "This knowledge queue item needs discussion before we promote it.",
+      "should_trigger": true,
+      "expected_behavior": "Pause the entry without writing future collaboration statuses or artifacts."
+    },
+    {
+      "id": "source-ingest-request",
+      "prompt": "Ingest this local PDF into the Emmy knowledge store.",
+      "should_trigger": false,
+      "expected_behavior": "Use the emmy-artifact-ingest workflow because this creates source records and queue entries."
+    },
+    {
+      "id": "ambient-search",
+      "prompt": "Search the Emmy knowledge store for current ATO notes.",
+      "should_trigger": false,
+      "expected_behavior": "Use the ambient emmy-knowledge-store lookup workflow, not queue curation."
+    },
+    {
+      "id": "generic-review",
+      "prompt": "Review this pull request for bugs.",
+      "should_trigger": false,
+      "expected_behavior": "Do a normal code review unless the user asks to process knowledge-store queue entries."
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+interface:
+  display_name: "Emmy Queue Curate"
+  short_description: "Validate pending Emmy knowledge queue entries"
+  default_prompt:
+    "Use $emmy-queue-curate to process the next Emmy Knowledge Ingestion Queue
+    entry with me."
+policy:
+  allow_implicit_invocation: false
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "cms-atlassian-confluence"
+      description:
+        "CMS Confluence MCP server for reading queue entries, source records,
+        canonical pages, histories, diffs, and applying approved queue
+        promotions."

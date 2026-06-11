@@ -65,6 +65,18 @@ source provenance in citations or summaries. For repository-derived knowledge,
 re-check the local repository evidence when branch, commit, or dirty-worktree
 applicability matters.
 
+## Specialized Queue Curation
+
+Do not use this ambient skill for interactive review of pending Knowledge
+Ingestion Queue entries. When the user asks to process, review, curate, verify,
+or promote queue entries with a human reviewer, use `$emmy-queue-curate` or the
+`emmy-queue-curator` plugin agent.
+
+Queue curation validates one `needs-review` entry at a time and promotes only
+after explicit final human approval. If the reviewer does not know, wants a
+teammate to answer, or says the entry needs discussion, the v1 curator should
+pause without writing Confluence discussion artifacts.
+
 ## Capture And Write Policy
 
 Durable knowledge includes verified team decisions, stable procedures, reusable

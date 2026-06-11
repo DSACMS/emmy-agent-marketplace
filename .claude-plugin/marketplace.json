@@ -11,8 +11,8 @@
     {
       "name": "emmy-knowledge-store",
       "source": "./plugins/emmy-knowledge-store",
-      "description": "Ambient Emmy context lookup, source ingestion, durable knowledge capture, and controlled Confluence updates.",
-      "version": "0.3.0",
+      "description": "Ambient Emmy context lookup, source ingestion, queue curation, durable knowledge capture, and controlled Confluence updates.",
+      "version": "0.4.0",
       "author": {
         "name": "Emmy Development Team"
       },
@@ -24,6 +24,8 @@
         "ambient-context",
         "source-ingest",
         "artifact-ingest",
+        "queue-curation",
+        "human-review",
         "repo-provenance",
         "mcp",
         "atlassian"
