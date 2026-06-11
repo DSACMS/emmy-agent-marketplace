@@ -96,9 +96,11 @@ credentials.
 Codex local marketplace installs cache the plugin directory and do not preserve
 symlinks in the cached plugin. For Codex installability, the
 `emmy-knowledge-store` plugin includes materialized runtime copies at
-`plugins/emmy-knowledge-store/skills/emmy-knowledge-store/SKILL.md` and
+`plugins/emmy-knowledge-store/skills/emmy-knowledge-store/SKILL.md`,
+`plugins/emmy-knowledge-store/skills/emmy-knowledge-store/references/`, and
 `plugins/emmy-knowledge-store/.mcp.json`. Keep those runtime copies aligned with
-the top-level `skills/` and `mcp/` sources.
+the top-level `skills/` and `mcp/` sources whenever the canonical component
+changes.
 
 For example, `mcp/cms-atlassian-confluence/.mcp.json` runs `uvx mcp-atlassian`
 against CMS Confluence Data Center. The `emmy-knowledge-store` plugin links that
@@ -106,6 +108,29 @@ config and requires each user to provide `CONFLUENCE_PERSONAL_TOKEN` in their
 own environment. The same upstream MCP server also supports
 `JIRA_PERSONAL_TOKEN`; Jira-specific plugins can add that requirement later
 without duplicating the Confluence MCP component.
+
+## Ambient Knowledge Store Pattern
+
+The `emmy-knowledge-store` plugin is designed for ambient shared-context use by
+one developer, many agents, or several developers working concurrently. Its
+default behavior is to consult freely, capture proactively, and publish
+deliberately.
+
+- Agents may search and read the Emmy Confluence knowledge store when a task
+  depends on Emmy product, architecture, ATO, runbook, onboarding,
+  troubleshooting, or prior decision context.
+- Agents should identify durable knowledge produced by their work, but they
+  should only write to Confluence when the user explicitly asks to capture,
+  persist, curate, or update knowledge-store content.
+- Low-confidence, contested, or not-yet-curated findings should be written as
+  one page per candidate in an Agent Capture Queue when persistence is
+  authorized. This avoids many agents racing to append to the same page.
+- Canonical page updates require a fresh page read plus history or diff review
+  immediately before writing. If another developer or agent changed the same
+  section, the agent should stop and report the conflict instead of overwriting.
+- The Confluence MCP allowlist includes read, create, update, comment, label,
+  and attachment tools. Write availability is governed by skill policy and user
+  authorization, not by enabling destructive delete or move tools.
 
 ## Local Development Setup
 

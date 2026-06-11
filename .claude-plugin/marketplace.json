@@ -11,13 +11,20 @@
     {
       "name": "emmy-knowledge-store",
       "source": "./plugins/emmy-knowledge-store",
-      "description": "Confluence-backed Emmy Agent Knowledge Store workflows.",
-      "version": "0.1.0",
+      "description": "Ambient Emmy context lookup, durable knowledge capture, and controlled Confluence updates.",
+      "version": "0.2.0",
       "author": {
         "name": "Emmy Development Team"
       },
       "category": "Productivity",
-      "tags": ["emmy", "confluence", "knowledge-store", "mcp", "atlassian"]
+      "tags": [
+        "emmy",
+        "confluence",
+        "knowledge-store",
+        "ambient-context",
+        "mcp",
+        "atlassian"
+      ]
     }
   ]
 }

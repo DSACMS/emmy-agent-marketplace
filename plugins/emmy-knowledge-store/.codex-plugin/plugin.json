@@ -1,26 +1,33 @@
 {
   "name": "emmy-knowledge-store",
-  "version": "0.1.0",
-  "description": "Confluence-backed Emmy Agent Knowledge Store workflows.",
+  "version": "0.2.0",
+  "description": "Ambient Emmy context lookup, durable knowledge capture, and controlled Confluence updates.",
   "author": {
     "name": "Emmy Development Team"
   },
   "homepage": "https://confluenceent.cms.gov/spaces/SFIV/pages/1381557075/Emmy+Agent+Knowledge+Store",
   "repository": "https://github.com/DSACMS/emmy-agent-marketplace",
-  "keywords": ["emmy", "confluence", "knowledge-store", "mcp", "atlassian"],
+  "keywords": [
+    "emmy",
+    "confluence",
+    "knowledge-store",
+    "ambient-context",
+    "mcp",
+    "atlassian"
+  ],
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "Emmy Knowledge Store",
-    "shortDescription": "Use the Emmy Confluence knowledge store.",
-    "longDescription": "Adds a Confluence-backed workflow for searching, reading, citing, and narrowly updating the Emmy Agent Knowledge Store.",
+    "shortDescription": "Use Emmy shared knowledge while agents work.",
+    "longDescription": "Adds a Confluence-backed workflow for ambient Emmy context lookup, durable knowledge capture, fleet-safe queueing, and controlled updates to the Emmy Agent Knowledge Store.",
     "developerName": "Emmy Development Team",
     "category": "Productivity",
-    "capabilities": ["MCP", "Confluence", "Knowledge"],
+    "capabilities": ["MCP", "Confluence", "Knowledge", "Ambient Context"],
     "defaultPrompt": [
-      "Search the Emmy knowledge store.",
-      "Update an Emmy knowledge-store page.",
-      "Summarize the knowledge-store entry point."
+      "Use the Emmy knowledge store while working this task.",
+      "Capture durable knowledge from this completed task.",
+      "Curate pending Emmy knowledge-store updates."
     ]
   }
 }

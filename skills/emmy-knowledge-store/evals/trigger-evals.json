@@ -1,0 +1,53 @@
+{
+  "skill_name": "emmy-knowledge-store",
+  "evals": [
+    {
+      "id": "explicit-search",
+      "prompt": "Search the Emmy knowledge store for the current ATO boundary notes and summarize the relevant pages.",
+      "should_trigger": true,
+      "expected_behavior": "Use the Confluence knowledge store, cite page URLs or page IDs, and avoid writing."
+    },
+    {
+      "id": "indirect-context",
+      "prompt": "Before changing this Emmy architecture doc, check whether the team already decided how worker queues should be described.",
+      "should_trigger": true,
+      "expected_behavior": "Consult the knowledge store for decisions or architecture context before editing."
+    },
+    {
+      "id": "task-end-capture",
+      "prompt": "We just confirmed the fix for a recurring Emmy deployment issue. Capture the durable troubleshooting note for future agents.",
+      "should_trigger": true,
+      "expected_behavior": "Draft or persist a knowledge capture using the entry template, depending on write authorization."
+    },
+    {
+      "id": "concurrent-agents",
+      "prompt": "Two agents found related Emmy onboarding facts. Add them without racing on the same Confluence page.",
+      "should_trigger": true,
+      "expected_behavior": "Use the fleet protocol and create separate queue candidates unless a curator update is explicitly requested."
+    },
+    {
+      "id": "canonical-update",
+      "prompt": "Update the Emmy Agent Knowledge Store runbook page with this verified command and cite the source PR.",
+      "should_trigger": true,
+      "expected_behavior": "Read the page, history, and diff before a narrow canonical update."
+    },
+    {
+      "id": "local-formatting",
+      "prompt": "Format this local Markdown file and fix trailing whitespace.",
+      "should_trigger": false,
+      "expected_behavior": "Do not consult Confluence because the task is mechanical and local-only."
+    },
+    {
+      "id": "generic-code",
+      "prompt": "Rename this variable in the test file and run the unit test.",
+      "should_trigger": false,
+      "expected_behavior": "Do not consult the knowledge store unless the task later depends on Emmy context."
+    },
+    {
+      "id": "no-external-context",
+      "prompt": "Do not use external docs. Just explain what this function does from the file in front of you.",
+      "should_trigger": false,
+      "expected_behavior": "Respect the user's request not to use external knowledge."
+    }
+  ]
+}

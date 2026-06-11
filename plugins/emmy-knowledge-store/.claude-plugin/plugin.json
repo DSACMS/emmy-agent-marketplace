@@ -1,14 +1,21 @@
 {
   "name": "emmy-knowledge-store",
   "displayName": "Emmy Knowledge Store",
-  "version": "0.1.0",
-  "description": "Confluence-backed Emmy Agent Knowledge Store workflows.",
+  "version": "0.2.0",
+  "description": "Ambient Emmy context lookup, durable knowledge capture, and controlled Confluence updates.",
   "author": {
     "name": "Emmy Development Team"
   },
   "homepage": "https://confluenceent.cms.gov/spaces/SFIV/pages/1381557075/Emmy+Agent+Knowledge+Store",
   "repository": "https://github.com/DSACMS/emmy-agent-marketplace",
-  "keywords": ["emmy", "confluence", "knowledge-store", "mcp", "atlassian"],
+  "keywords": [
+    "emmy",
+    "confluence",
+    "knowledge-store",
+    "ambient-context",
+    "mcp",
+    "atlassian"
+  ],
   "skills": "./skills/",
   "mcpServers": "./.mcp.json"
 }
