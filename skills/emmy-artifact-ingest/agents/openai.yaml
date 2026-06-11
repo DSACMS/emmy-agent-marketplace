@@ -1,0 +1,15 @@
+interface:
+  display_name: "Emmy Artifact Ingest"
+  short_description: "Ingest Emmy knowledge sources"
+  default_prompt:
+    "Use $emmy-artifact-ingest to ingest this source into the Emmy knowledge
+    store with provenance."
+policy:
+  allow_implicit_invocation: false
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "cms-atlassian-confluence"
+      description:
+        "CMS Confluence MCP server for source records, queue pages, labels, and
+        attachments."

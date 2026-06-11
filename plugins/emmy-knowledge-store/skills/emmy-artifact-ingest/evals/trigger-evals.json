@@ -1,0 +1,53 @@
+{
+  "skill_name": "emmy-artifact-ingest",
+  "evals": [
+    {
+      "id": "local-file-ingest",
+      "prompt": "Use emmy-artifact-ingest to ingest ./ATO/new-diagram-notes.pdf into the Emmy knowledge store.",
+      "should_trigger": true,
+      "expected_behavior": "Classify as local file, plan source record creation, upload attachment, checksum, extraction, and review-queue entries."
+    },
+    {
+      "id": "url-ingest",
+      "prompt": "Ingest knowledge from https://example.cms.gov/emmy/runbook into the Emmy knowledge store.",
+      "should_trigger": true,
+      "expected_behavior": "Classify as URL source, create source record without upload, extract directly, and create needs-review queue entries."
+    },
+    {
+      "id": "external-confluence-ingest",
+      "prompt": "Ingest this Confluence page outside the Emmy knowledge store: https://confluenceent.cms.gov/spaces/ABC/pages/123456/External+Runbook",
+      "should_trigger": true,
+      "expected_behavior": "Classify as external Confluence page, read through Confluence MCP, record page metadata, and queue extracted claims."
+    },
+    {
+      "id": "repository-ingest",
+      "prompt": "Ingest the current deployment knowledge from the local CMSgov/emmy-infra checkout.",
+      "should_trigger": true,
+      "expected_behavior": "Resolve local checkout, record repo, branch, commit, clean status, path/line provenance, and queue extracted claims without upload."
+    },
+    {
+      "id": "feature-branch-scope",
+      "prompt": "Ingest what this feature branch in emmy-api says about callback routing.",
+      "should_trigger": true,
+      "expected_behavior": "Mark repository-derived claims as branch-scoped unless verified on the canonical branch."
+    },
+    {
+      "id": "dirty-worktree",
+      "prompt": "Ingest this uncommitted iv-cbv-payroll change as knowledge.",
+      "should_trigger": true,
+      "expected_behavior": "Treat as local-observation only and keep it needs-review, not canonical."
+    },
+    {
+      "id": "ambient-lookup",
+      "prompt": "Search the Emmy knowledge store for the deployment runbook.",
+      "should_trigger": false,
+      "expected_behavior": "Use the ambient emmy-knowledge-store skill, not the ingest workflow."
+    },
+    {
+      "id": "generic-file-summary",
+      "prompt": "Summarize this local PDF for me, but do not put it in Confluence.",
+      "should_trigger": false,
+      "expected_behavior": "Do not ingest because the user did not ask to store knowledge."
+    }
+  ]
+}

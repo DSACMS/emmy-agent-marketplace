@@ -7,5 +7,27 @@
     "description": "Shared agent plugins, skills, and tool integrations for the Emmy development team.",
     "version": "0.1.0"
   },
-  "plugins": []
+  "plugins": [
+    {
+      "name": "emmy-knowledge-store",
+      "source": "./plugins/emmy-knowledge-store",
+      "description": "Ambient Emmy context lookup, source ingestion, durable knowledge capture, and controlled Confluence updates.",
+      "version": "0.3.0",
+      "author": {
+        "name": "Emmy Development Team"
+      },
+      "category": "Productivity",
+      "tags": [
+        "emmy",
+        "confluence",
+        "knowledge-store",
+        "ambient-context",
+        "source-ingest",
+        "artifact-ingest",
+        "repo-provenance",
+        "mcp",
+        "atlassian"
+      ]
+    }
+  ]
 }

@@ -17,6 +17,8 @@ the same plugin directory can be installed by multiple tools.
 |-- README.md
 |-- .agents/plugins/marketplace.json
 |-- .claude-plugin/marketplace.json
+|-- mcp/
+|   `-- <mcp-component>/.mcp.json
 |-- skills/
 |   `-- <skill-name>/SKILL.md
 `-- plugins/
@@ -24,10 +26,10 @@ the same plugin directory can be installed by multiple tools.
         |-- .codex-plugin/plugin.json
         |-- .claude-plugin/plugin.json
         |-- plugin.json
-        |-- skills/<skill-name> -> ../../../skills/<skill-name>
+        |-- skills/<skill-name>/SKILL.md
+        |-- .mcp.json
         |-- agents/
-        |-- hooks.json
-        `-- .mcp.json
+        `-- hooks.json
 ```
 
 Not every plugin needs every optional directory. Start with
@@ -72,10 +74,85 @@ Rules for plugin composition:
   component directories.
 - Keep symlink targets inside this repository so installed plugins can be copied
   or cached safely by target tools.
+- Author reusable MCP client configs under `mcp/<mcp-component>/.mcp.json` when
+  more than one plugin may share the same server.
+- Prefer direct relative symlinks from plugin roots to shared top-level
+  components when the target tool preserves those links at install time.
+- If a target tool caches only the plugin directory and skips symlinks, keep a
+  materialized runtime copy at the plugin-facing path and verify it during
+  install smoke.
 - Put plugin manifests and product-specific wrappers directly in
   `plugins/<plugin-name>/`.
 - Avoid hand-maintained duplicate skill files. If duplication is unavoidable for
   a target tool, document why and prefer a generated packaging step.
+
+## Shared MCP Components
+
+MCP configs in `mcp/` are installable only after a plugin links them into its
+root and declares `mcpServers` in the relevant plugin manifest. Keep shared
+configs free of secrets and use environment variable references for per-user
+credentials.
+
+Codex local marketplace installs cache the plugin directory and do not preserve
+symlinks in the cached plugin. For Codex installability, the
+`emmy-knowledge-store` plugin includes materialized runtime copies at
+`plugins/emmy-knowledge-store/skills/emmy-knowledge-store/`,
+`plugins/emmy-knowledge-store/skills/emmy-artifact-ingest/`,
+`plugins/emmy-knowledge-store/agents/`, and
+`plugins/emmy-knowledge-store/.mcp.json`. Keep those runtime copies aligned with
+the top-level `skills/`, agent, and `mcp/` sources whenever the canonical
+component changes.
+
+For example, `mcp/cms-atlassian-confluence/.mcp.json` runs `uvx mcp-atlassian`
+against CMS Confluence Data Center. The `emmy-knowledge-store` plugin links that
+config and requires each user to provide `CONFLUENCE_PERSONAL_TOKEN` in their
+own environment. The same upstream MCP server also supports
+`JIRA_PERSONAL_TOKEN`; Jira-specific plugins can add that requirement later
+without duplicating the Confluence MCP component.
+
+## Ambient Knowledge Store Pattern
+
+The `emmy-knowledge-store` plugin is designed for ambient shared-context use by
+one developer, many agents, or several developers working concurrently. Its
+default behavior is to consult freely, capture proactively, and publish
+deliberately.
+
+- Agents may search and read the Emmy Confluence knowledge store when a task
+  depends on Emmy product, architecture, ATO, runbook, onboarding,
+  troubleshooting, or prior decision context.
+- Agents should identify durable knowledge produced by their work, but they
+  should only write to Confluence when the user explicitly asks to capture,
+  persist, curate, or update knowledge-store content.
+- Low-confidence, contested, or not-yet-curated findings should be written as
+  one page per candidate in an Agent Capture Queue when persistence is
+  authorized. This avoids many agents racing to append to the same page.
+- Canonical page updates require a fresh page read plus history or diff review
+  immediately before writing. If another developer or agent changed the same
+  section, the agent should stop and report the conflict instead of overwriting.
+- The Confluence MCP allowlist includes read, create, update, comment, label,
+  and attachment tools. Write availability is governed by skill policy and user
+  authorization, not by enabling destructive delete or move tools.
+
+## Source Ingestion Pattern
+
+The same plugin also provides an explicit-only `emmy-artifact-ingest` skill and
+`emmy-artifact-ingestor` agent for source ingestion. Use this specialized
+workflow when the user asks to ingest knowledge from a local file, URL, external
+Confluence page, or Emmy repository checkout.
+
+- Local files are uploaded as source-record attachments before knowledge is
+  extracted and queued.
+- URLs and external Confluence pages are extracted directly and are not uploaded
+  by default.
+- Emmy repository sources are extracted from local checkouts, not from
+  `github.com` pages. Queue entries record repo, branch, commit, source file
+  paths, line ranges or symbols, worktree state, and branch applicability.
+- The default destination is the Knowledge Ingestion Queue. Canonical pages are
+  updated only when the user explicitly asks for promotion or names a
+  destination page.
+- Every extracted claim links back to a Knowledge Source Registry record, and
+  every source record links forward to generated queue entries or canonical
+  pages.
 
 ## Local Development Setup
 
@@ -230,14 +307,18 @@ copilot plugin list
 1. Create `plugins/<plugin-name>/`.
 2. Add portable skills under `skills/<skill-name>/`.
 3. Link the needed skills into `plugins/<plugin-name>/skills/<skill-name>` with
-   relative symlinks.
-4. Add the manifests needed by your target tools:
+   relative symlinks when the target tool preserves them. If install smoke skips
+   symlinks, use a materialized runtime copy instead.
+4. If the plugin needs a shared MCP server, add the canonical config under
+   `mcp/<mcp-component>/.mcp.json`, then link it into the plugin root as
+   `.mcp.json`. Use a plugin-local runtime copy when a target tool requires it.
+5. Add the manifests needed by your target tools:
    - Codex: `.codex-plugin/plugin.json`
    - Claude Code: `.claude-plugin/plugin.json`
    - GitHub Copilot CLI: `plugin.json`
-5. Add entries to `.agents/plugins/marketplace.json` and
+6. Add entries to `.agents/plugins/marketplace.json` and
    `.claude-plugin/marketplace.json`.
-6. Test local install in the target tools.
+7. Test local install in the target tools.
 
 ## References
 

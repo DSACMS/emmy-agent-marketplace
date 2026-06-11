@@ -1,4 +1,17 @@
 {
   "name": "emmy-agent-marketplace",
-  "plugins": []
+  "plugins": [
+    {
+      "name": "emmy-knowledge-store",
+      "source": {
+        "source": "local",
+        "path": "./plugins/emmy-knowledge-store"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
 }
