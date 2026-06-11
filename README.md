@@ -17,6 +17,8 @@ the same plugin directory can be installed by multiple tools.
 |-- README.md
 |-- .agents/plugins/marketplace.json
 |-- .claude-plugin/marketplace.json
+|-- mcp/
+|   `-- <mcp-component>/.mcp.json
 |-- skills/
 |   `-- <skill-name>/SKILL.md
 `-- plugins/
@@ -24,10 +26,10 @@ the same plugin directory can be installed by multiple tools.
         |-- .codex-plugin/plugin.json
         |-- .claude-plugin/plugin.json
         |-- plugin.json
-        |-- skills/<skill-name> -> ../../../skills/<skill-name>
+        |-- skills/<skill-name>/SKILL.md
+        |-- .mcp.json
         |-- agents/
-        |-- hooks.json
-        `-- .mcp.json
+        `-- hooks.json
 ```
 
 Not every plugin needs every optional directory. Start with
@@ -72,10 +74,38 @@ Rules for plugin composition:
   component directories.
 - Keep symlink targets inside this repository so installed plugins can be copied
   or cached safely by target tools.
+- Author reusable MCP client configs under `mcp/<mcp-component>/.mcp.json` when
+  more than one plugin may share the same server.
+- Prefer direct relative symlinks from plugin roots to shared top-level
+  components when the target tool preserves those links at install time.
+- If a target tool caches only the plugin directory and skips symlinks, keep a
+  materialized runtime copy at the plugin-facing path and verify it during
+  install smoke.
 - Put plugin manifests and product-specific wrappers directly in
   `plugins/<plugin-name>/`.
 - Avoid hand-maintained duplicate skill files. If duplication is unavoidable for
   a target tool, document why and prefer a generated packaging step.
+
+## Shared MCP Components
+
+MCP configs in `mcp/` are installable only after a plugin links them into its
+root and declares `mcpServers` in the relevant plugin manifest. Keep shared
+configs free of secrets and use environment variable references for per-user
+credentials.
+
+Codex local marketplace installs cache the plugin directory and do not preserve
+symlinks in the cached plugin. For Codex installability, the
+`emmy-knowledge-store` plugin includes materialized runtime copies at
+`plugins/emmy-knowledge-store/skills/emmy-knowledge-store/SKILL.md` and
+`plugins/emmy-knowledge-store/.mcp.json`. Keep those runtime copies aligned with
+the top-level `skills/` and `mcp/` sources.
+
+For example, `mcp/cms-atlassian-confluence/.mcp.json` runs `uvx mcp-atlassian`
+against CMS Confluence Data Center. The `emmy-knowledge-store` plugin links that
+config and requires each user to provide `CONFLUENCE_PERSONAL_TOKEN` in their
+own environment. The same upstream MCP server also supports
+`JIRA_PERSONAL_TOKEN`; Jira-specific plugins can add that requirement later
+without duplicating the Confluence MCP component.
 
 ## Local Development Setup
 
@@ -230,14 +260,18 @@ copilot plugin list
 1. Create `plugins/<plugin-name>/`.
 2. Add portable skills under `skills/<skill-name>/`.
 3. Link the needed skills into `plugins/<plugin-name>/skills/<skill-name>` with
-   relative symlinks.
-4. Add the manifests needed by your target tools:
+   relative symlinks when the target tool preserves them. If install smoke skips
+   symlinks, use a materialized runtime copy instead.
+4. If the plugin needs a shared MCP server, add the canonical config under
+   `mcp/<mcp-component>/.mcp.json`, then link it into the plugin root as
+   `.mcp.json`. Use a plugin-local runtime copy when a target tool requires it.
+5. Add the manifests needed by your target tools:
    - Codex: `.codex-plugin/plugin.json`
    - Claude Code: `.claude-plugin/plugin.json`
    - GitHub Copilot CLI: `plugin.json`
-5. Add entries to `.agents/plugins/marketplace.json` and
+6. Add entries to `.agents/plugins/marketplace.json` and
    `.claude-plugin/marketplace.json`.
-6. Test local install in the target tools.
+7. Test local install in the target tools.
 
 ## References
 

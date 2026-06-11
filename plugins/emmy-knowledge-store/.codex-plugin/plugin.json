@@ -1,0 +1,26 @@
+{
+  "name": "emmy-knowledge-store",
+  "version": "0.1.0",
+  "description": "Confluence-backed Emmy Agent Knowledge Store workflows.",
+  "author": {
+    "name": "Emmy Development Team"
+  },
+  "homepage": "https://confluenceent.cms.gov/spaces/SFIV/pages/1381557075/Emmy+Agent+Knowledge+Store",
+  "repository": "https://github.com/DSACMS/emmy-agent-marketplace",
+  "keywords": ["emmy", "confluence", "knowledge-store", "mcp", "atlassian"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Emmy Knowledge Store",
+    "shortDescription": "Use the Emmy Confluence knowledge store.",
+    "longDescription": "Adds a Confluence-backed workflow for searching, reading, citing, and narrowly updating the Emmy Agent Knowledge Store.",
+    "developerName": "Emmy Development Team",
+    "category": "Productivity",
+    "capabilities": ["MCP", "Confluence", "Knowledge"],
+    "defaultPrompt": [
+      "Search the Emmy knowledge store.",
+      "Update an Emmy knowledge-store page.",
+      "Summarize the knowledge-store entry point."
+    ]
+  }
+}
