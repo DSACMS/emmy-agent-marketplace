@@ -96,11 +96,12 @@ credentials.
 Codex local marketplace installs cache the plugin directory and do not preserve
 symlinks in the cached plugin. For Codex installability, the
 `emmy-knowledge-store` plugin includes materialized runtime copies at
-`plugins/emmy-knowledge-store/skills/emmy-knowledge-store/SKILL.md`,
-`plugins/emmy-knowledge-store/skills/emmy-knowledge-store/references/`, and
+`plugins/emmy-knowledge-store/skills/emmy-knowledge-store/`,
+`plugins/emmy-knowledge-store/skills/emmy-artifact-ingest/`,
+`plugins/emmy-knowledge-store/agents/`, and
 `plugins/emmy-knowledge-store/.mcp.json`. Keep those runtime copies aligned with
-the top-level `skills/` and `mcp/` sources whenever the canonical component
-changes.
+the top-level `skills/`, agent, and `mcp/` sources whenever the canonical
+component changes.
 
 For example, `mcp/cms-atlassian-confluence/.mcp.json` runs `uvx mcp-atlassian`
 against CMS Confluence Data Center. The `emmy-knowledge-store` plugin links that
@@ -131,6 +132,27 @@ deliberately.
 - The Confluence MCP allowlist includes read, create, update, comment, label,
   and attachment tools. Write availability is governed by skill policy and user
   authorization, not by enabling destructive delete or move tools.
+
+## Source Ingestion Pattern
+
+The same plugin also provides an explicit-only `emmy-artifact-ingest` skill and
+`emmy-artifact-ingestor` agent for source ingestion. Use this specialized
+workflow when the user asks to ingest knowledge from a local file, URL, external
+Confluence page, or Emmy repository checkout.
+
+- Local files are uploaded as source-record attachments before knowledge is
+  extracted and queued.
+- URLs and external Confluence pages are extracted directly and are not uploaded
+  by default.
+- Emmy repository sources are extracted from local checkouts, not from
+  `github.com` pages. Queue entries record repo, branch, commit, source file
+  paths, line ranges or symbols, worktree state, and branch applicability.
+- The default destination is the Knowledge Ingestion Queue. Canonical pages are
+  updated only when the user explicitly asks for promotion or names a
+  destination page.
+- Every extracted claim links back to a Knowledge Source Registry record, and
+  every source record links forward to generated queue entries or canonical
+  pages.
 
 ## Local Development Setup
 

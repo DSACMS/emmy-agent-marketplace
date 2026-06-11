@@ -13,6 +13,7 @@ capture, queue, or publish knowledge.
 | Confluence contradicts memory, copied notes, or local scratch docs.                            | Prefer current Confluence, then cite it.                  | Flag conflicts when they matter.                         |
 | The task produced a verified, reusable finding.                                                | Prepare a capture candidate.                              | Include evidence, scope, and date verified.              |
 | The user asked to capture or persist knowledge but did not name a canonical page.              | Create or update a queue candidate if authorized.         | Use the Agent Capture Queue pattern.                     |
+| The user explicitly asked to ingest a local file, URL, external Confluence page, or repo.      | Use `$emmy-artifact-ingest` or the ingestion agent.       | Use the Knowledge Ingestion Queue by default.            |
 | The user asked for a specific canonical page update.                                           | Update narrowly after the write-safety checks.            | Re-read, inspect history/diff, then write.               |
 | Confidence is low or the knowledge is contested.                                               | Queue with `needs-review` or propose in the final answer. | Do not make it canonical yet.                            |
 

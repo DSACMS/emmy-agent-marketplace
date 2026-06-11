@@ -19,6 +19,9 @@ forcing a duplicate format.
 
 - [Page, PR, commit, ticket, command output summary, or artifact URL]
 
+**Source provenance:** [Knowledge Source Registry record, source locator, or
+repository locator if the knowledge came from ingestion.]
+
 **Details:**
 
 - [Reusable procedure, decision, constraint, or finding.]
@@ -49,6 +52,9 @@ forcing a duplicate format.
 **Source/evidence:**
 
 - [URL, page ID, PR, commit, ticket, or concise command-output summary]
+
+**Source provenance:** [Knowledge Source Registry record, source locator, or
+repository locator if the knowledge came from ingestion.]
 
 **Why this matters:** [How this would improve future tasks.]
 

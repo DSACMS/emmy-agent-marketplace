@@ -53,6 +53,18 @@ asks you not to use external knowledge.
 
 For broad or uncertain searches, read `references/search-and-labels.md`.
 
+## Specialized Source Ingestion
+
+Do not use this ambient skill for source ingestion from local files, URLs,
+external Confluence pages, or Emmy repository checkouts. When the user
+explicitly asks to ingest a source into the knowledge store, use
+`$emmy-artifact-ingest` or the `emmy-artifact-ingestor` plugin agent.
+
+When answering from knowledge that came through the ingestion workflow, preserve
+source provenance in citations or summaries. For repository-derived knowledge,
+re-check the local repository evidence when branch, commit, or dirty-worktree
+applicability matters.
+
 ## Capture And Write Policy
 
 Durable knowledge includes verified team decisions, stable procedures, reusable
