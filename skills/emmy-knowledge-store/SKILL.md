@@ -22,6 +22,29 @@ publish deliberately.
 - MCP server: `cms-atlassian-confluence`
 - Required user environment variable: `CONFLUENCE_PERSONAL_TOKEN`
 
+## Dynamic Store Map
+
+Treat the entry-point page as the only stable root. Do not depend on a
+hard-coded list of child pages. At the start of a knowledge-store task, inspect
+the current entry-page children and use their titles, labels, short page
+content, and own children as routing metadata.
+
+Load the smallest useful slice of the store:
+
+1. Read the entry page or get its current children.
+2. Build a lightweight map of top-level child pages without content first.
+3. Read only likely candidate pages, using search and labels when hierarchy
+   alone is not enough.
+4. Recurse into children when a page acts like an index, queue, registry,
+   category, source collection, or canonical topic area.
+5. Treat newly added child pages as valid store structure without requiring a
+   skill update unless the source-of-truth root, MCP server, or write policy
+   changes.
+
+For broad navigation, duplicate detection, or page-organization questions, read
+`references/search-and-labels.md`. For whole-store cleanup, duplicate audits, or
+deciding whether to add new child pages, use `$emmy-knowledge-cleanup`.
+
 ## Ambient Loop
 
 1. **Consult** current Confluence content when the task may depend on Emmy
@@ -118,10 +141,11 @@ agent environment. Do not ask the user to paste tokens into the chat.
 
 ## MCP Tool Use
 
-Start from the entry-point page unless the user gives a more specific page URL,
-page ID, title, or Confluence query. Use Confluence MCP tools such as
-`confluence_search`, `confluence_get_page`, `confluence_get_page_children`,
-`confluence_get_page_history`, and `confluence_get_page_diff` for reading.
+Start from the entry-point page and inspect its current children unless the user
+gives a more specific page URL, page ID, title, or Confluence query. Use
+Confluence MCP tools such as `confluence_search`, `confluence_get_page`,
+`confluence_get_page_children`, `confluence_get_page_history`, and
+`confluence_get_page_diff` for reading.
 
 Use `confluence_create_page`, `confluence_update_page`,
 `confluence_add_comment`, `confluence_reply_to_comment`,

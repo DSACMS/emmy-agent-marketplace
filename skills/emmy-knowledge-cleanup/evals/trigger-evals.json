@@ -1,0 +1,41 @@
+{
+  "skill_name": "emmy-knowledge-cleanup",
+  "evals": [
+    {
+      "id": "audit-duplicates",
+      "prompt": "Audit the Emmy knowledge store for duplicate or overlapping facts and recommend cleanup.",
+      "should_trigger": true,
+      "expected_behavior": "Inventory the live child-page tree, identify duplicate candidates, and present an approval-gated cleanup report."
+    },
+    {
+      "id": "new-child-pages",
+      "prompt": "Decide whether the knowledge store needs new child pages as it grows.",
+      "should_trigger": true,
+      "expected_behavior": "Use child-page decision rules and recommend a hierarchy without assuming a fixed current page list."
+    },
+    {
+      "id": "label-hygiene",
+      "prompt": "Review the Emmy knowledge store labels and page hierarchy for stale or missing organization.",
+      "should_trigger": true,
+      "expected_behavior": "Audit labels and hierarchy, then propose approved cleanup actions before writing."
+    },
+    {
+      "id": "ambient-lookup",
+      "prompt": "Search the Emmy knowledge store for the current ATO boundary notes.",
+      "should_trigger": false,
+      "expected_behavior": "Use the ambient emmy-knowledge-store lookup workflow, not whole-store cleanup."
+    },
+    {
+      "id": "source-ingest",
+      "prompt": "Ingest this local architecture diagram into the Emmy knowledge store.",
+      "should_trigger": false,
+      "expected_behavior": "Use emmy-artifact-ingest because this is source ingestion, not cleanup."
+    },
+    {
+      "id": "queue-curation",
+      "prompt": "Process the next Knowledge Ingestion Queue entry with me.",
+      "should_trigger": false,
+      "expected_behavior": "Use emmy-queue-curate because this is human queue review, not store maintenance."
+    }
+  ]
+}

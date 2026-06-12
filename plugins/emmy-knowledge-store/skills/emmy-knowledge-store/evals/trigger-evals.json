@@ -32,6 +32,18 @@
       "expected_behavior": "Read the page, history, and diff before a narrow canonical update."
     },
     {
+      "id": "dynamic-child-discovery",
+      "prompt": "Check whether the Emmy knowledge store has any newer child pages about source registries before answering.",
+      "should_trigger": true,
+      "expected_behavior": "Inspect the entry-page children dynamically instead of relying on a fixed list of page titles."
+    },
+    {
+      "id": "whole-store-cleanup",
+      "prompt": "Audit the whole Emmy knowledge store for duplicate facts and recommend whether we need new child pages.",
+      "should_trigger": false,
+      "expected_behavior": "Use the emmy-knowledge-cleanup workflow because this is whole-store maintenance, not ambient lookup."
+    },
+    {
       "id": "local-formatting",
       "prompt": "Format this local Markdown file and fix trailing whitespace.",
       "should_trigger": false,

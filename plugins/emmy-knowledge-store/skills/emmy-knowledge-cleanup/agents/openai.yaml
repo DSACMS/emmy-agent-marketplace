@@ -1,0 +1,6 @@
+interface:
+  display_name: "Emmy Knowledge Cleanup"
+  short_description: "Audit and reorganize Emmy knowledge."
+  default_prompt:
+    "Use $emmy-knowledge-cleanup to audit the Emmy knowledge store for
+    duplicates and page-organization improvements."
