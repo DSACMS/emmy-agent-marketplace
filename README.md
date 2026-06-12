@@ -99,6 +99,7 @@ symlinks in the cached plugin. For Codex installability, the
 `plugins/emmy-knowledge-store/skills/emmy-knowledge-store/`,
 `plugins/emmy-knowledge-store/skills/emmy-artifact-ingest/`,
 `plugins/emmy-knowledge-store/skills/emmy-queue-curate/`,
+`plugins/emmy-knowledge-store/skills/emmy-knowledge-cleanup/`,
 `plugins/emmy-knowledge-store/agents/`, and
 `plugins/emmy-knowledge-store/.mcp.json`. Keep those runtime copies aligned with
 the top-level `skills/`, agent, and `mcp/` sources whenever the canonical
@@ -130,6 +131,9 @@ deliberately.
 - Canonical page updates require a fresh page read plus history or diff review
   immediately before writing. If another developer or agent changed the same
   section, the agent should stop and report the conflict instead of overwriting.
+- Agents should treat the entry page as the only stable root and discover the
+  current child-page tree at runtime, rather than relying on hard-coded page
+  names as the store grows.
 - The Confluence MCP allowlist includes read, create, update, comment, label,
   and attachment tools. Write availability is governed by skill policy and user
   authorization, not by enabling destructive delete or move tools.
@@ -183,6 +187,29 @@ comments, assignee-style mentions, or statuses such as `needs-discussion`,
 `needs-teammate-review`, and `answered-by-teammate`. The current v1 workflow
 reserves those concepts but does not write those statuses or create discussion
 artifacts.
+
+## Knowledge Store Cleanup Pattern
+
+The `emmy-knowledge-cleanup` skill provides explicit whole-store maintenance.
+Use it when the user wants to audit duplicate or overlapping facts, stale or
+contradictory content, missing labels, or whether the store needs new child
+pages.
+
+- Cleanup starts by building a live page inventory from the knowledge-store root
+  and its current children. It does not assume a fixed child-page list.
+- The skill reads full page content only for likely cleanup targets, keeping
+  normal audits lighter as the store grows.
+- New child pages are recommended when a durable topic appears repeatedly, queue
+  entries need a missing canonical destination, a page mixes stable domains that
+  agents need separately, or a source/runbook/decision collection has enough
+  entries to act as an index.
+- Labels remain the preferred mechanism for cross-cutting facets such as ATO,
+  architecture, runbooks, decisions, troubleshooting, onboarding, and
+  `needs-review`.
+- Cleanup reports are approval-gated. The skill should present findings and
+  proposed actions before any Confluence writes, and it should not delete pages
+  or perform structural moves without explicit future tool support and human
+  approval.
 
 ## Local Development Setup
 
