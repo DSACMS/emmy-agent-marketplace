@@ -131,7 +131,11 @@ Writing rules:
 - Each user must provide their own CMS Confluence Data Center personal access
   token in `CONFLUENCE_PERSONAL_TOKEN`.
 - The shared Atlassian MCP config also forwards `JIRA_PERSONAL_TOKEN` when
-  present, but this plugin does not enable Jira tools.
+  present, sets `JIRA_URL` to `https://jiraent.cms.gov`, and includes the Jira
+  tool allowlist for future Jira-specific workflows.
+- This shared MCP config is a collision-safe superset. Follow this skill's
+  narrower tool-use policy; MCP tool availability is not permission to use Jira
+  from this workflow.
 
 If the MCP server is unavailable or Confluence authentication fails, stop and
 tell the user that the plugin needs a valid `CONFLUENCE_PERSONAL_TOKEN` in the
@@ -153,5 +157,6 @@ Use `confluence_create_page`, `confluence_update_page`,
 `confluence_get_page_images` only when they fit an authorized write, comment,
 label, or attachment task.
 
-Do not use Jira tools for this skill. Do not delete, move, or reorganize pages
-unless a future plugin or an explicit task adds that capability.
+Do not use Jira tools for this skill, even though the shared MCP config exposes
+them. Do not delete, move, or reorganize pages unless a future plugin or an
+explicit task adds that capability.

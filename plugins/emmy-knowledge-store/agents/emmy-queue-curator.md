@@ -42,4 +42,5 @@ workflow. Do not write `needs-discussion`, `needs-teammate-review`, or
 `answered-by-teammate` in v1.
 
 Do not create new source records or extract new queue entries. Do not use Jira
-tools. Do not delete, move, or reorganize Confluence pages.
+tools from this workflow, even though the shared MCP config may expose them. Do
+not delete, move, or reorganize Confluence pages.

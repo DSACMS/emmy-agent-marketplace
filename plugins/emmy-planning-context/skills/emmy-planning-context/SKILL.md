@@ -20,6 +20,8 @@ agent reason.
 - Confluence space: `SFIV`
 - MCP server: `cms-atlassian-confluence`
 - Required user environment variable: `CONFLUENCE_PERSONAL_TOKEN`
+- The shared plugin MCP config may expose Jira URL, token, and tool settings for
+  collision-safe overlap with Jira plugins. This skill uses Confluence only.
 - Stable page IDs:
   - Goals Space root: `1398768351`
   - Strategic Principles: `1398768358`
@@ -173,7 +175,8 @@ Always populate `metadata.pages_read` with every page ID consulted.
   entries.
 - Do not create or propose Jira tickets from this skill. The calling planning
   agent may do that after reading the returned context.
-- Do not call Jira tools.
+- Do not call Jira tools from this skill, even though the shared MCP config may
+  expose them.
 - Do not dereference Knowledge Store links or call Knowledge Store skills.
 - Cite page titles and URLs or page IDs when Goals Space content materially
   shaped the answer.

@@ -101,7 +101,8 @@ After formatting the entry:
 - If the page changed after the first read and before update, compare the latest
   content. Merge only when the change is clearly independent; otherwise stop and
   report the conflict.
-- Do not call Jira tools or create tickets.
+- Do not call Jira tools or create tickets from this skill, even though the
+  shared MCP config may expose them.
 - Do not update the Outcomes Index from this skill.
 
 ## MCP Tool Use

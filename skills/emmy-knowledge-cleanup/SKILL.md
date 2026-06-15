@@ -82,4 +82,5 @@ Use Confluence MCP read tools for page, child, label, history, and diff
 inspection. Use write, comment, label, attachment, or create tools only after
 explicit approval and only for the approved cleanup action.
 
-Do not use Jira tools. Do not perform source ingestion from this workflow.
+Do not use Jira tools from this workflow, even though the shared MCP config may
+expose them. Do not perform source ingestion from this workflow.
