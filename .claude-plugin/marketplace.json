@@ -33,6 +33,28 @@
         "mcp",
         "atlassian"
       ]
+    },
+    {
+      "name": "emmy-planning-context",
+      "source": "./plugins/emmy-planning-context",
+      "description": "Ambient Emmy Goals Space context loading and authorized Planning Log appends.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Emmy Development Team"
+      },
+      "category": "Productivity",
+      "tags": [
+        "emmy",
+        "confluence",
+        "planning",
+        "goals",
+        "principles",
+        "outcomes",
+        "planning-log",
+        "ambient-context",
+        "mcp",
+        "atlassian"
+      ]
     }
   ]
 }

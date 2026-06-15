@@ -1,0 +1,41 @@
+{
+  "skill_name": "emmy-planning-context",
+  "evals": [
+    {
+      "id": "ticket-planning",
+      "prompt": "Before proposing Emmy tickets for NSC integration, load the current goals and principles.",
+      "should_trigger": true,
+      "expected_behavior": "Read the Emmy Goals Space with the planning context workflow before making proposals."
+    },
+    {
+      "id": "goal-alignment",
+      "prompt": "Check whether this Emmy work fits the current active goals and outcomes.",
+      "should_trigger": true,
+      "expected_behavior": "Load active goals, outcomes, and principles from Confluence and return structured planning context."
+    },
+    {
+      "id": "prioritization",
+      "prompt": "Help prioritize the next Emmy implementation tickets against the team's outcomes.",
+      "should_trigger": true,
+      "expected_behavior": "Consult the Goals Space before reasoning about priorities."
+    },
+    {
+      "id": "append-log",
+      "prompt": "Record the planning session in the Emmy Planning Log.",
+      "should_trigger": false,
+      "expected_behavior": "Use append-planning-log because this is an explicit write, not ambient context loading."
+    },
+    {
+      "id": "local-code-edit",
+      "prompt": "Rename this local test helper and run the unit test.",
+      "should_trigger": false,
+      "expected_behavior": "Do not consult Confluence because the task is local and mechanical."
+    },
+    {
+      "id": "no-external-context",
+      "prompt": "Do not use external context. Just explain this function from the file.",
+      "should_trigger": false,
+      "expected_behavior": "Respect the request not to use external context."
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "skill_name": "append-planning-log",
+  "evals": [
+    {
+      "id": "explicit-log-append",
+      "prompt": "Append this approved Emmy planning session to the Planning Log.",
+      "should_trigger": true,
+      "expected_behavior": "Require a complete PlanningLogEntry, re-read the Planning Log, append one entry, and validate the write."
+    },
+    {
+      "id": "record-session",
+      "prompt": "The human approved recording this planning session. Add it to the Emmy Planning Log.",
+      "should_trigger": true,
+      "expected_behavior": "Use the write-gated append workflow for page 1398768357."
+    },
+    {
+      "id": "ambient-planning",
+      "prompt": "Before proposing tickets, load the current Emmy goals and outcomes.",
+      "should_trigger": false,
+      "expected_behavior": "Use emmy-planning-context because this is ambient read context, not a log write."
+    },
+    {
+      "id": "goal-edit",
+      "prompt": "Update GOAL-001 with a new outcome.",
+      "should_trigger": false,
+      "expected_behavior": "Do not use this skill because it must not edit goals or outcomes."
+    },
+    {
+      "id": "unapproved-log",
+      "prompt": "Draft what a planning log entry might look like.",
+      "should_trigger": false,
+      "expected_behavior": "Do not append to Confluence without explicit approval."
+    }
+  ]
+}

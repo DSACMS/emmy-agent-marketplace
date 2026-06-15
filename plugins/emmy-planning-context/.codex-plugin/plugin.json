@@ -1,0 +1,46 @@
+{
+  "name": "emmy-planning-context",
+  "version": "0.1.0",
+  "description": "Ambient Emmy Goals Space context loading and authorized Planning Log appends.",
+  "author": {
+    "name": "Emmy Development Team"
+  },
+  "homepage": "https://confluenceent.cms.gov/spaces/SFIV/pages/1398768351",
+  "repository": "https://github.com/DSACMS/emmy-agent-marketplace",
+  "keywords": [
+    "emmy",
+    "confluence",
+    "planning",
+    "goals",
+    "principles",
+    "outcomes",
+    "planning-log",
+    "ambient-context",
+    "mcp",
+    "atlassian"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Emmy Planning Context",
+    "shortDescription": "Use Emmy goals to ground planning.",
+    "longDescription": "Adds Confluence-backed workflows for loading current Emmy strategic principles, active delivery goals, outcomes, and optional Planning Log context, plus an explicit write-gated skill for appending approved Planning Log entries.",
+    "developerName": "Emmy Development Team",
+    "category": "Productivity",
+    "capabilities": [
+      "MCP",
+      "Confluence",
+      "Planning",
+      "Ambient Context",
+      "Goals",
+      "Principles",
+      "Outcomes",
+      "Audit Log"
+    ],
+    "defaultPrompt": [
+      "Ground this Emmy planning task in current goals.",
+      "Check whether this work aligns to Emmy outcomes.",
+      "Append the approved Emmy planning log entry."
+    ]
+  },
+  "mcpServers": "./.mcp.json"
+}

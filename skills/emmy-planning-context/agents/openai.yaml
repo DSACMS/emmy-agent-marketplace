@@ -1,0 +1,4 @@
+interface:
+  display_name: "Emmy Planning Context"
+  short_description: "Use Emmy goals to ground planning."
+  default_prompt: "Ground this Emmy planning task in current goals."
