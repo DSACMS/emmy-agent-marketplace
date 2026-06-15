@@ -22,6 +22,8 @@ to achieve, while the knowledge-store plugin answers what the team knows.
 - The agent environment needs network access to `https://confluenceent.cms.gov`.
 - Each user must provide their own CMS Confluence Data Center personal access
   token in `CONFLUENCE_PERSONAL_TOKEN`.
+- The shared Atlassian MCP config also forwards `JIRA_PERSONAL_TOKEN` when
+  present so future Jira-enabled plugins can use the same server setup.
 
 Do not paste Confluence tokens into chat. Configure them in the agent
 environment.
