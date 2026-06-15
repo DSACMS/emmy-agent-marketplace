@@ -20,11 +20,18 @@ to achieve, while the knowledge-store plugin answers what the team knows.
 
 - `uvx` must be available on `PATH` so the plugin can run `uvx mcp-atlassian`.
 - The agent environment needs network access to `https://confluenceent.cms.gov`.
+- Jira-specific workflows that reuse this shared config also need network access
+  to `https://jiraent.cms.gov`.
 - Each user must provide their own CMS Confluence Data Center personal access
   token in `CONFLUENCE_PERSONAL_TOKEN`.
 - The shared Atlassian MCP config also forwards `JIRA_PERSONAL_TOKEN` when
   present and sets `JIRA_URL` to `https://jiraent.cms.gov` so future
   Jira-enabled plugins can use the same server setup and tool allowlist.
+
+The shared Atlassian MCP config is intentionally a collision-safe superset. It
+may expose Jira settings and tools even when this plugin's planning workflows
+use only Confluence. Follow the skill instructions for workflow boundaries; do
+not treat MCP tool availability as permission to create or edit Jira work.
 
 Do not paste Confluence tokens into chat. Configure them in the agent
 environment.

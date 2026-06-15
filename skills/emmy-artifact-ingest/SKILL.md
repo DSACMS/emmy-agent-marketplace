@@ -80,5 +80,6 @@ to contain secrets or sensitive data that should not be stored.
 
 Use Confluence MCP tools for page search/read/create/update/comment/label and
 attachment upload tasks. Use local shell and structured parsers when available
-to inspect files or Git repositories. Do not use Jira tools. Do not delete,
-move, or reorganize Confluence pages.
+to inspect files or Git repositories. Do not use Jira tools from this workflow,
+even though the shared MCP config may expose them. Do not delete, move, or
+reorganize Confluence pages.

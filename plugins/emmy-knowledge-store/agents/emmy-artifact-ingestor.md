@@ -17,6 +17,6 @@ Registry records and Knowledge Ingestion Queue entries by default, preserving
 source provenance for every extracted claim.
 
 Do not perform ordinary ambient knowledge-store lookup. Do not delete or move
-Confluence pages. Do not use Jira tools. Do not treat `github.com` URLs as the
-source of truth for repository-derived knowledge when a local checkout is
-required.
+Confluence pages. Do not use Jira tools from this workflow, even though the
+shared MCP config may expose them. Do not treat `github.com` URLs as the source
+of truth for repository-derived knowledge when a local checkout is required.

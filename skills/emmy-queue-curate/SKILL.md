@@ -72,5 +72,6 @@ Use Confluence MCP read tools for queue, source-record, destination, history,
 and diff inspection. Use write tools only after explicit final approval and only
 for the authorized queue/canonical updates.
 
-Do not use Jira tools. Do not delete, move, or reorganize pages. Do not ingest
-new sources from this workflow.
+Do not use Jira tools from this workflow, even though the shared MCP config may
+expose them. Do not delete, move, or reorganize pages. Do not ingest new sources
+from this workflow.

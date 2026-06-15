@@ -42,6 +42,8 @@ cache plugin directories.
 
 - `uvx` must be available on `PATH`.
 - The agent runtime needs network access to `https://confluenceent.cms.gov`.
+- Jira-specific workflows that reuse this shared config also need network access
+  to `https://jiraent.cms.gov`.
 - Each user must provide their own CMS Confluence Data Center personal access
   token through the `CONFLUENCE_PERSONAL_TOKEN` environment variable.
 - The shared Atlassian MCP config also forwards `JIRA_PERSONAL_TOKEN` when
@@ -50,11 +52,13 @@ cache plugin directories.
 - Tokens must stay in the user's environment. Do not paste tokens into chat,
   plugin manifests, or skill files.
 
-The MCP allowlist includes Confluence read, create, update, comment, label, and
-attachment tools, plus the documented `mcp-atlassian` Jira tools. Delete and
-move Confluence tools are intentionally outside this plugin's workflow, and
-these Confluence skills should not call Jira tools unless a Jira-specific
-workflow requires them.
+The shared Atlassian MCP config is intentionally a collision-safe superset. It
+includes Confluence read, create, update, comment, label, and attachment tools,
+plus the documented `mcp-atlassian` Jira tools, so another plugin using the same
+server name does not overwrite or narrow the configuration. This plugin's
+knowledge-store workflows remain governed by their skill instructions:
+Confluence-only skills should not call Jira tools unless a Jira-specific skill
+or agent explicitly requires them.
 
 ## How To Choose A Workflow
 

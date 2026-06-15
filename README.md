@@ -93,6 +93,13 @@ root and declares `mcpServers` in the relevant plugin manifest. Keep shared
 configs free of secrets and use environment variable references for per-user
 credentials.
 
+Shared MCP configs are intentionally collision-safe supersets. If two plugins
+may expose the same MCP server name, their overlapping `.mcp.json` server config
+should be identical and include the stable URLs, forwarded environment
+variables, and tool allowlist needed by any plugin that might use that server.
+Individual skills and agents provide the narrower workflow policy; tool
+availability in MCP is not itself permission to use a tool.
+
 Codex local marketplace installs cache the plugin directory and do not preserve
 symlinks in the cached plugin. For Codex installability, the
 `emmy-knowledge-store` plugin includes materialized runtime copies at
@@ -106,13 +113,14 @@ the top-level `skills/`, agent, and `mcp/` sources whenever the canonical
 component changes.
 
 For example, `mcp/cms-atlassian-confluence/.mcp.json` runs `uvx mcp-atlassian`
-against CMS Confluence Data Center. The `emmy-knowledge-store` plugin links that
+against CMS Atlassian Data Center. The `emmy-knowledge-store` plugin links that
 config and requires each user to provide `CONFLUENCE_PERSONAL_TOKEN` in their
 own environment. The shared Atlassian MCP config also forwards
 `JIRA_PERSONAL_TOKEN` when present and sets `JIRA_URL` to
 `https://jiraent.cms.gov` so Confluence-only and future Jira-enabled plugins can
 reuse the same server setup and Jira tool allowlist without overwriting each
-other's token wiring.
+other's token wiring. This is intentional even when a specific plugin workflow
+uses only Confluence tools.
 
 ## Ambient Knowledge Store Pattern
 
@@ -136,9 +144,10 @@ deliberately.
 - Agents should treat the entry page as the only stable root and discover the
   current child-page tree at runtime, rather than relying on hard-coded page
   names as the store grows.
-- The Confluence MCP allowlist includes read, create, update, comment, label,
-  and attachment tools. Write availability is governed by skill policy and user
-  authorization, not by enabling destructive delete or move tools.
+- The shared MCP allowlist includes Confluence read, create, update, comment,
+  label, and attachment tools plus Jira tools needed by overlapping plugins.
+  Write availability and workflow boundaries are governed by skill policy and
+  user authorization, not by raw MCP tool availability.
 
 ## Source Ingestion Pattern
 

@@ -27,9 +27,12 @@ principles.
 - Confluence space: `SFIV`
 - MCP server: `cms-atlassian-confluence`
 - Required user environment variable: `CONFLUENCE_PERSONAL_TOKEN`
+- The shared plugin MCP config may expose Jira URL, token, and tool settings for
+  collision-safe overlap with Jira plugins. This skill uses Confluence only.
 
 This skill writes only to the Emmy Goals Space. Do not write to the Emmy Agent
-Knowledge Store and do not call Jira tools.
+Knowledge Store. Do not call Jira tools from this skill, even though the shared
+MCP config may expose them.
 
 ## References
 
