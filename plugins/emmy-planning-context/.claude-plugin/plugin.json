@@ -1,0 +1,26 @@
+{
+  "name": "emmy-planning-context",
+  "displayName": "Emmy Planning Context",
+  "version": "0.2.0",
+  "description": "Ambient Emmy Goals Space context loading, approved planning ingestion, and authorized Planning Log appends.",
+  "author": {
+    "name": "Emmy Development Team"
+  },
+  "homepage": "https://confluenceent.cms.gov/spaces/SFIV/pages/1398768351",
+  "repository": "https://github.com/DSACMS/emmy-agent-marketplace",
+  "keywords": [
+    "emmy",
+    "confluence",
+    "planning",
+    "ingestion",
+    "goals",
+    "principles",
+    "outcomes",
+    "planning-log",
+    "ambient-context",
+    "mcp",
+    "atlassian"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json"
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Emmy Planning Ingest"
+  short_description: "Ingest Emmy principles and goals."
+  default_prompt: "Ingest these Emmy principles and goals."

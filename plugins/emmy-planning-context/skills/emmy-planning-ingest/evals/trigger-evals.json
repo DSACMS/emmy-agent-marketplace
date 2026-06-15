@@ -1,0 +1,53 @@
+{
+  "skill_name": "emmy-planning-ingest",
+  "evals": [
+    {
+      "id": "ingest-principle-text",
+      "prompt": "Ingest this new Emmy principle into the Goals Space after I approve it.",
+      "should_trigger": true,
+      "expected_behavior": "Draft a PrincipleDraft, present a review packet, and wait for explicit approval before writing."
+    },
+    {
+      "id": "ingest-goal-file",
+      "prompt": "Import the goals from this local Markdown file into the Emmy Goals Registry.",
+      "should_trigger": true,
+      "expected_behavior": "Read the local file, normalize goal and outcome drafts, check duplicates, and require approval before Confluence writes."
+    },
+    {
+      "id": "principals-alias",
+      "prompt": "Add these planning principals to the Emmy Goals Space.",
+      "should_trigger": true,
+      "expected_behavior": "Treat principals as principles and use the planning ingestion workflow."
+    },
+    {
+      "id": "duplicate-outcome",
+      "prompt": "Ingest this goal, but first check whether its outcome duplicates an existing Emmy outcome.",
+      "should_trigger": true,
+      "expected_behavior": "Read the Outcomes Index and pause on exact or near duplicates."
+    },
+    {
+      "id": "ambient-read",
+      "prompt": "Before proposing tickets, load the current Emmy goals and outcomes.",
+      "should_trigger": false,
+      "expected_behavior": "Use emmy-planning-context because this is ambient read context, not ingestion."
+    },
+    {
+      "id": "planning-log",
+      "prompt": "Append the approved planning session to the Planning Log.",
+      "should_trigger": false,
+      "expected_behavior": "Use append-planning-log because this is a log write, not principle or goal ingestion."
+    },
+    {
+      "id": "unsupported-url",
+      "prompt": "Ingest principles from this external URL into the Emmy Goals Space.",
+      "should_trigger": true,
+      "expected_behavior": "Trigger, then stop because v1 supports pasted text and local files only."
+    },
+    {
+      "id": "knowledge-store-ingest",
+      "prompt": "Ingest this runbook into the Emmy Agent Knowledge Store.",
+      "should_trigger": false,
+      "expected_behavior": "Use the knowledge-store artifact ingestion workflow, not planning ingestion."
+    }
+  ]
+}

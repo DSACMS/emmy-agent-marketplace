@@ -1,0 +1,4 @@
+interface:
+  display_name: "Append Planning Log"
+  short_description: "Record an approved Emmy planning session."
+  default_prompt: "Append the approved Emmy planning log entry."
