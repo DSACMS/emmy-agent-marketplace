@@ -1,8 +1,8 @@
 {
   "name": "emmy-planning-context",
   "displayName": "Emmy Planning Context",
-  "version": "0.1.0",
-  "description": "Ambient Emmy Goals Space context loading and authorized Planning Log appends.",
+  "version": "0.2.0",
+  "description": "Ambient Emmy Goals Space context loading, approved planning ingestion, and authorized Planning Log appends.",
   "author": {
     "name": "Emmy Development Team"
   },
@@ -12,6 +12,7 @@
     "emmy",
     "confluence",
     "planning",
+    "ingestion",
     "goals",
     "principles",
     "outcomes",
