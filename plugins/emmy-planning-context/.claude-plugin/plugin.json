@@ -1,8 +1,8 @@
 {
   "name": "emmy-planning-context",
   "displayName": "Emmy Planning Context",
-  "version": "0.2.0",
-  "description": "Ambient Emmy Goals Space context loading, approved planning ingestion, and authorized Planning Log appends.",
+  "version": "0.3.0",
+  "description": "Ambient Emmy Goals Space context loading, approved planning ingestion, authorized Planning Log appends, and approval-gated FFS Jira ticketing.",
   "author": {
     "name": "Emmy Development Team"
   },
@@ -17,6 +17,10 @@
     "principles",
     "outcomes",
     "planning-log",
+    "jira",
+    "ticketing",
+    "ffs",
+    "draft-first",
     "ambient-context",
     "mcp",
     "atlassian"

@@ -1,0 +1,41 @@
+{
+  "skill_name": "emmy-jira-ticketing",
+  "evals": [
+    {
+      "id": "interpret-ticket",
+      "prompt": "Interpret FFS-4463 in light of Emmy Jira conventions.",
+      "should_trigger": true,
+      "expected_behavior": "Read the Jira issue and explain its type, labels, readiness, and missing or conventional sections using FFS conventions."
+    },
+    {
+      "id": "draft-engineering-ticket",
+      "prompt": "Draft an engineering Jira ticket for adding audit logging to report transmissions.",
+      "should_trigger": true,
+      "expected_behavior": "Search similar FFS issues, draft a Task payload with engineering conventions, and avoid creating it without approval."
+    },
+    {
+      "id": "draft-design-ticket",
+      "prompt": "Turn these research notes into a design ticket for helping clients understand what documents they need before starting Emmy.",
+      "should_trigger": true,
+      "expected_behavior": "Draft a design-labeled FFS ticket using user story, context, considerations, out-of-scope, and acceptance criteria sections."
+    },
+    {
+      "id": "approval-gated-create",
+      "prompt": "Create a Jira ticket for this idea, but show me the payload first.",
+      "should_trigger": true,
+      "expected_behavior": "Prepare the Jira issue payload and ask for explicit approval before calling any Jira write tool."
+    },
+    {
+      "id": "planning-context-only",
+      "prompt": "Before proposing Emmy tickets, load the current Goals Space principles.",
+      "should_trigger": false,
+      "expected_behavior": "Use emmy-planning-context because this is Goals Space context loading, not Jira ticket drafting."
+    },
+    {
+      "id": "knowledge-store-update",
+      "prompt": "Capture this deployment troubleshooting note in the Emmy knowledge store.",
+      "should_trigger": false,
+      "expected_behavior": "Use the Emmy knowledge-store workflow, not Jira ticketing."
+    }
+  ]
+}
