@@ -46,13 +46,15 @@ cache plugin directories.
   token through the `CONFLUENCE_PERSONAL_TOKEN` environment variable.
 - The shared Atlassian MCP config also forwards `JIRA_PERSONAL_TOKEN` when
   present and sets `JIRA_URL` to `https://jiraent.cms.gov` so future
-  Jira-enabled plugins can use the same server setup.
+  Jira-enabled plugins can use the same server setup and tool allowlist.
 - Tokens must stay in the user's environment. Do not paste tokens into chat,
   plugin manifests, or skill files.
 
 The MCP allowlist includes Confluence read, create, update, comment, label, and
-attachment tools. Delete, move, and Jira tools are intentionally outside this
-plugin's workflow.
+attachment tools, plus the documented `mcp-atlassian` Jira tools. Delete and
+move Confluence tools are intentionally outside this plugin's workflow, and
+these Confluence skills should not call Jira tools unless a Jira-specific
+workflow requires them.
 
 ## How To Choose A Workflow
 

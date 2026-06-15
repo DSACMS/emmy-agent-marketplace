@@ -111,7 +111,8 @@ config and requires each user to provide `CONFLUENCE_PERSONAL_TOKEN` in their
 own environment. The shared Atlassian MCP config also forwards
 `JIRA_PERSONAL_TOKEN` when present and sets `JIRA_URL` to
 `https://jiraent.cms.gov` so Confluence-only and future Jira-enabled plugins can
-reuse the same server setup without overwriting each other's token wiring.
+reuse the same server setup and Jira tool allowlist without overwriting each
+other's token wiring.
 
 ## Ambient Knowledge Store Pattern
 
