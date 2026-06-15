@@ -45,7 +45,8 @@ cache plugin directories.
 - Each user must provide their own CMS Confluence Data Center personal access
   token through the `CONFLUENCE_PERSONAL_TOKEN` environment variable.
 - The shared Atlassian MCP config also forwards `JIRA_PERSONAL_TOKEN` when
-  present so future Jira-enabled plugins can use the same server setup.
+  present and sets `JIRA_URL` to `https://jiraent.cms.gov` so future
+  Jira-enabled plugins can use the same server setup.
 - Tokens must stay in the user's environment. Do not paste tokens into chat,
   plugin manifests, or skill files.
 

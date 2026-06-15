@@ -131,7 +131,8 @@ Writing rules:
 - Each user must provide their own CMS Confluence Data Center personal access
   token in `CONFLUENCE_PERSONAL_TOKEN`.
 - The shared Atlassian MCP config also forwards `JIRA_PERSONAL_TOKEN` when
-  present, but this plugin does not enable Jira tools.
+  present and sets `JIRA_URL` to `https://jiraent.cms.gov`, but this plugin does
+  not enable Jira tools.
 
 If the MCP server is unavailable or Confluence authentication fails, stop and
 tell the user that the plugin needs a valid `CONFLUENCE_PERSONAL_TOKEN` in the
