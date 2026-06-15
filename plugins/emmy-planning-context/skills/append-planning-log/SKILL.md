@@ -65,16 +65,17 @@ there were no values.
 3. Find the `Log Entries` section and the final append-only notice.
 4. Format the new entry exactly like the page template:
 
-```markdown
+```text
 ## YYYY-MM-DD - [Session Type] - [Goal or Principle ID(s)]
 
 **Agent read:** [Pages consulted: KS sections, Goal pages, Jira epics]
-**Trigger:** [What prompted this planning session] **Outcomes reviewed:**
-[Outcome IDs considered] **Tickets proposed:** [N] - [created / held / deferred]
-**Tickets created:** [Jira ticket keys, or "none"] **Tickets held:** [Summary of
-held tickets and reason] **Human decisions:** [Any approvals, rejections,
-modifications, or deferrals] **Notes:** [Anything else relevant to future
-planning sessions]
+**Trigger:** [What prompted this planning session]
+**Outcomes reviewed:** [Outcome IDs considered]
+**Tickets proposed:** [N] - [created / held / deferred]
+**Tickets created:** [Jira ticket keys, or "none"]
+**Tickets held:** [Summary of held tickets and reason]
+**Human decisions:** [Any approvals, rejections, modifications, or deferrals]
+**Notes:** [Anything else relevant to future planning sessions]
 ```
 
 After formatting the entry:

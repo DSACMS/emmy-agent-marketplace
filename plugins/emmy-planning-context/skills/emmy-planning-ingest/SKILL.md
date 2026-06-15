@@ -31,6 +31,12 @@ principles.
 This skill writes only to the Emmy Goals Space. Do not write to the Emmy Agent
 Knowledge Store and do not call Jira tools.
 
+## References
+
+- Read `references/write-safety.md` before any approved Confluence write.
+- Read `references/dry-run-fixtures.md` when testing the workflow, doing a
+  draft-only run, or comparing an ingest review packet to expected output.
+
 ## Supported Inputs
 
 Accept only these v1 source types:
@@ -154,6 +160,20 @@ clear the value is intentionally empty. Otherwise ask for the missing value.
 - Check Outcomes Index before approving new outcomes. Exact duplicates must not
   be written as new outcomes.
 
+## Governance Rules
+
+- Active principles and active goals require explicit human approval in the
+  current conversation before any Confluence write.
+- Do not infer leadership intent. If the source does not clearly identify the
+  strategic reason, owner, horizon, status, or success criteria, draft the item
+  with warnings and stop before writing.
+- Deferred items may be drafted from source material, but never promote a
+  deferred or ambiguous item to `Active` by inference.
+- Ask the human to resolve conflicts between source material and existing Goals
+  Space entries before writing.
+- Treat approval to draft, normalize, or review as different from approval to
+  write. Only approval to write authorizes Confluence changes.
+
 ## Review Packet
 
 Before any write, present a compact review packet containing:
@@ -173,6 +193,8 @@ partial, ambiguous, or missing.
 ## Approved Write Sequence
 
 After explicit approval:
+
+Read `references/write-safety.md`, then:
 
 1. Re-read every page that will be written, including current metadata/version.
 2. Create approved principle child pages under Strategic Principles
