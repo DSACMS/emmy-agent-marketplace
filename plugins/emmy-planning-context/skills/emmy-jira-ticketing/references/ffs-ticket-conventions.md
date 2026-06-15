@@ -1,41 +1,14 @@
 # FFS Ticket Conventions
 
 Use these conventions when interpreting or drafting Emmy Jira tickets in the
-`FFS` project. They describe observed team practice from recent tickets, not
-mandatory Jira platform behavior.
-
-## Evidence Basis
-
-Observed sample:
-
-- Project: `FFS` (`Income Verification as a Service`)
-- Window: March 15, 2026 through June 15, 2026
-- Sample size: 575 issues
-
-Issue type frequency:
-
-- `Task`: 276
-- `Story`: 164
-- `Epic`: 55
-- `Bug`: 44
-- `Initiative`: 24
-- `Improvement`: 6
-- `New Feature`: 6
-
-Priority frequency:
-
-- `Low`: 439
-- `Medium`: 60
-- `High`: 54
-- `Critical`: 14
-- `Blocker`: 8
+`FFS` project. Treat these as team practice, not mandatory Jira platform rules.
 
 ## Project And Create Fields
 
 - Project key: `FFS`
 - Project name: `Income Verification as a Service`
-- Jira create metadata showed required fields for common non-epic issues:
-  `Issue Type`, `Summary`, `Reporter`, and `Project`.
+- Required create fields for common non-epic issues are `Issue Type`, `Summary`,
+  `Reporter`, and `Project`.
 - `Priority` has a default of `Low`.
 - `Epic` additionally requires `Epic Name`.
 
@@ -47,13 +20,7 @@ Useful custom fields:
 - Story point estimate: `customfield_19460`
 - Definition of Ready: `customfield_13901`
 
-Observed custom-field usage:
-
-- Epic Link appeared on 248 of 575 recent issues.
-- Epic Name appeared on 54 of 55 recent epics.
-- Team appeared on 333 of 575 recent issues.
-- Story point estimate appeared on 0 of 575 recent issues.
-- Definition of Ready appeared on 0 of 575 recent issues.
+Do not set story point estimate or Definition of Ready by default.
 
 ## Issue Type Selection
 
@@ -64,15 +31,14 @@ clear actual-vs-expected work. Bug tickets commonly include reproduction steps,
 expected behavior, screenshots, and acceptance criteria.
 
 Use `Story` for product-facing capability work when the request is naturally a
-user story or API/product requirement. Recent `Story` tickets are often sparse,
-especially for `emmy_api` work, so do not force long templates when the team is
-clearly tracking small API increments.
+user story or API/product requirement. API stories can be concise when they
+track a small API increment.
 
 Use `Epic` for a body of related work that will collect child tickets. Set
 `customfield_10102` (`Epic Name`) when creating epics.
 
-Use `Initiative` for broad strategic work above epics. Recent initiatives are
-often intentionally sparse.
+Use `Initiative` for broad strategic work above epics. Initiatives can be
+concise when they are placeholders for planning hierarchy.
 
 Use `Improvement` or `New Feature` only when the human asks for those types or
 when matching nearby tickets strongly use them.
@@ -93,7 +59,7 @@ and can justify elevation when the due date is near.
 
 ## Labels
 
-Prefer labels over components. Common recent labels:
+Prefer labels over components. Common labels:
 
 - `engineering`
 - `design`
@@ -121,7 +87,7 @@ only when the request or source evidence names that scope.
 
 ## Team Field
 
-Known recent Team values:
+Known Team values:
 
 - `Emmy DevOps Team`
 - `FFS IVaaS - State Engagement`
@@ -135,8 +101,8 @@ mention the uncertainty in the draft.
 
 ## Components And Versions
 
-Components are rarely used in recent tickets. Do not set components unless the
-human asks for one or a matching recent ticket/epic makes the component obvious.
+Do not set components unless the human asks for one or a matching ticket or epic
+makes the component obvious.
 
 Known component options include:
 
@@ -157,28 +123,15 @@ pilot, or version.
 
 ## Hierarchy
 
-Search open epics before drafting child tickets. Epic Link is common enough that
-new tasks should usually be considered for an epic, but do not guess one.
-
-Frequent recent Epic Links included:
-
-- `FFS-2639`
-- `FFS-4118`
-- `FFS-4234`
-- `FFS-3962`
-- `FFS-3978`
-- `FFS-4283`
-- `FFS-4116`
-- `FFS-3847`
-- `FFS-4196`
-- `FFS-4455`
+Search open epics before drafting child tickets. Consider whether a new ticket
+belongs under an epic, but do not guess one.
 
 When no epic is clearly correct, leave Epic Link unset and list candidate epics
 for the human to choose.
 
 ## Description Conventions
 
-Common headings across recent tickets:
+Common headings:
 
 - `Context`
 - `Acceptance Criteria`
@@ -230,7 +183,7 @@ type and work risk call for more detail.
 Use JQL like these before interpreting conventions or drafting:
 
 ```text
-project = FFS AND created >= "2026-03-15" ORDER BY created DESC
+project = FFS ORDER BY created DESC
 project = FFS AND text ~ "household" ORDER BY created DESC
 project = FFS AND issuetype = Epic AND status != Done ORDER BY created DESC
 project = FFS AND labels in (engineering) ORDER BY created DESC
