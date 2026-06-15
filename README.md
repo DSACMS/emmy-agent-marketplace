@@ -108,9 +108,10 @@ component changes.
 For example, `mcp/cms-atlassian-confluence/.mcp.json` runs `uvx mcp-atlassian`
 against CMS Confluence Data Center. The `emmy-knowledge-store` plugin links that
 config and requires each user to provide `CONFLUENCE_PERSONAL_TOKEN` in their
-own environment. The same upstream MCP server also supports
-`JIRA_PERSONAL_TOKEN`; Jira-specific plugins can add that requirement later
-without duplicating the Confluence MCP component.
+own environment. The shared Atlassian MCP config also forwards
+`JIRA_PERSONAL_TOKEN` when present so Confluence-only and future Jira-enabled
+plugins can reuse the same server setup without overwriting each other's token
+wiring.
 
 ## Ambient Knowledge Store Pattern
 

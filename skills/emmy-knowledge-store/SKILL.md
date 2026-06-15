@@ -130,10 +130,8 @@ Writing rules:
 - The agent environment needs network access to `https://confluenceent.cms.gov`.
 - Each user must provide their own CMS Confluence Data Center personal access
   token in `CONFLUENCE_PERSONAL_TOKEN`.
-- `JIRA_PERSONAL_TOKEN` belongs to the same Atlassian Data Center auth pattern,
-  but this plugin does not consume it. Future Jira plugins that reuse the same
-  MCP server can require it without changing this Confluence knowledge-store
-  plugin.
+- The shared Atlassian MCP config also forwards `JIRA_PERSONAL_TOKEN` when
+  present, but this plugin does not enable Jira tools.
 
 If the MCP server is unavailable or Confluence authentication fails, stop and
 tell the user that the plugin needs a valid `CONFLUENCE_PERSONAL_TOKEN` in the

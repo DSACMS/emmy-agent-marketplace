@@ -3,7 +3,7 @@
     "cms-atlassian-confluence": {
       "command": "uvx",
       "args": ["mcp-atlassian"],
-      "env_vars": ["CONFLUENCE_PERSONAL_TOKEN"],
+      "env_vars": ["CONFLUENCE_PERSONAL_TOKEN", "JIRA_PERSONAL_TOKEN"],
       "env": {
         "CONFLUENCE_URL": "https://confluenceent.cms.gov",
         "MCP_ATLASSIAN_USE_SYSTEM_TRUSTSTORE": "true",
