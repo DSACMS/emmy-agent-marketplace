@@ -1,0 +1,5 @@
+interface:
+  display_name: "Emmy Jira Ticketing"
+  short_description: "Draft and interpret Emmy Jira tickets."
+  default_prompt:
+    "Use $emmy-jira-ticketing to draft a Jira ticket following Emmy conventions."

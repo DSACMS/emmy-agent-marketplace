@@ -4,7 +4,8 @@ description: >-
   Load the Emmy Goals Space as ambient planning context from Confluence. Use
   when Emmy work involves planning, goal alignment, ticket proposals, roadmap
   decomposition, outcome selection, prioritization, or checking whether work
-  fits current strategic principles and active delivery goals.
+  fits current strategic principles, active delivery goals, and applicable
+  planning requirements.
 ---
 
 # Emmy Planning Context
@@ -13,6 +14,10 @@ Use this skill to ground Emmy planning work in the current Goals Space before
 proposing tickets, outcomes, prioritization, or roadmap changes. The default
 posture is: read intent first, return structured context, then let the calling
 agent reason.
+
+Requirements are part of the planning context. They express constraints,
+blockers, due dates, authority, and evidence expectations that may shape or
+block otherwise goal-aligned work.
 
 ## Source Of Truth
 
@@ -28,6 +33,7 @@ agent reason.
   - Goals Registry: `1398342919`
   - Outcomes Index: `1399162264`
   - Planning Log: `1398768357`
+  - Requirements Registry: `1399165621`
 
 This skill complements `emmy-knowledge-store`. Do not load Knowledge Store
 content here. Return Knowledge Store links as links only.
@@ -36,13 +42,19 @@ content here. Return Knowledge Store links as links only.
 
 Accept these caller options when the user or calling agent provides them:
 
-| Name                 | Type             | Default | Meaning                                                           |
-| -------------------- | ---------------- | ------- | ----------------------------------------------------------------- |
-| `focus_area`         | `string \| null` | `null`  | Optional topic hint used to narrow active goal pages.             |
-| `include_principles` | `boolean`        | `true`  | Whether to load active strategic principles.                      |
-| `include_outcomes`   | `boolean`        | `true`  | Whether to load the flat Outcomes Index.                          |
-| `include_recent_log` | `boolean`        | `false` | Whether to include recent Planning Log entries for audit context. |
-| `recent_log_limit`   | `integer`        | `3`     | Maximum recent log entries when `include_recent_log` is true.     |
+| Name                   | Type             | Default | Meaning                                                           |
+| ---------------------- | ---------------- | ------- | ----------------------------------------------------------------- |
+| `focus_area`           | `string \| null` | `null`  | Optional topic hint used to narrow active goal pages.             |
+| `include_principles`   | `boolean`        | `true`  | Whether to load active strategic principles.                      |
+| `include_outcomes`     | `boolean`        | `true`  | Whether to load the flat Outcomes Index.                          |
+| `include_requirements` | `boolean`        | `true`  | Whether to load active planning requirements when available.      |
+| `include_recent_log`   | `boolean`        | `false` | Whether to include recent Planning Log entries for audit context. |
+| `recent_log_limit`     | `integer`        | `3`     | Maximum recent log entries when `include_recent_log` is true.     |
+
+Set `include_requirements` to false only when the user asks to skip requirements
+or when a caller intentionally wants goals/principles without constraint
+context. If the user asks not to use external context, do not use this skill at
+all.
 
 ## Ambient Read Sequence
 
@@ -73,10 +85,20 @@ Follow this sequence before making Emmy planning proposals:
 5. If `include_outcomes` is true, read Outcomes Index page `1399162264`.
    - Parse the All Outcomes table.
    - Ignore placeholder rows.
-6. If `include_recent_log` is true, read Planning Log page `1398768357`.
+6. If `include_requirements` is true, discover and load requirements using the
+   `emmy-requirements-context` workflow:
+   - Read Requirements Registry `1399165621`.
+   - If direct lookup fails, search root children for exact title
+     `Requirements Registry`.
+   - If the registry is missing, add warning `REQUIREMENTS_REGISTRY_MISSING` and
+     continue with `requirements: []`.
+   - When the registry exists, load active requirements that match the
+     `focus_area`, active goal IDs, active outcome IDs, and active principle
+     IDs.
+7. If `include_recent_log` is true, read Planning Log page `1398768357`.
    - Return the most recent log entries up to `recent_log_limit`.
    - Read only for context. Do not append from this skill.
-7. Assemble and return the complete `PlanningContext`.
+8. Assemble and return the complete `PlanningContext`.
 
 ## PlanningContext Shape
 
@@ -127,6 +149,27 @@ Return structured data rather than a prose summary:
       "jira_epic": null
     }
   ],
+  "requirements": [
+    {
+      "id": "REQ-001",
+      "name": "Maintain valid ATO",
+      "domain": "security-authorization",
+      "status": "Active",
+      "owner": "ISSO / System Owner / Emmy Team",
+      "due_or_review_date": "2026-09-21",
+      "authority": "Emmy ATO Tracker",
+      "applicability": "Production operation and release planning",
+      "planning_impact": "Release plans must account for ATO expiration and condition closure.",
+      "blocking_rule": "No new non-CMS interfaces without prior approval.",
+      "related_goals": ["GOAL-001"],
+      "related_outcomes": ["GOAL-001-O2"],
+      "related_principles": ["PRIN-004", "PRIN-005"],
+      "evidence_links": [],
+      "open_questions": [],
+      "source_page_id": "1390000002",
+      "source_url": "https://confluenceent.cms.gov/pages/viewpage.action?pageId=1390000002"
+    }
+  ],
   "recent_planning_log_entries": [],
   "warnings": [
     {
@@ -142,6 +185,8 @@ Return structured data rather than a prose summary:
       "1398768351": 1
     },
     "focus_area": null,
+    "include_requirements": true,
+    "requirements_registry_page_id": "1399165621",
     "goals_space_url": "https://confluenceent.cms.gov/spaces/SFIV/pages/1398768351"
   }
 }
@@ -161,6 +206,11 @@ Always populate `metadata.pages_read` with every page ID consulted.
 - No active goals: return `goals: []` and warning `NO_ACTIVE_GOALS`.
 - Empty Outcomes Index: return `outcomes_index: []` and warning
   `OUTCOMES_INDEX_EMPTY`.
+- Missing Requirements Registry: return `requirements: []` and warning
+  `REQUIREMENTS_REGISTRY_MISSING`. Do not treat this as proof that no
+  requirements apply.
+- Empty Requirements Registry: return `requirements: []` and warning
+  `REQUIREMENTS_REGISTRY_EMPTY`.
 - Unreadable principle or goal child page: add a warning with the page ID, skip
   that item, and continue.
 - Mid-sequence page read failure: report the exact page ID. Do not substitute
@@ -178,6 +228,8 @@ Always populate `metadata.pages_read` with every page ID consulted.
 - Do not call Jira tools from this skill, even though the shared MCP config may
   expose them.
 - Do not dereference Knowledge Store links or call Knowledge Store skills.
+- Do not create, update, retire, or reorder requirements. Use requirements
+  context as read-only planning input.
 - Cite page titles and URLs or page IDs when Goals Space content materially
   shaped the answer.
 

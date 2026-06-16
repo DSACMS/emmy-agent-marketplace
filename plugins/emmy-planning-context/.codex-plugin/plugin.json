@@ -1,7 +1,7 @@
 {
   "name": "emmy-planning-context",
-  "version": "0.2.0",
-  "description": "Ambient Emmy Goals Space context loading, approved planning ingestion, and authorized Planning Log appends.",
+  "version": "0.5.0",
+  "description": "Ambient Emmy Goals Space context loading, requirements context, interpretation and ingestion, approved planning ingestion, authorized Planning Log appends, and approval-gated FFS Jira ticketing.",
   "author": {
     "name": "Emmy Development Team"
   },
@@ -14,8 +14,17 @@
     "ingestion",
     "goals",
     "principles",
+    "requirements",
+    "requirement-interpretation",
+    "requirement-ingestion",
+    "requirements-registry",
+    "compliance",
     "outcomes",
     "planning-log",
+    "jira",
+    "ticketing",
+    "ffs",
+    "draft-first",
     "ambient-context",
     "mcp",
     "atlassian"
@@ -24,7 +33,7 @@
   "interface": {
     "displayName": "Emmy Planning Context",
     "shortDescription": "Use Emmy goals to ground planning.",
-    "longDescription": "Adds Confluence-backed workflows for loading current Emmy strategic principles, active delivery goals, outcomes, ingesting approved planning principles and goals from text or local files, and appending approved Planning Log entries.",
+    "longDescription": "Adds Confluence-backed workflows for loading current Emmy strategic principles, active delivery goals, outcomes, applicable planning requirements, interpreting requirement language without writing, ingesting approved requirements from text, local files, or named Confluence sources, ingesting approved planning principles and goals from text or local files, appending approved Planning Log entries, and drafting or creating FFS Jira tickets after explicit approval.",
     "developerName": "Emmy Development Team",
     "category": "Productivity",
     "capabilities": [
@@ -35,13 +44,23 @@
       "Ambient Context",
       "Goals",
       "Principles",
+      "Requirements",
+      "Requirement Interpretation",
+      "Requirement Ingestion",
+      "Compliance Requirements",
       "Outcomes",
-      "Audit Log"
+      "Audit Log",
+      "Jira",
+      "Ticketing"
     ],
     "defaultPrompt": [
       "Ground this Emmy planning task in current goals.",
+      "Load applicable Emmy requirements before planning work.",
+      "Interpret this Emmy requirement source without writing.",
+      "Ingest these Emmy requirements after presenting a review packet.",
       "Ingest these Emmy principles and goals.",
-      "Append the approved Emmy planning log entry."
+      "Append the approved Emmy planning log entry.",
+      "Draft an FFS Jira ticket following Emmy conventions."
     ]
   },
   "mcpServers": "./.mcp.json"

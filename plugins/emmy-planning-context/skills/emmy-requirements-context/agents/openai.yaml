@@ -1,0 +1,4 @@
+interface:
+  display_name: "Emmy Requirements Context"
+  short_description: "Load Emmy planning requirements."
+  default_prompt: "Load applicable Emmy requirements before planning work."

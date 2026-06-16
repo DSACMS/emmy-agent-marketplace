@@ -117,7 +117,7 @@ against CMS Atlassian Data Center. The `emmy-knowledge-store` plugin links that
 config and requires each user to provide `CONFLUENCE_PERSONAL_TOKEN` in their
 own environment. The shared Atlassian MCP config also forwards
 `JIRA_PERSONAL_TOKEN` when present and sets `JIRA_URL` to
-`https://jiraent.cms.gov` so Confluence-only and future Jira-enabled plugins can
+`https://jiraent.cms.gov` so Confluence-only and Jira-enabled workflows can
 reuse the same server setup and Jira tool allowlist without overwriting each
 other's token wiring. This is intentional even when a specific plugin workflow
 uses only Confluence tools.

@@ -14,6 +14,12 @@
       "expected_behavior": "Use the write-gated append workflow for page 1398768357."
     },
     {
+      "id": "append-requirement-aware-session",
+      "prompt": "Append the approved planning session that reviewed REQ-ATO-001 and GOAL-001-O2.",
+      "should_trigger": true,
+      "expected_behavior": "Accept requirement IDs in the log entry and preserve them in agent_read, notes, or a supported requirements field."
+    },
+    {
       "id": "ambient-planning",
       "prompt": "Before proposing tickets, load the current Emmy goals and outcomes.",
       "should_trigger": false,

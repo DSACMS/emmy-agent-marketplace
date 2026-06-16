@@ -1,0 +1,35 @@
+{
+  "skill_name": "emmy-requirements-interpret",
+  "evals": [
+    {
+      "id": "interpret-ato-text",
+      "prompt": "Interpret this ATO tracker excerpt and identify which statements are requirements versus tasks or evidence.",
+      "should_trigger": true,
+      "expected_behavior": "Classify requirement-like language and return candidate requirement records without writing."
+    },
+    {
+      "id": "privacy-requirement-analysis",
+      "prompt": "Does this PIA note create a planning requirement for Emmy, or is it just evidence?",
+      "should_trigger": true,
+      "expected_behavior": "Distinguish requirement language from evidence, assumptions, and open questions."
+    },
+    {
+      "id": "named-confluence-source",
+      "prompt": "Read the Emmy ATO Tracker and interpret the active requirements it implies, but do not persist anything.",
+      "should_trigger": true,
+      "expected_behavior": "Use Confluence read tools, classify statements, and return candidate requirements with provenance."
+    },
+    {
+      "id": "do-not-ingest",
+      "prompt": "Ingest these ATO requirements into the Goals Space.",
+      "should_trigger": false,
+      "expected_behavior": "Do not use this read-only interpretation skill for persistence; route to emmy-requirements-ingest."
+    },
+    {
+      "id": "ordinary-goal-planning",
+      "prompt": "Check whether this work aligns with the current Emmy goals.",
+      "should_trigger": false,
+      "expected_behavior": "Use emmy-planning-context for normal goal alignment rather than requirement interpretation."
+    }
+  ]
+}
