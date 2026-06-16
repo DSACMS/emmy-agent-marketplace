@@ -1,0 +1,4 @@
+interface:
+  display_name: "Emmy Requirements Interpret"
+  short_description: "Interpret Emmy requirement language."
+  default_prompt: "Interpret this Emmy requirement source without writing."

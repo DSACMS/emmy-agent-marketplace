@@ -26,6 +26,12 @@
       "expected_behavior": "Prepare the Jira issue payload and ask for explicit approval before calling any Jira write tool."
     },
     {
+      "id": "requirements-aware-draft",
+      "prompt": "Draft a Jira ticket from this GOAL-001-O2 planning context, including the active requirement blockers that were loaded.",
+      "should_trigger": true,
+      "expected_behavior": "Draft the ticket payload and preserve applicable requirement IDs, blockers, due dates, and evidence gaps in the description."
+    },
+    {
       "id": "planning-context-only",
       "prompt": "Before proposing Emmy tickets, load the current Goals Space principles.",
       "should_trigger": false,

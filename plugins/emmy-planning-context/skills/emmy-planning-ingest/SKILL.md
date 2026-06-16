@@ -93,6 +93,11 @@ rely on cached content or memory.
 - Stop before writing if the source appears to contain secrets, credentials,
   private personal data, unsupported binary content, or speculative content that
   is not suitable for the Goals Space.
+- Do not normalize requirement-like material into principles or goals. If the
+  source includes obligations, compliance gates, blockers, due dates, control
+  statements, approval restrictions, or evidence expectations, flag
+  `REQUIREMENT_CANDIDATE` and route that material to
+  `emmy-requirements-interpret`.
 
 ## Draft Objects
 
@@ -151,6 +156,23 @@ Normalize source material into these draft objects.
 Use `-` for optional text fields only when the source and human approval make
 clear the value is intentionally empty. Otherwise ask for the missing value.
 
+## Requirement Candidate Handling
+
+Requirements are planning constraints, not principles or goals. When source text
+contains requirement signals such as `must`, `shall`, `required`, `cannot`,
+`approval required`, `ATO`, `CFACTS`, `PIA`, `POA&M`, `control`, `due`, or
+`expires`, do all of the following:
+
+1. Extract only the true principle or goal material into `PrincipleDraft` and
+   `GoalDraft` records.
+2. Add warning code `REQUIREMENT_CANDIDATE` with the relevant source excerpt or
+   summary.
+3. State that requirement interpretation belongs to
+   `emmy-requirements-interpret`.
+4. Do not write requirement text into principle statements, goal statements,
+   outcomes, or blockers unless the human explicitly rewrites it as planning
+   intent.
+
 ## ID And Duplicate Rules
 
 - Allocate new principle IDs as `PRIN-###` from the current maximum.
@@ -187,6 +209,7 @@ Before any write, present a compact review packet containing:
 - Proposed Outcomes Index additions or updates.
 - Source provenance.
 - Duplicate and quality warnings.
+- Requirement candidate warnings and routing notes.
 - Exact page IDs to be written.
 - A Planning Log entry draft.
 
@@ -252,6 +275,8 @@ Goal pages must include:
 - No Jira calls and no ticket creation.
 - No Knowledge Store writes or reads.
 - No unsupported source ingestion.
+- No requirements ingestion. Requirement-like source material should be flagged
+  and routed to `emmy-requirements-interpret`.
 - No edits to unrelated Goals Space content.
 - No uploads of local files unless explicitly requested.
 - Always cite pages read and pages written in the final response.

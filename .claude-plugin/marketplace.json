@@ -37,8 +37,8 @@
     {
       "name": "emmy-planning-context",
       "source": "./plugins/emmy-planning-context",
-      "description": "Ambient Emmy Goals Space context loading, approved planning ingestion, authorized Planning Log appends, and approval-gated FFS Jira ticketing.",
-      "version": "0.3.0",
+      "description": "Ambient Emmy Goals Space context loading, requirements context and interpretation, approved planning ingestion, authorized Planning Log appends, and approval-gated FFS Jira ticketing.",
+      "version": "0.4.0",
       "author": {
         "name": "Emmy Development Team"
       },
@@ -50,6 +50,8 @@
         "ingestion",
         "goals",
         "principles",
+        "requirements",
+        "requirement-interpretation",
         "outcomes",
         "planning-log",
         "jira",

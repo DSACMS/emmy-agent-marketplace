@@ -45,6 +45,7 @@ Require this input object:
   "agent_read": ["1398768351", "1398342919"],
   "trigger": "What prompted the planning session",
   "outcomes_reviewed": ["GOAL-001-O1"],
+  "requirements_reviewed": ["REQ-ATO-001"],
   "tickets_proposed": "0 - held",
   "tickets_created": ["FFS-123"],
   "tickets_held": ["Held ticket summary and reason"],
@@ -55,6 +56,11 @@ Require this input object:
 
 Use `none` or an empty array only when the human-approved draft explicitly says
 there were no values.
+
+`requirements_reviewed` is optional for backward compatibility. If provided and
+the live Planning Log template does not have a dedicated field, include the
+requirement IDs in `agent_read` or `notes` rather than changing the page
+template.
 
 ## Append Sequence
 
@@ -77,6 +83,10 @@ there were no values.
 **Human decisions:** [Any approvals, rejections, modifications, or deferrals]
 **Notes:** [Anything else relevant to future planning sessions]
 ```
+
+When requirement IDs shaped the session, preserve them in the formatted entry.
+Use an existing field such as `Agent read` or `Notes` unless the live page
+already supports a `Requirements reviewed` field.
 
 After formatting the entry:
 

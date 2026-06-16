@@ -67,12 +67,21 @@ Jira platform rules.
    - optional team
    - optional epic link
    - optional components or fix versions only when clearly requested
+   - applicable requirement constraints when the ticket is grounded in Goals
+     Space planning context that includes requirements
 3. Present the draft and ask for explicit approval before calling
    `jira_create_issue`, `jira_update_issue`, `jira_link_to_epic`,
    `jira_create_issue_link`, or any other Jira write tool.
 4. If the human approves creation, create the issue, then re-read it with
    `jira_get_issue`.
 5. Report the created key and URL.
+
+When planning context was loaded before ticket drafting, preserve its
+requirement findings in the ticket draft. Include active requirement IDs,
+blocking rules, due dates, owners, and evidence gaps in the description when
+they affect the work. If the planning context reports
+`REQUIREMENTS_REGISTRY_MISSING`, surface that as a planning caveat rather than
+claiming no requirements apply.
 
 ## Write Safety
 
@@ -94,4 +103,5 @@ Use Confluence tools only when the ticket request explicitly depends on Goals
 Space, Knowledge Store, design docs, runbooks, or other Confluence content.
 
 Do not use this skill to write Emmy Goals Space or Knowledge Store pages. Use
-the dedicated planning or knowledge-store skills for those workflows.
+the dedicated planning, requirements, or knowledge-store skills for those
+workflows.

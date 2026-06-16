@@ -20,6 +20,12 @@
       "expected_behavior": "Consult the Goals Space before reasoning about priorities."
     },
     {
+      "id": "planning-with-requirements",
+      "prompt": "Before drafting Emmy tickets for a new state-facing interface, load the current goals, outcomes, principles, and applicable requirements.",
+      "should_trigger": true,
+      "expected_behavior": "Load planning context with include_requirements true and surface requirement blockers or REQUIREMENTS_REGISTRY_MISSING."
+    },
+    {
       "id": "append-log",
       "prompt": "Record the planning session in the Emmy Planning Log.",
       "should_trigger": false,
