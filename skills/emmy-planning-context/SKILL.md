@@ -33,9 +33,7 @@ block otherwise goal-aligned work.
   - Goals Registry: `1398342919`
   - Outcomes Index: `1399162264`
   - Planning Log: `1398768357`
-- Expected dynamic child:
-  - Requirements Registry: discover by exact child title
-    `Requirements Registry`; there is no stable page ID in v1.
+  - Requirements Registry: `1399165621`
 
 This skill complements `emmy-knowledge-store`. Do not load Knowledge Store
 content here. Return Knowledge Store links as links only.
@@ -89,7 +87,9 @@ Follow this sequence before making Emmy planning proposals:
    - Ignore placeholder rows.
 6. If `include_requirements` is true, discover and load requirements using the
    `emmy-requirements-context` workflow:
-   - Search root children for exact title `Requirements Registry`.
+   - Read Requirements Registry `1399165621`.
+   - If direct lookup fails, search root children for exact title
+     `Requirements Registry`.
    - If the registry is missing, add warning `REQUIREMENTS_REGISTRY_MISSING` and
      continue with `requirements: []`.
    - When the registry exists, load active requirements that match the
@@ -151,7 +151,7 @@ Return structured data rather than a prose summary:
   ],
   "requirements": [
     {
-      "id": "REQ-ATO-001",
+      "id": "REQ-001",
       "name": "Maintain valid ATO",
       "domain": "security-authorization",
       "status": "Active",
@@ -186,7 +186,7 @@ Return structured data rather than a prose summary:
     },
     "focus_area": null,
     "include_requirements": true,
-    "requirements_registry_page_id": null,
+    "requirements_registry_page_id": "1399165621",
     "goals_space_url": "https://confluenceent.cms.gov/spaces/SFIV/pages/1398768351"
   }
 }

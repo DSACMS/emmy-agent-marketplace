@@ -26,7 +26,8 @@ from goals, principles, tasks, and evidence:
 ## Source Of Truth
 
 - Goals Space root: `1398768351`
-- Expected requirements index title: `Requirements Registry`
+- Requirements Registry: `1399165621`
+- Requirements Registry title: `Requirements Registry`
 - Confluence space: `SFIV`
 - MCP server: `cms-atlassian-confluence`
 - Required user environment variable: `CONFLUENCE_PERSONAL_TOKEN`
@@ -113,7 +114,7 @@ Return candidate records in this shape:
     }
   ],
   "warnings": [],
-  "suggested_next_action": "Review candidates with a human, then use a future requirements ingestion workflow if persistence is authorized."
+  "suggested_next_action": "Review candidates with a human, then use emmy-requirements-ingest if persistence is authorized."
 }
 ```
 
@@ -132,8 +133,8 @@ Return candidate records in this shape:
 - Preserve source uncertainty. Do not convert a draft or historical source into
   a current active requirement without a current authority.
 - If the user asks to add, ingest, update, or persist requirements, draft an
-  interpretation packet and state that persistence belongs to a future
-  requirements ingestion workflow.
+  interpretation packet and state that persistence belongs to
+  `emmy-requirements-ingest`.
 
 ## Domain Hints
 

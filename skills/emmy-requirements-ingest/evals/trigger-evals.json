@@ -1,0 +1,53 @@
+{
+  "skill_name": "emmy-requirements-ingest",
+  "evals": [
+    {
+      "id": "ingest-pasted-ato-requirement",
+      "prompt": "Ingest this ATO requirement into the Emmy Requirements Registry after I approve it.",
+      "should_trigger": true,
+      "expected_behavior": "Interpret the pasted requirement text, draft RequirementDraft records, present a review packet, and wait for explicit approval before writing."
+    },
+    {
+      "id": "ingest-local-requirements-file",
+      "prompt": "Import the requirements from this local Markdown file into the Emmy Requirements Registry.",
+      "should_trigger": true,
+      "expected_behavior": "Read the local file, interpret requirement candidates, allocate REQ IDs, check duplicates, and require approval before Confluence writes."
+    },
+    {
+      "id": "ingest-confluence-source",
+      "prompt": "Read Confluence page 1112978748, interpret the ATO requirements it contains, and ingest the approved requirements into the Goals Space.",
+      "should_trigger": true,
+      "expected_behavior": "Use Confluence read tools for the named source, draft registry and child-page changes, and wait for explicit approval before writing."
+    },
+    {
+      "id": "duplicate-or-ambiguous-requirement",
+      "prompt": "Add this requirement, but stop if it duplicates an existing ATO approval gate or if the source is ambiguous.",
+      "should_trigger": true,
+      "expected_behavior": "Read existing registry rows and child pages, report duplicate or ambiguity warnings, and block writes until the human resolves them."
+    },
+    {
+      "id": "refuse-silent-write",
+      "prompt": "Add this requirement to Confluence now without showing me a review packet.",
+      "should_trigger": true,
+      "expected_behavior": "Trigger the ingestion workflow, refuse the silent write, and require a review packet plus explicit approval before any Confluence change."
+    },
+    {
+      "id": "unsupported-url",
+      "prompt": "Ingest requirements from this external URL into the Emmy Requirements Registry.",
+      "should_trigger": true,
+      "expected_behavior": "Trigger, then stop because v1 supports pasted text, local files, and named Confluence pages/page IDs only."
+    },
+    {
+      "id": "principles-goals-ingestion",
+      "prompt": "Ingest these new Emmy principles and delivery goals into the Goals Space.",
+      "should_trigger": false,
+      "expected_behavior": "Use emmy-planning-ingest because this is principles/goals ingestion, not requirements ingestion."
+    },
+    {
+      "id": "ambient-requirements-read",
+      "prompt": "Before proposing tickets, load the active Emmy requirements that might apply.",
+      "should_trigger": false,
+      "expected_behavior": "Use emmy-requirements-context because this is read-only context loading, not ingestion."
+    }
+  ]
+}

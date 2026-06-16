@@ -29,7 +29,7 @@
       "id": "requirement-candidate",
       "prompt": "Ingest this planning note, but it includes an ATO condition that must be complete before release.",
       "should_trigger": true,
-      "expected_behavior": "Draft only principle or goal material, warn with REQUIREMENT_CANDIDATE, and route requirement-like text to emmy-requirements-interpret."
+      "expected_behavior": "Draft only principle or goal material, warn with REQUIREMENT_CANDIDATE, and route requirement-like text to emmy-requirements-ingest."
     },
     {
       "id": "ambient-read",

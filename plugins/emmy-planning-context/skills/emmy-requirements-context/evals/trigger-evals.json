@@ -5,7 +5,7 @@
       "id": "load-requirements-for-ticket-planning",
       "prompt": "Before proposing Emmy tickets for a new external data connection, load applicable requirements.",
       "should_trigger": true,
-      "expected_behavior": "Read the Goals Space, discover Requirements Registry, and return applicable requirement constraints or a missing-registry warning."
+      "expected_behavior": "Read the Goals Space and Requirements Registry 1399165621, then return applicable requirement constraints or a missing-registry warning."
     },
     {
       "id": "release-readiness-requirements",
@@ -23,7 +23,7 @@
       "id": "do-not-write-requirements",
       "prompt": "Create a new ATO requirement in the Emmy Requirements Registry.",
       "should_trigger": false,
-      "expected_behavior": "Do not use this read-only context skill for writes; route future persistence to a requirements ingestion workflow."
+      "expected_behavior": "Do not use this read-only context skill for writes; route persistence to emmy-requirements-ingest."
     },
     {
       "id": "local-code-edit",

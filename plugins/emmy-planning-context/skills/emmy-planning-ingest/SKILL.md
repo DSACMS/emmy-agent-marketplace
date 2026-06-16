@@ -96,8 +96,9 @@ rely on cached content or memory.
 - Do not normalize requirement-like material into principles or goals. If the
   source includes obligations, compliance gates, blockers, due dates, control
   statements, approval restrictions, or evidence expectations, flag
-  `REQUIREMENT_CANDIDATE` and route that material to
-  `emmy-requirements-interpret`.
+  `REQUIREMENT_CANDIDATE` and route that material to `emmy-requirements-ingest`.
+  Requirement ingestion uses `emmy-requirements-interpret` as its interpretation
+  step.
 
 ## Draft Objects
 
@@ -167,8 +168,8 @@ contains requirement signals such as `must`, `shall`, `required`, `cannot`,
    `GoalDraft` records.
 2. Add warning code `REQUIREMENT_CANDIDATE` with the relevant source excerpt or
    summary.
-3. State that requirement interpretation belongs to
-   `emmy-requirements-interpret`.
+3. State that requirement ingestion belongs to `emmy-requirements-ingest`, with
+   `emmy-requirements-interpret` used before any requirement draft is persisted.
 4. Do not write requirement text into principle statements, goal statements,
    outcomes, or blockers unless the human explicitly rewrites it as planning
    intent.
@@ -276,7 +277,7 @@ Goal pages must include:
 - No Knowledge Store writes or reads.
 - No unsupported source ingestion.
 - No requirements ingestion. Requirement-like source material should be flagged
-  and routed to `emmy-requirements-interpret`.
+  and routed to `emmy-requirements-ingest`.
 - No edits to unrelated Goals Space content.
 - No uploads of local files unless explicitly requested.
 - Always cite pages read and pages written in the final response.

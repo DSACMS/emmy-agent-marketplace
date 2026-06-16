@@ -14,14 +14,15 @@ Requirements are part of the Goals Space intent layer: they say what must remain
 true, what blocks work, and what evidence is expected before a goal, outcome,
 ticket, release, or architecture decision can move forward.
 
-This v1 skill is read-only. It discovers a future `Requirements Registry` page
-under the Goals Space root at runtime. If the registry does not exist yet,
-return an empty result with a warning.
+This v1 skill is read-only. It reads the Goals Space `Requirements Registry`
+page when present and returns an empty result with a warning if the registry is
+missing or unreadable.
 
 ## Source Of Truth
 
 - Goals Space root: `1398768351`
-- Expected requirements index title: `Requirements Registry`
+- Requirements Registry: `1399165621`
+- Requirements Registry title: `Requirements Registry`
 - Confluence space: `SFIV`
 - MCP server: `cms-atlassian-confluence`
 - Required user environment variable: `CONFLUENCE_PERSONAL_TOKEN`
@@ -50,8 +51,11 @@ Accept these caller options when supplied:
    - Verify the title is `Emmy Goals Space`.
    - Stop with a hard error if the root is missing, unreadable, or
      uninitialized.
-2. Read root children and search for exact title `Requirements Registry`.
-3. If no registry exists, return:
+2. Read Requirements Registry `1399165621` and verify the title is
+   `Requirements Registry`.
+   - If direct lookup fails, read root children and search for exact title
+     `Requirements Registry`.
+3. If no registry exists or no readable registry can be found, return:
    - `requirements: []`
    - warning code `REQUIREMENTS_REGISTRY_MISSING`
    - metadata showing the Goals Space root and children were read.
@@ -115,7 +119,7 @@ Return structured data rather than a prose summary:
       "1398768351": 1
     },
     "focus_area": null,
-    "requirements_registry_page_id": null,
+    "requirements_registry_page_id": "1399165621",
     "goals_space_url": "https://confluenceent.cms.gov/spaces/SFIV/pages/1398768351"
   }
 }

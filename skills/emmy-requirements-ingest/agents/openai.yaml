@@ -1,0 +1,4 @@
+interface:
+  display_name: "Emmy Requirements Ingest"
+  short_description: "Ingest approved Emmy requirements."
+  default_prompt: "Use $emmy-requirements-ingest to ingest requirements."

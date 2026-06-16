@@ -23,7 +23,7 @@
       "id": "do-not-ingest",
       "prompt": "Ingest these ATO requirements into the Goals Space.",
       "should_trigger": false,
-      "expected_behavior": "Do not use this read-only interpretation skill for persistence; route to a future requirements ingestion workflow."
+      "expected_behavior": "Do not use this read-only interpretation skill for persistence; route to emmy-requirements-ingest."
     },
     {
       "id": "ordinary-goal-planning",
