@@ -1,5 +1,13 @@
 interface:
   display_name: "Emmy Jira Ticketing"
-  short_description: "Draft and interpret Emmy Jira tickets."
+  short_description: "Draft FFS Jira tickets by category."
   default_prompt:
-    "Use $emmy-jira-ticketing to draft a Jira ticket following Emmy conventions."
+    "Use $emmy-jira-ticketing to draft an FFS Jira ticket using the matching
+    Emmy category conventions."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "cms-atlassian-confluence"
+      description:
+        "CMS Atlassian MCP server for reading and approval-gated creation of FFS
+        Jira tickets."

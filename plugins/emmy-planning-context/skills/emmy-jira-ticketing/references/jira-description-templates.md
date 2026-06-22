@@ -3,6 +3,10 @@
 Use Jira wiki markup in `FFS` ticket descriptions. Prefer concise sections with
 specific acceptance criteria over long prose.
 
+Before using a template, read `category-index.md` and the relevant category
+reference. Category references define when a template should be sparse,
+expanded, or adjusted to match recent team practice.
+
 ## Engineering Task
 
 ```text
@@ -27,6 +31,9 @@ Use `Implementation Direction` instead of `Requirements` when the ticket should
 name a likely technical path but still leave implementation details to the
 engineer.
 
+See `engineering-implementation.md` and `devops-platform.md` for field and label
+conventions.
+
 ## Engineering Spike Or Tech Spec
 
 ```text
@@ -47,6 +54,9 @@ h2. Acceptance Criteria
 
 Use summary prefixes such as `Spike:` or `Tech Spec:` when nearby tickets use
 that pattern for similar work.
+
+See `spike-tech-spec.md` before deciding whether implementation belongs out of
+scope.
 
 ## Design Task
 
@@ -76,6 +86,9 @@ h2. Resources
 Add `Activities` when the ticket is discovery or ideation work with multiple
 design activities.
 
+See `design-content.md` for discovery/content variants and acceptance criteria
+style.
+
 ## Bug
 
 ```text
@@ -101,6 +114,9 @@ h2. Screenshots
 If the source has actual SQL, logs, or stack traces, include a short excerpt or
 link rather than burying the ticket in raw output.
 
+See `bug.md` before requiring reproduction steps; existing bugs can be sparse
+when source evidence is thin.
+
 ## API Story
 
 ```text
@@ -123,6 +139,8 @@ h2. Acceptance Criteria
 Use label `emmy_api` when the work is API-facing. Add `engineering` only when
 nearby similar tickets use both labels or the human asks for it.
 
+See `api-state-integration.md`; sparse API stories are common.
+
 ## Epic
 
 When creating an epic, set `customfield_10102` (`Epic Name`). The Epic Name can
@@ -141,6 +159,8 @@ h2. Next Work
 ```
 
 Keep epics concise. Detailed implementation usually belongs in child tickets.
+
+See `epic-initiative.md` for Epic Name and inheritance rules.
 
 ## Initiative
 

@@ -1,0 +1,35 @@
+{
+  "skill_name": "emmy-governance-followup-ticket",
+  "evals": [
+    {
+      "id": "governance-codeowners-followup",
+      "prompt": "Draft a Jira ticket to fix CODEOWNERS because the Emmy PR Review Process governance doc now depends on it.",
+      "should_trigger": true,
+      "expected_behavior": "Read the governance source and repo evidence, load base Jira engineering and ATO traceability references, search Jira for overlap, apply engineering plus governance/ATO labels, and present a draft payload without writing to Jira."
+    },
+    {
+      "id": "ato-control-implementation-gap",
+      "prompt": "Create follow-up tickets from this CM-03 governance decision, but show me the payloads first.",
+      "should_trigger": true,
+      "expected_behavior": "Classify the governance-driven follow-up work, load the shared ATO traceability reference, include emmy_ato plus control family and control ID labels, and ask for approval before any Jira writes."
+    },
+    {
+      "id": "metadata-drift-ticket",
+      "prompt": "This approved governance page is missing its next review date. Make a Jira follow-up for that cleanup.",
+      "should_trigger": true,
+      "expected_behavior": "Treat the missing review date as governance metadata cleanup, search for related tickets, and draft a concise FFS payload."
+    },
+    {
+      "id": "ordinary-ticket",
+      "prompt": "Draft an engineering Jira ticket for adding audit logging to report transmissions.",
+      "should_trigger": false,
+      "expected_behavior": "Use emmy-jira-ticketing because the request is ordinary Jira drafting, not governance-driven follow-up."
+    },
+    {
+      "id": "governance-review",
+      "prompt": "Review this Emmy governance page for approval readiness.",
+      "should_trigger": false,
+      "expected_behavior": "Use emmy-governance-doc-review because the user wants a document review, not a follow-up Jira ticket."
+    }
+  ]
+}

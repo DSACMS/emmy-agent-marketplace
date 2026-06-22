@@ -1,7 +1,7 @@
 # FFS Ticket Conventions
 
-Use these conventions when interpreting or drafting Emmy Jira tickets in the
-`FFS` project. Treat these as team practice, not mandatory Jira platform rules.
+Use these global conventions when interpreting or drafting Emmy Jira tickets in
+the `FFS` project. Treat them as team practice, not Jira platform rules.
 
 ## Project And Create Fields
 
@@ -9,7 +9,7 @@ Use these conventions when interpreting or drafting Emmy Jira tickets in the
 - Project name: `Income Verification as a Service`
 - Required create fields for common non-epic issues are `Issue Type`, `Summary`,
   `Reporter`, and `Project`.
-- `Priority` has a default of `Low`.
+- `Priority` defaults to `Low`.
 - `Epic` additionally requires `Epic Name`.
 
 Useful custom fields:
@@ -22,26 +22,18 @@ Useful custom fields:
 
 Do not set story point estimate or Definition of Ready by default.
 
-## Issue Type Selection
+## Issue Type Defaults
 
 Default to `Task` unless another type clearly fits.
 
-Use `Bug` for defects, regressions, broken behavior, production incidents, or
-clear actual-vs-expected work. Bug tickets commonly include reproduction steps,
-expected behavior, screenshots, and acceptance criteria.
-
-Use `Story` for product-facing capability work when the request is naturally a
-user story or API/product requirement. API stories can be concise when they
-track a small API increment.
-
-Use `Epic` for a body of related work that will collect child tickets. Set
-`customfield_10102` (`Epic Name`) when creating epics.
-
-Use `Initiative` for broad strategic work above epics. Initiatives can be
-concise when they are placeholders for planning hierarchy.
-
-Use `Improvement` or `New Feature` only when the human asks for those types or
-when matching nearby tickets strongly use them.
+- Use `Bug` for defects, regressions, broken behavior, production incidents, or
+  clear actual-vs-expected work.
+- Use `Story` for product-facing capability work, API/state integration work, or
+  partner-facing requirements when nearby tickets use story shape.
+- Use `Epic` for a body of related work that will collect child tickets.
+- Use `Initiative` only for broad strategic work above epics.
+- Use `Improvement` or `New Feature` only when the human asks for those types or
+  matching nearby tickets strongly use them.
 
 ## Priority
 
@@ -51,39 +43,39 @@ Use `Medium` when the work has an explicit near-term need, external dependency,
 or product/design coordination risk.
 
 Use `High`, `Critical`, or `Blocker` only when the human or source evidence
-indicates urgent deadline pressure, live incident impact, production risk,
-security risk, pilot launch risk, or blocked delivery.
+indicates deadline pressure, live incident impact, production risk, security
+risk, pilot launch risk, blocked delivery, or urgent state/product need.
 
 Date-led summaries such as `[6/17] ...` usually indicate deadline-sensitive work
-and can justify elevation when the due date is near.
+and can justify elevation when the date is near.
 
 ## Labels
 
-Prefer labels over components. Common labels:
+Prefer labels over components. Preserve human-supplied labels exactly.
+
+Common labels:
 
 - `engineering`
 - `design`
 - `emmy_api`
 - `needs_refinement`
+- `emmy_ato`
+- `governance`
 - `CFACTS`
 - `NH`
 - `content`
-
-Use `engineering` for implementation, bugs, technical spikes, specs, CI,
-observability, infrastructure, and codebase work.
-
-Use `design` for design exploration, Figma/prototype work, client-facing UX
-flows, content/design research, and user-story-shaped design tasks.
-
-Use `emmy_api` for API, state integration, enrollment, bulk operation,
-Postman/sample payload, and public API work.
+- `devops`
 
 Use `needs_refinement` when the ticket is intentionally rough, has open
 questions, lacks acceptance criteria, or needs product/design/engineering
 shaping before implementation.
 
-Use state or domain labels such as `NH`, `CFACTS`, `content`, or `rhode_island`
-only when the request or source evidence names that scope.
+Use state or domain labels such as `NH`, `CFACTS`, `content`, `rhode_island`,
+`Accenture`, or `CaseworkerView` only when the request or source evidence names
+that scope.
+
+For category-specific label rules, read the matching reference from
+`category-index.md`.
 
 ## Team Field
 
@@ -98,6 +90,10 @@ Known Team values:
 Set Team only when supplied by the human, inherited from a strongly matching
 epic, or clearly inferable from similar tickets. If unsure, leave it unset and
 mention the uncertainty in the draft.
+
+Do not assume a Team from labels alone. Jira search may require numeric Team
+IDs; `Emmy DevOps Team` has appeared as `Team = 2048`, `FFS IVaaS - Platform` as
+`1226`, and `Emmy Product` as `2067`.
 
 ## Components And Versions
 
@@ -129,54 +125,31 @@ belongs under an epic, but do not guess one.
 When no epic is clearly correct, leave Epic Link unset and list candidate epics
 for the human to choose.
 
+Child tickets may inherit Team, labels, or priority from an epic only when the
+epic is clearly the right parent and matching child tickets show that pattern.
+
 ## Description Conventions
 
-Common headings:
+Use concise Jira wiki markup. Common section names include:
 
 - `Context`
-- `Acceptance Criteria`
-- `Summary`
-- `Out of scope` or `Out of Scope`
-- `Expected Behavior`
-- `Reproduction Steps`
 - `Requirements`
-- `User story`
-- `Considerations`
-- `Resources`
-- `Activities`
-
-Engineering-labeled tickets commonly use:
-
-- `Context`
-- `Acceptance Criteria`
-- `Summary`
-- `Out of scope`
 - `Task`
-- `Requirements`
-- `Expected Behavior`
-- `Reproduction Steps`
-
-Design-labeled tickets commonly use:
-
+- `Out of scope` or `Out of Scope`
+- `Acceptance Criteria` or `ACs`
 - `User story`
-- `Context`
 - `Considerations`
-- `Out of scope`
-- `Acceptance criteria`
 - `Resources`
-- `Activities`
-
-Bug tickets commonly use:
-
-- `Context`
 - `Reproduction Steps`
 - `Expected Behavior`
-- `Acceptance Criteria`
-- optional `Screenshots`
+- `Summary`
+- `Goal`
+- `Next Work`
 
-Sparse descriptions are common for API stories, epics, initiatives, and very
-small tasks. Treat missing sections as a refinement signal only when the ticket
-type and work risk call for more detail.
+Sparse descriptions are common for API stories, product stories, epics,
+initiatives, new-feature issues, and very small bugs. Treat missing sections as
+a refinement signal only when the ticket type and work risk call for more
+detail.
 
 ## Search Patterns
 
@@ -185,6 +158,8 @@ Use JQL like these before interpreting conventions or drafting:
 ```text
 project = FFS ORDER BY created DESC
 project = FFS AND text ~ "household" ORDER BY created DESC
-project = FFS AND issuetype = Epic AND status != Done ORDER BY created DESC
+project = FFS AND issuetype = Epic AND status != Done ORDER BY updated DESC
 project = FFS AND labels in (engineering) ORDER BY created DESC
+project = FFS AND labels in (emmy_ato, governance, CFACTS) ORDER BY updated DESC
+project = FFS AND summary ~ "Explore" ORDER BY created DESC
 ```

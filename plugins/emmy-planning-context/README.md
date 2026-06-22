@@ -5,26 +5,29 @@ intent layer for strategic principles, delivery goals, outcomes, and planning
 session audit entries. It includes requirements context, interpretation, and
 approval-gated requirements ingestion, plus a Jira ticketing workflow for
 drafting, interpreting, and approval-gated creation of Emmy `FFS` tickets
-according to team conventions. Requirements are part of this planning layer:
-they represent constraints, blockers, due dates, authorities, and evidence
-expectations that shape what work is ready, allowed, or blocked.
+according to team conventions. It also includes a governance follow-up ticketing
+workflow for turning governance decisions, ATO control findings, and
+implementation gaps into draft-first Jira work. Requirements are part of this
+planning layer: they represent constraints, blockers, due dates, authorities,
+and evidence expectations that shape what work is ready, allowed, or blocked.
 
 Use it alongside `emmy-knowledge-store`: this plugin answers what Emmy is trying
 to achieve, while the knowledge-store plugin answers what the team knows.
 
 ## Components
 
-| Component                     | Purpose                                                                                                | Writes?                         |
-| ----------------------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------- |
-| `emmy-planning-context`       | Loads current principles, goals, outcomes, requirements, and optional recent Planning Log context.     | No                              |
-| `emmy-requirements-context`   | Loads active planning requirements from Requirements Registry `1399165621`.                            | No                              |
-| `emmy-requirements-interpret` | Interprets requirement-like source text into candidate requirements without persistence.               | No                              |
-| `emmy-requirements-ingest`    | Drafts and, after explicit approval, writes requirements from text, local files, or Confluence pages.  | Yes, approval-gated             |
-| `emmy-planning-ingest`        | Drafts and, after explicit approval, writes principles/goals/outcomes from pasted text or local files. | Yes, approval-gated             |
-| `append-planning-log`         | Appends one approved planning-session audit entry.                                                     | Yes, approval-gated             |
-| `emmy-jira-ticketing`         | Interprets, drafts, and creates `FFS` Jira tickets following Emmy team conventions.                    | Yes, approval-gated             |
-| `emmy-planning-ingestor`      | Specialist agent wrapper for planning ingestion requests.                                              | Uses `emmy-planning-ingest`     |
-| `emmy-requirements-ingestor`  | Specialist agent wrapper for requirements ingestion requests.                                          | Uses `emmy-requirements-ingest` |
+| Component                         | Purpose                                                                                                | Writes?                         |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------- |
+| `emmy-planning-context`           | Loads current principles, goals, outcomes, requirements, and optional recent Planning Log context.     | No                              |
+| `emmy-requirements-context`       | Loads active planning requirements from Requirements Registry `1399165621`.                            | No                              |
+| `emmy-requirements-interpret`     | Interprets requirement-like source text into candidate requirements without persistence.               | No                              |
+| `emmy-requirements-ingest`        | Drafts and, after explicit approval, writes requirements from text, local files, or Confluence pages.  | Yes, approval-gated             |
+| `emmy-planning-ingest`            | Drafts and, after explicit approval, writes principles/goals/outcomes from pasted text or local files. | Yes, approval-gated             |
+| `append-planning-log`             | Appends one approved planning-session audit entry.                                                     | Yes, approval-gated             |
+| `emmy-jira-ticketing`             | Interprets, drafts, and creates `FFS` Jira tickets following Emmy team conventions.                    | Yes, approval-gated             |
+| `emmy-governance-followup-ticket` | Drafts FFS Jira follow-ups from governance decisions and ATO-impacting gaps.                           | Yes, approval-gated             |
+| `emmy-planning-ingestor`          | Specialist agent wrapper for planning ingestion requests.                                              | Uses `emmy-planning-ingest`     |
+| `emmy-requirements-ingestor`      | Specialist agent wrapper for requirements ingestion requests.                                          | Uses `emmy-requirements-ingest` |
 
 ## Runtime Requirements
 
@@ -110,11 +113,19 @@ Jira ticket interpretation:
 Use $emmy-jira-ticketing to interpret FFS-4463 in light of Emmy Jira conventions.
 ```
 
+Governance follow-up ticket drafting:
+
+```text
+Use $emmy-governance-followup-ticket to draft a Jira follow-up from this Emmy
+governance decision.
+```
+
 ## Safety Boundaries
 
 - No silent Confluence writes.
-- No Jira writes unless `emmy-jira-ticketing` drafts the final payload and the
-  human explicitly approves creation or update.
+- No Jira writes unless `emmy-jira-ticketing` or
+  `emmy-governance-followup-ticket` drafts the final payload and the human
+  explicitly approves creation or update.
 - No Jira calls from `emmy-planning-context`, `emmy-requirements-context`,
   `emmy-requirements-interpret`, `emmy-requirements-ingest`,
   `emmy-planning-ingest`, or `append-planning-log`; those workflows remain
