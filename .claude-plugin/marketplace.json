@@ -65,6 +65,34 @@
         "mcp",
         "atlassian"
       ]
+    },
+    {
+      "name": "emmy-governance-docs",
+      "source": "./plugins/emmy-governance-docs",
+      "description": "Develop, review, draft, and approval-gate Emmy governance documents using the SFIV Governance registry standard.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Emmy Development Team"
+      },
+      "category": "Productivity",
+      "tags": [
+        "emmy",
+        "governance",
+        "facilitation",
+        "concept-packets",
+        "operating-models",
+        "confluence",
+        "documentation",
+        "approval",
+        "ato",
+        "open-source",
+        "release-communications",
+        "state-communications",
+        "review",
+        "drafting",
+        "mcp",
+        "atlassian"
+      ]
     }
   ]
 }

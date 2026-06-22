@@ -1,0 +1,35 @@
+{
+  "skill_name": "emmy-governance-doc-review",
+  "evals": [
+    {
+      "id": "confluence-approval-review",
+      "prompt": "Review this Governance page for approval readiness: https://confluenceent.cms.gov/spaces/SFIV/pages/1399171121",
+      "should_trigger": true,
+      "expected_behavior": "Read the Confluence page and labels, then return a narrative approval-readiness memo without writing to Confluence."
+    },
+    {
+      "id": "pasted-doc-critique",
+      "prompt": "Assess this Emmy governance doc draft and tell me what would block approval.",
+      "should_trigger": true,
+      "expected_behavior": "Apply the governance rubric, identify fatal flaws, and recommend concrete revisions."
+    },
+    {
+      "id": "grade-wording",
+      "prompt": "Grade the Emmy Change Monitoring Process governance document for whether an assessor could verify it.",
+      "should_trigger": true,
+      "expected_behavior": "Review auditability, requirement basis, current-state accuracy, and evidence path in a narrative memo."
+    },
+    {
+      "id": "create-doc",
+      "prompt": "Create a governance document for this completed release communication process.",
+      "should_trigger": false,
+      "expected_behavior": "Use emmy-governance-doc-draft because the user wants to draft or create a document."
+    },
+    {
+      "id": "jira-ticket",
+      "prompt": "Create a Jira ticket to update the CCB governance document.",
+      "should_trigger": false,
+      "expected_behavior": "Use the Emmy Jira ticketing workflow, not governance document review."
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "name": "emmy-governance-docs",
+  "version": "0.1.0",
+  "description": "Develop, review, draft, and approval-gate Emmy governance documents using the SFIV Governance registry standard.",
+  "author": {
+    "name": "Emmy Development Team"
+  },
+  "homepage": "https://confluenceent.cms.gov/spaces/SFIV/pages/1398349788/Governance",
+  "repository": "https://github.com/DSACMS/emmy-agent-marketplace",
+  "keywords": [
+    "emmy",
+    "governance",
+    "facilitation",
+    "concept-packets",
+    "operating-models",
+    "confluence",
+    "documentation",
+    "approval",
+    "ato",
+    "open-source",
+    "release-communications",
+    "state-communications",
+    "review",
+    "drafting",
+    "mcp",
+    "atlassian"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Emmy Governance Docs",
+    "shortDescription": "Develop, review, and draft governance docs.",
+    "longDescription": "Adds Emmy-specific workflows for developing governance ideas through interactive dialog, reviewing governance documents for approval readiness, and drafting Confluence governance documents from already-developed systems, processes, policies, or operating models. Uses the SFIV Governance parent page, the governance label, targeted Knowledge Store lookup, and explicit approval gates for Confluence writes.",
+    "developerName": "Emmy Development Team",
+    "category": "Productivity",
+    "capabilities": [
+      "MCP",
+      "Confluence",
+      "Governance",
+      "Governance Development",
+      "Facilitation",
+      "Concept Packets",
+      "Document Review",
+      "Document Drafting",
+      "Approval Gates",
+      "ATO",
+      "Open Source",
+      "Release Communications",
+      "State Communications"
+    ],
+    "defaultPrompt": [
+      "Develop this governance idea.",
+      "Review this Emmy governance doc.",
+      "Draft an Emmy governance doc."
+    ]
+  }
+}
