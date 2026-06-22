@@ -1,7 +1,7 @@
 {
   "name": "emmy-planning-context",
-  "version": "0.5.0",
-  "description": "Ambient Emmy Goals Space context loading, requirements context, interpretation and ingestion, approved planning ingestion, authorized Planning Log appends, and approval-gated FFS Jira ticketing.",
+  "version": "0.6.0",
+  "description": "Ambient Emmy Goals Space context loading, requirements context, interpretation and ingestion, approved planning ingestion, authorized Planning Log appends, approval-gated FFS Jira ticketing, and governance follow-up ticket drafting.",
   "author": {
     "name": "Emmy Development Team"
   },
@@ -19,6 +19,8 @@
     "requirement-ingestion",
     "requirements-registry",
     "compliance",
+    "governance",
+    "ato",
     "outcomes",
     "planning-log",
     "jira",
@@ -33,7 +35,7 @@
   "interface": {
     "displayName": "Emmy Planning Context",
     "shortDescription": "Use Emmy goals to ground planning.",
-    "longDescription": "Adds Confluence-backed workflows for loading current Emmy strategic principles, active delivery goals, outcomes, applicable planning requirements, interpreting requirement language without writing, ingesting approved requirements from text, local files, or named Confluence sources, ingesting approved planning principles and goals from text or local files, appending approved Planning Log entries, and drafting or creating FFS Jira tickets after explicit approval.",
+    "longDescription": "Adds Confluence-backed workflows for loading current Emmy strategic principles, active delivery goals, outcomes, applicable planning requirements, interpreting requirement language without writing, ingesting approved requirements from text, local files, or named Confluence sources, ingesting approved planning principles and goals from text or local files, appending approved Planning Log entries, drafting or creating FFS Jira tickets after explicit approval, and drafting governance follow-up tickets with ATO traceability labels.",
     "developerName": "Emmy Development Team",
     "category": "Productivity",
     "capabilities": [
@@ -48,6 +50,8 @@
       "Requirement Interpretation",
       "Requirement Ingestion",
       "Compliance Requirements",
+      "Governance Follow-up",
+      "ATO Traceability",
       "Outcomes",
       "Audit Log",
       "Jira",
@@ -60,7 +64,8 @@
       "Ingest these Emmy requirements after presenting a review packet.",
       "Ingest these Emmy principles and goals.",
       "Append the approved Emmy planning log entry.",
-      "Draft an FFS Jira ticket following Emmy conventions."
+      "Draft an FFS Jira ticket following Emmy conventions.",
+      "Draft a governance follow-up Jira ticket with ATO labels."
     ]
   },
   "mcpServers": "./.mcp.json"

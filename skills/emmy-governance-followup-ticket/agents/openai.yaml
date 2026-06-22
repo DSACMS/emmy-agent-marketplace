@@ -1,0 +1,13 @@
+interface:
+  display_name: "Emmy Governance Follow-up Tickets"
+  short_description: "Draft Jira follow-ups from governance decisions."
+  default_prompt:
+    "Use $emmy-governance-followup-ticket to draft a Jira follow-up from this
+    Emmy governance decision."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "cms-atlassian-confluence"
+      description:
+        "CMS Atlassian MCP server for reading Emmy governance pages and drafting
+        approval-gated FFS Jira tickets."
