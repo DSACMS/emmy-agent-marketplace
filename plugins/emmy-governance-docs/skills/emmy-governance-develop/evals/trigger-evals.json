@@ -1,0 +1,41 @@
+{
+  "skill_name": "emmy-governance-develop",
+  "evals": [
+    {
+      "id": "state-release-communications",
+      "prompt": "Help me think through a governance doc for state release communications.",
+      "should_trigger": true,
+      "expected_behavior": "Facilitate a dialog, ask focused questions, use targeted Knowledge Store lookup if relevant, and produce a concept packet rather than a final document."
+    },
+    {
+      "id": "ccb-policy-decisions",
+      "prompt": "We need a CCB policy but I’m not sure what decisions are missing.",
+      "should_trigger": true,
+      "expected_behavior": "Identify missing decisions, separate assumptions from requirements, and develop the operating model interactively."
+    },
+    {
+      "id": "develop-before-drafting",
+      "prompt": "Develop the operating model before drafting the governance doc.",
+      "should_trigger": true,
+      "expected_behavior": "Run the upstream governance development workflow and end with a chat-only concept packet."
+    },
+    {
+      "id": "knowledge-store-context",
+      "prompt": "Pressure-test this ATO governance idea against what we already know about Emmy controls.",
+      "should_trigger": true,
+      "expected_behavior": "Use targeted Knowledge Store or Confluence reads, cite relevant findings, and surface risks or gaps."
+    },
+    {
+      "id": "draft-final-doc",
+      "prompt": "Draft the final governance document for this completed process.",
+      "should_trigger": false,
+      "expected_behavior": "Use emmy-governance-doc-draft because the user wants the final governance document."
+    },
+    {
+      "id": "review-existing-doc",
+      "prompt": "Review this existing governance document for approval readiness.",
+      "should_trigger": false,
+      "expected_behavior": "Use emmy-governance-doc-review because the user wants assessment of an existing document."
+    }
+  ]
+}

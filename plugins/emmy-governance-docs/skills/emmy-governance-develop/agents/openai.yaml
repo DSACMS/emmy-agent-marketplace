@@ -1,0 +1,13 @@
+interface:
+  display_name: "Emmy Governance Develop"
+  short_description: "Develop governance ideas interactively."
+  default_prompt:
+    "Use $emmy-governance-develop to think through this governance idea before
+    drafting."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "cms-atlassian-confluence"
+      description:
+        "CMS Confluence MCP server for targeted read-only Knowledge Store and
+        governance context lookup."

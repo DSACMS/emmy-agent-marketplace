@@ -1,0 +1,11 @@
+interface:
+  display_name: "Emmy Governance Doc Review"
+  short_description: "Assess Emmy governance documents."
+  default_prompt:
+    "Use $emmy-governance-doc-review to assess this Emmy governance document."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "cms-atlassian-confluence"
+      description:
+        "CMS Confluence MCP server for reading Emmy governance pages and labels."

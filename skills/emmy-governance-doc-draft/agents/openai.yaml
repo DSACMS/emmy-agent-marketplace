@@ -1,0 +1,13 @@
+interface:
+  display_name: "Emmy Governance Doc Draft"
+  short_description: "Draft Emmy governance documents."
+  default_prompt:
+    "Use $emmy-governance-doc-draft to draft an Emmy governance document from
+    this completed process."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "cms-atlassian-confluence"
+      description:
+        "CMS Confluence MCP server for approved governance page creation,
+        updates, labels, and post-write verification."

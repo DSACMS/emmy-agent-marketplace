@@ -24,6 +24,18 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Productivity"
+    },
+    {
+      "name": "emmy-governance-docs",
+      "source": {
+        "source": "local",
+        "path": "./plugins/emmy-governance-docs"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
     }
   ]
 }

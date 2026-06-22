@@ -1,0 +1,31 @@
+{
+  "name": "emmy-governance-docs",
+  "displayName": "Emmy Governance Docs",
+  "version": "0.1.0",
+  "description": "Develop, review, draft, and approval-gate Emmy governance documents using the SFIV Governance registry standard.",
+  "author": {
+    "name": "Emmy Development Team"
+  },
+  "homepage": "https://confluenceent.cms.gov/spaces/SFIV/pages/1398349788/Governance",
+  "repository": "https://github.com/DSACMS/emmy-agent-marketplace",
+  "keywords": [
+    "emmy",
+    "governance",
+    "facilitation",
+    "concept-packets",
+    "operating-models",
+    "confluence",
+    "documentation",
+    "approval",
+    "ato",
+    "open-source",
+    "release-communications",
+    "state-communications",
+    "review",
+    "drafting",
+    "mcp",
+    "atlassian"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json"
+}
