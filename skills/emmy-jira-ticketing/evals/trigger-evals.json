@@ -11,13 +11,43 @@
       "id": "draft-engineering-ticket",
       "prompt": "Draft an engineering Jira ticket for adding audit logging to report transmissions.",
       "should_trigger": true,
-      "expected_behavior": "Search similar FFS issues, draft a Task payload with engineering conventions, and avoid creating it without approval."
+      "expected_behavior": "Read the global conventions plus engineering category reference, search similar FFS issues, draft a Task payload with engineering conventions, and avoid creating it without approval."
     },
     {
       "id": "draft-design-ticket",
       "prompt": "Turn these research notes into a design ticket for helping clients understand what documents they need before starting Emmy.",
       "should_trigger": true,
-      "expected_behavior": "Draft a design-labeled FFS ticket using user story, context, considerations, out-of-scope, and acceptance criteria sections."
+      "expected_behavior": "Read the design/content category reference and draft a design-labeled FFS ticket using user story, context, considerations, out-of-scope, and acceptance criteria sections."
+    },
+    {
+      "id": "draft-product-process-story",
+      "prompt": "Draft a product Jira story for coordinating state approval of Emmy's pilot-ready scope messaging.",
+      "should_trigger": true,
+      "expected_behavior": "Read the product/process category reference, consider Emmy Product and Story conventions, and draft a sparse but concrete story payload without creating it."
+    },
+    {
+      "id": "draft-api-ticket",
+      "prompt": "Create a draft FFS ticket for adding a state hub callback URL to the Emmy API contract.",
+      "should_trigger": true,
+      "expected_behavior": "Read the API/state integration category reference, use emmy_api conventions, and ask for approval before any Jira write."
+    },
+    {
+      "id": "draft-bug-ticket",
+      "prompt": "Draft a bug for sessions not timing out correctly in Emmy.",
+      "should_trigger": true,
+      "expected_behavior": "Read the bug category reference, use Bug issue type and engineering conventions, and avoid inventing reproduction steps when the source is sparse."
+    },
+    {
+      "id": "draft-spike-ticket",
+      "prompt": "Draft a Spike ticket to research options for automated dependency remediation.",
+      "should_trigger": true,
+      "expected_behavior": "Read the spike/tech spec category reference, use a spike-style summary and acceptance criteria for a recommendation or follow-up tickets."
+    },
+    {
+      "id": "draft-ato-non-governance-ticket",
+      "prompt": "Draft an engineering ticket for enabling deploy evidence collection for ATO readiness.",
+      "should_trigger": true,
+      "expected_behavior": "Read engineering and ATO traceability references, combine routing labels with emmy_ato labels, and avoid creating the issue without approval."
     },
     {
       "id": "approval-gated-create",

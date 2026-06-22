@@ -33,10 +33,14 @@ wait for explicit approval before any Jira write.
 
 - Read `../emmy-jira-ticketing/references/ffs-ticket-conventions.md` before
   selecting issue type, labels, priority, Team, Epic Link, or components.
+- Read `../emmy-jira-ticketing/references/category-index.md` before drafting,
+  then load the matching category reference files for the concrete work.
+- Read `../emmy-jira-ticketing/references/ato-traceability.md` before selecting
+  ATO, CFACTS, control-family, or control-ID labels.
 - Read `../emmy-jira-ticketing/references/jira-description-templates.md` before
   drafting Jira wiki markup.
-- Read `references/governance-followup-ticket-patterns.md` before selecting ATO
-  traceability labels or classifying governance follow-up work.
+- Read `references/governance-followup-ticket-patterns.md` before classifying
+  governance follow-up work or using governance-specific examples.
 - If the source depends on product, architecture, ATO, or prior decision context
   that is not in the governance page or Jira, use the Emmy Knowledge Store skill
   for a narrow read-only lookup.
@@ -73,8 +77,8 @@ wait for explicit approval before any Jira write.
    - Summary
    - Jira wiki description
    - Priority
-   - Labels, including both work-routing and ATO traceability labels when
-     applicable
+   - Labels, using the shared ATO traceability reference plus category routing
+     labels when applicable
    - Team, or `unset`
    - Epic Link, or `unset` with candidate epics if found
    - Components and fix versions, or `unset`
@@ -86,27 +90,14 @@ wait for explicit approval before any Jira write.
 
 ## Label Rules
 
-Preserve normal team-routing labels and add ATO traceability labels when the
-work may affect ATO compliance.
+Use `../emmy-jira-ticketing/references/ato-traceability.md` for generic ATO
+labeling conventions. This governance workflow adds one extra rule: include
+`governance` when the work is directly caused by, or closes a gap in, an Emmy
+governance document or governance decision.
 
-- Use `engineering` for implementation, repository configuration, CI,
-  observability, infrastructure, automation, or codebase work.
-- Use `needs_refinement` when the work is intentionally rough, needs team
-  shaping, or is being placed into the engineering refinement backlog.
-- Use `governance` when the work is directly caused by, or closes a gap in, an
-  Emmy governance document or governance decision.
-- Use `emmy_ato` when the work could affect ATO compliance, control evidence,
-  control implementation, CFACTS traceability, or an ATO-driven governance
-  commitment.
-- Also add the control family label and control ID label when a control is
-  known. Follow the `FFS-4339` pattern: `CFACTS`, `cm`, `cm-01a`, `emmy_ato`,
-  `engineering`, and `governance`.
-- Add `CFACTS` when the source or acceptance criteria mention CFACTS, ARS
-  implementation statements, control evidence, or control traceability.
-
-Do not replace the ordinary routing labels with ATO labels. A CODEOWNERS fix
-driven by the PR Review Process, for example, should keep engineering visibility
-and also carry CM-01a traceability.
+Do not replace ordinary routing labels with governance or ATO labels. A
+CODEOWNERS fix driven by the PR Review Process, for example, should keep
+engineering visibility and also carry CM-01a traceability.
 
 ## Drafting Guidance
 
