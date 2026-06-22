@@ -1,0 +1,35 @@
+{
+  "skill_name": "emmy-governance-doc-draft",
+  "evals": [
+    {
+      "id": "draft-from-developed-process",
+      "prompt": "Create a governance doc from this already-developed change monitoring process.",
+      "should_trigger": true,
+      "expected_behavior": "Check required inputs, draft a preview using the Emmy governance structure, and require explicit approval before creating Confluence content."
+    },
+    {
+      "id": "missing-approver",
+      "prompt": "Draft a governance document for a process, but the approver is missing.",
+      "should_trigger": true,
+      "expected_behavior": "Pause and ask for the missing single approver role before drafting."
+    },
+    {
+      "id": "publish-request",
+      "prompt": "Publish this approved Emmy governance document under the Governance page.",
+      "should_trigger": true,
+      "expected_behavior": "Show the final preview and ask for explicit approval before creating or updating Confluence, then apply the governance label and verify."
+    },
+    {
+      "id": "underlying-plan",
+      "prompt": "Help me figure out what the change control process should be and then write the governance doc.",
+      "should_trigger": false,
+      "expected_behavior": "Use emmy-governance-develop first because the underlying governance idea is not already developed."
+    },
+    {
+      "id": "review-existing",
+      "prompt": "Review the Emmy PR Review Process governance page for approval blockers.",
+      "should_trigger": false,
+      "expected_behavior": "Use emmy-governance-doc-review because the user wants assessment, not drafting."
+    }
+  ]
+}

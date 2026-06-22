@@ -23,8 +23,10 @@ operating model.
 - `skills/emmy-governance-doc-draft/` drafts or creates governance documents
   after an explicit Confluence write approval.
 
-The skill directories under this plugin are relative symlinks to the canonical
-top-level `skills/` components.
+The skill directories under this plugin are runtime copies of the canonical
+top-level `skills/` components. Keep the copies aligned when changing shared
+skill behavior so local marketplace installs continue to include the bundled
+skills.
 
 ## Runtime Requirements
 
