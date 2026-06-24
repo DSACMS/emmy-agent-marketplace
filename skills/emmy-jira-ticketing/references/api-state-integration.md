@@ -10,8 +10,6 @@ operation, sample payload, partner system, state hub, or public API work.
   launch, or blocked integration justifies it.
 - Labels: use `emmy_api`. Add state or partner labels such as `rhode_island`,
   `NH`, or `Accenture` only when named by the source.
-- Team: often unset; sometimes `Emmy Product` for product-owned API needs. Do
-  not infer Team from `emmy_api` alone.
 - Epic Link: often unset unless a matching API/state epic is clear.
 
 ## Description Shape

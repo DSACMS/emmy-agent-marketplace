@@ -35,7 +35,7 @@
       "id": "draft-product-process-story",
       "prompt": "Draft a product Jira story for coordinating state approval of Emmy's pilot-ready scope messaging.",
       "should_trigger": true,
-      "expected_behavior": "Read the product/process category reference, consider Emmy Product and Story conventions, and draft a sparse but concrete story payload without creating it."
+      "expected_behavior": "Read the product/process category reference, consider Story conventions, and draft a sparse but concrete story payload without creating it."
     },
     {
       "id": "draft-api-ticket",

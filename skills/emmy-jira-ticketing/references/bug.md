@@ -11,8 +11,6 @@ incidents, or clear expected-vs-actual work.
   is explicit.
 - Labels: usually `engineering`; add domain labels when source evidence names
   them.
-- Team: often unset or `FFS IVaaS - Platform`; set it only when supplied or
-  strongly supported by nearby tickets.
 - Epic Link: use only when the bug clearly belongs to a matching epic.
 
 ## Description Shape
@@ -31,7 +29,6 @@ investigation part of the task rather than inventing steps.
 
 ## Examples From Jira Scan
 
-- `FFS-4474`: session timeout bug, `engineering`, platform Team, sparse
-  description.
+- `FFS-4474`: session timeout bug, `engineering`, sparse description.
 - `FFS-4459`: routing bug, `engineering`, linked to an epic.
-- `FFS-4452`: schema discrepancy bug, `engineering`, platform Team and epic.
+- `FFS-4452`: schema discrepancy bug, `engineering`, linked to an epic.

@@ -16,7 +16,6 @@ Useful custom fields:
 
 - Epic Link: `customfield_10100`
 - Epic Name: `customfield_10102`
-- Team: `customfield_11002`
 - Story point estimate: `customfield_19460`
 - Definition of Ready: `customfield_13901`
 - Sprint: `customfield_10104`
@@ -64,7 +63,6 @@ Common labels:
 - `CFACTS`
 - `NH`
 - `content`
-- `devops`
 
 Do not use the deprecated `needs_refinement` label. When a ticket is rough, has
 open questions, lacks acceptance criteria, or needs product, design, or
@@ -91,24 +89,6 @@ Show this in drafts as `Refinement sprint: Ready for Refinement (46737)` when
 the ticket needs refinement. This is a Jira write action, not a label. Create or
 update the issue first, then call `jira_add_issues_to_sprint` only after the
 human explicitly approves both the issue payload and the sprint placement.
-
-## Team Field
-
-Known Team values:
-
-- `Emmy DevOps Team`
-- `FFS IVaaS - State Engagement`
-- `FFS IVaaS - Platform`
-- `Emmy Data Team`
-- `Emmy Product`
-
-Set Team only when supplied by the human, inherited from a strongly matching
-epic, or clearly inferable from similar tickets. If unsure, leave it unset and
-mention the uncertainty in the draft.
-
-Do not assume a Team from labels alone. Jira search may require numeric Team
-IDs; `Emmy DevOps Team` has appeared as `Team = 2048`, `FFS IVaaS - Platform` as
-`1226`, and `Emmy Product` as `2067`.
 
 ## Components And Versions
 
@@ -140,8 +120,8 @@ belongs under an epic, but do not guess one.
 When no epic is clearly correct, leave Epic Link unset and list candidate epics
 for the human to choose.
 
-Child tickets may inherit Team, labels, or priority from an epic only when the
-epic is clearly the right parent and matching child tickets show that pattern.
+Child tickets may inherit labels or priority from an epic only when the epic is
+clearly the right parent and matching child tickets show that pattern.
 
 ## Description Conventions
 

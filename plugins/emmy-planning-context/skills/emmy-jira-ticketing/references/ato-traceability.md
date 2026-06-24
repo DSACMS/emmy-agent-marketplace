@@ -43,9 +43,6 @@ lowercase label in draft notes and ask the human to confirm.
 - Priority: `Low` unless deadline, audit, authorization, security, or launch
   pressure is explicit.
 - Labels: combine work-routing labels with ATO labels.
-- Team: often `Emmy DevOps Team` for CFACTS/control work, but set it only when
-  supplied, inherited from a strongly matching epic, or supported by nearby
-  tickets.
 - Candidate epic: CFACTS Controls Phase 2 (`FFS-4234`) for Phase 2 CFACTS
   control work.
 
@@ -69,4 +66,4 @@ the work and link to the source.
   `emmy_ato`, `engineering`, `governance`.
 - `FFS-4503`: CM-09 configuration management plan with `cm`, `cm-09`,
   `emmy_ato`, `engineering`, `plan`, and CFACTS Phase 2 epic.
-- `FFS-4483`: deploy action with `devops`, `emmy_ato`, and `engineering`.
+- `FFS-4483`: deploy action with `emmy_ato` and `engineering`.

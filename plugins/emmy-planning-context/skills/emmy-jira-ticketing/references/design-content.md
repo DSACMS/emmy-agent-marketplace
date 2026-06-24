@@ -12,7 +12,6 @@ design tasks.
 - Labels: use `design`; add `content` when copy/content strategy is central.
 - Refinement sprint: propose `Ready for Refinement (46737)` for exploratory work
   or tickets intentionally entering refinement.
-- Team: leave unset unless supplied or strongly supported by nearby tickets.
 - Epic Link: use a clear design/product epic when matching tickets support it;
   otherwise list candidates.
 

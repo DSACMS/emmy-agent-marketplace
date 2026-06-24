@@ -13,7 +13,7 @@ recommendations, options analysis, or exploratory planning work.
 - Labels: use the domain label, such as `engineering`, `design`, or `emmy_api`;
 - Refinement sprint: propose `Ready for Refinement (46737)` when the work is
   intentionally rough.
-- Team and epic: set only when supplied or strongly supported by nearby tickets.
+- Epic Link: set only when supplied or strongly supported by nearby tickets.
 
 ## Description Shape
 
@@ -34,4 +34,4 @@ ticket list. Implementation of the chosen solution is usually out of scope.
 - `FFS-4437`: `Tech Spec:` story for Plaid integration investigation,
   `engineering`.
 - `FFS-4401`: `Discovery:` product/API integration exploration sprint plan, high
-  priority, Team `Emmy Product`.
+  priority.

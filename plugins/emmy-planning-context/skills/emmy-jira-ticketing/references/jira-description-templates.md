@@ -177,8 +177,7 @@ Use `Implementation Direction` instead of `Requirements` when the ticket should
 name a likely technical path but still leave implementation details to the
 engineer.
 
-See `engineering-implementation.md` and `devops-platform.md` for field and label
-conventions.
+See `engineering-implementation.md` for field and label conventions.
 
 ### Engineering Spike Or Tech Spec
 
@@ -293,7 +292,6 @@ Before asking for approval, show:
 - Priority
 - Labels
 - Refinement sprint, or `unset`
-- Team, or `unset`
 - Epic Link, or `unset` with candidate epics if found
 - Components and fix versions, or `unset`
 - Full Jira wiki description
