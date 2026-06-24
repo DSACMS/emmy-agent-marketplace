@@ -9,7 +9,8 @@ model, automation, or implementation work.
   work is product/API-facing.
 - Priority: usually `Low`; use `Medium` or `High` for deadline, migration,
   pilot, production, security, or coordination pressure.
-- Labels: include `engineering`; include `needs_refinement` when scope is rough
+- Labels: include `engineering`.
+- Refinement sprint: propose `Ready for Refinement (46737)` when scope is rough
   or the work belongs in engineering refinement.
 - Team: leave unset unless supplied, inherited from a clearly matching epic, or
   strongly supported by similar tickets. Platform work often uses
@@ -30,9 +31,10 @@ while still leaving design details to the engineer.
 
 ## Examples From Jira Scan
 
-- `FFS-4485`: engineering task with `engineering`, `needs_refinement`, platform
-  Team, medium priority, and concise Context/Acceptance Criteria.
+- `FFS-4485`: engineering task with `engineering`, platform Team, medium
+  priority, and concise Context/Acceptance Criteria.
 - `FFS-4501`: engineering task with only `engineering`, low priority, and sparse
   field usage.
-- `FFS-4486`: engineering refinement task with `engineering`,
-  `needs_refinement`, low priority, and no forced team/epic.
+- `FFS-4486`: engineering refinement task with `engineering`, low priority, and
+  no forced team/epic. New rough drafts should use `Ready for Refinement`
+  instead of a refinement label.

@@ -79,12 +79,14 @@ wait for explicit approval before any Jira write.
    - Priority
    - Labels, using the shared ATO traceability reference plus category routing
      labels when applicable
+   - Refinement sprint, or `unset`
    - Team, or `unset`
    - Epic Link, or `unset` with candidate epics if found
    - Components and fix versions, or `unset`
 6. Present the draft and ask for explicit approval before calling
    `jira_create_issue`, `jira_update_issue`, `jira_create_remote_issue_link`,
-   `jira_create_issue_link`, or any other Jira write tool.
+   `jira_add_issues_to_sprint`, `jira_create_issue_link`, or any other Jira
+   write tool.
 7. If the human approves creation or update, perform only the approved Jira
    write, then re-read the issue and report the key and URL.
 
@@ -114,6 +116,8 @@ engineering visibility and also carry CM-01a traceability.
   Team unset and mention the candidate owner in the draft notes.
 - Do not set story points, Definition of Ready, components, or fix versions
   unless the human supplied them or nearby matching work strongly supports them.
+- Do not add an issue to `Ready for Refinement` without explicit approval for
+  that sprint placement.
 
 ## Write Safety
 

@@ -84,6 +84,7 @@ conventions, not Jira platform rules.
    - Jira wiki description
    - priority
    - labels
+   - refinement sprint, or `unset`
    - optional team
    - optional epic link
    - optional components or fix versions only when clearly requested
@@ -91,10 +92,13 @@ conventions, not Jira platform rules.
      Space planning context that includes requirements
 4. Present the draft and ask for explicit approval before calling
    `jira_create_issue`, `jira_update_issue`, `jira_link_to_epic`,
-   `jira_create_issue_link`, or any other Jira write tool.
+   `jira_add_issues_to_sprint`, `jira_create_issue_link`, or any other Jira
+   write tool.
 5. If the human approves creation, create the issue, then re-read it with
    `jira_get_issue`.
-6. Report the created key and URL.
+6. If the approved payload includes `Ready for Refinement`, add the created or
+   updated issue to sprint `46737` only after an issue key exists.
+7. Report the created key and URL.
 
 When planning context was loaded before ticket drafting, preserve its
 requirement findings in the ticket draft. Include active requirement IDs,
@@ -113,6 +117,8 @@ claiming no requirements apply.
   human which reporter or current user to use.
 - Do not set story points, Definition of Ready, components, fix versions, or
   team unless the human supplied them or the evidence is strong.
+- Do not add an issue to `Ready for Refinement` without explicit approval for
+  that sprint placement.
 - Do not create live test tickets unless the human separately approves that
   specific test.
 

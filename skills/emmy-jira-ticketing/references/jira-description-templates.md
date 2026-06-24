@@ -7,9 +7,155 @@ Before using a template, read `category-index.md` and the relevant category
 reference. Category references define when a template should be sparse,
 expanded, or adjusted to match recent team practice.
 
-## Engineering Task
+## Official Template Source
+
+The base description shapes come from the SFIV Confluence page
+`Ticket Templates`, page ID `1198533169`, observed at version `7`:
+`https://confluenceent.cms.gov/pages/viewpage.action?pageId=1198533169`.
+
+Use the Confluence template headings as the base structure. Category-specific
+guidance may add sections, but should not fight the official headings. Do not
+copy Confluence placeholders such as `<Your AC here>` or parenthetical
+instructions into real drafts.
+
+## Official Template Shapes
+
+Use these shapes when the issue type or source context maps directly to the
+Confluence templates.
+
+### Task
 
 ```text
+h2. Summary
+[One sentence that describes the work.]
+
+h2. Context
+[Why this work is needed. Include links to source tickets, PRs, Figma,
+Confluence, Slack, logs, or incidents when relevant.]
+
+h2. Acceptance Criteria
+* [Observable condition for completion]
+* Any string changes are translated, when applicable.
+* Any new or changed events are updated on the CBV Events Confluence page, when
+  applicable.
+* Acceptance testing has been performed by a non-technical team member, when
+  applicable.
+```
+
+### Task (Emmy MVP)
+
+```text
+h2. Summary
+[One sentence that describes the work.]
+
+h2. Context
+Link to designs: [Figma link, when applicable.]
+
+* [Item to implement]
+* [Item to implement]
+
+h2. Out of scope
+* [Explicit non-goal]
+
+h2. Acceptance Criteria
+* [Acceptance criterion]
+* Work meets MVP guidelines
+** Content must be tokenized, but Spanish translations ARE NOT required.
+** Only tokenized link flows must be considered. Generic links flows are NOT in
+   scope; they will be added later.
+** Activity flow data stored in our data model does not need to be represented
+   in the PDF or JSON API; it will be added later.
+** No events need to be added to Mixpanel. They will be added later.
+* Acceptance testing has been performed by *design and product*.
+```
+
+### Bug
+
+```text
+h2. Reproduction Steps
+# [Step one]
+# [Step two]
+# [Observed failure]
+
+h2. Expected Behavior
+[What should happen instead.]
+
+h2. Screenshots
+[Attach or link screenshots when useful, otherwise omit this section.]
+
+h2. Acceptance Criteria
+* [Bug is fixed]
+* Any string changes are translated, when applicable.
+* Any new or changed events are updated on the CBV Events Confluence page, when
+  applicable.
+* Acceptance testing has been performed by a non-technical team member, when
+  applicable.
+```
+
+### Bug (Emmy MVP)
+
+```text
+h2. Reproduction Steps
+# [Step one]
+# [Step two]
+# [Observed failure]
+
+h2. Expected Behavior
+[What should happen instead.]
+
+h2. Screenshots
+[Attach or link screenshots when useful, otherwise omit this section.]
+
+h2. Acceptance Criteria
+* [Bug is fixed]
+* Work meets MVP guidelines
+** Content must be tokenized, but Spanish translations ARE NOT required.
+** Only tokenized link flows must be considered. Generic links flows are NOT in
+   scope; they will be added later.
+** Activity flow data stored in our data model does not need to be represented
+   in the PDF or JSON API; it will be added later.
+** No events need to be added to Mixpanel. They will be added later.
+* Acceptance testing has been performed by *design and product*.
+```
+
+### Epic
+
+When creating an epic, set `customfield_10102` (`Epic Name`). The Epic Name can
+be shorter than the summary when the summary includes a program prefix.
+
+```text
+h2. Summary
+[Short description of the body of work and why it matters.]
+
+h3. Responsible Designer
+[Name or unset.]
+
+h3. Responsible Engineer
+[Name or unset.]
+
+h2. Context
+[Why this body of work exists.]
+
+h2. Documentation
+
+h3. Requirements Documentation
+* [Link or unset.]
+
+h3. Finished Designs
+* [Link or unset.]
+```
+
+## Category Templates
+
+Use these when category-specific guidance calls for additional structure beyond
+the official template shape.
+
+### Engineering Task
+
+```text
+h2. Summary
+[One sentence that describes the work.]
+
 h2. Context
 [Why this work is needed. Include links to source tickets, PRs, Figma,
 Confluence, Slack, logs, or incidents when relevant.]
@@ -34,9 +180,12 @@ engineer.
 See `engineering-implementation.md` and `devops-platform.md` for field and label
 conventions.
 
-## Engineering Spike Or Tech Spec
+### Engineering Spike Or Tech Spec
 
 ```text
+h2. Summary
+[One sentence that describes the investigation.]
+
 h2. Context
 [Decision, uncertainty, or technical problem to investigate.]
 
@@ -58,9 +207,12 @@ that pattern for similar work.
 See `spike-tech-spec.md` before deciding whether implementation belongs out of
 scope.
 
-## Design Task
+### Design Task
 
 ```text
+h2. Summary
+[One sentence that describes the design or content work.]
+
 h2. User story
 As a [client/user/team member], I want [capability or understanding], so that
 [outcome].
@@ -75,7 +227,7 @@ h2. Considerations
 h2. Out of scope
 * [Explicit non-goal]
 
-h2. Acceptance criteria
+h2. Acceptance Criteria
 * [Design artifact, prototype, or decision exists]
 * [Relevant product/design review completed]
 
@@ -89,37 +241,12 @@ design activities.
 See `design-content.md` for discovery/content variants and acceptance criteria
 style.
 
-## Bug
+### API Story
 
 ```text
-h2. Context
-[What is broken, who it affects, and how it was discovered.]
+h2. Summary
+[One sentence that describes the API or state-integration work.]
 
-h2. Reproduction Steps
-# [Step one]
-# [Step two]
-# [Observed failure]
-
-h2. Expected Behavior
-[What should happen instead.]
-
-h2. Acceptance Criteria
-* [Bug is fixed]
-* [Regression coverage or manual acceptance is completed]
-
-h2. Screenshots
-[Attach or link screenshots when useful, otherwise omit this section.]
-```
-
-If the source has actual SQL, logs, or stack traces, include a short excerpt or
-link rather than burying the ticket in raw output.
-
-See `bug.md` before requiring reproduction steps; existing bugs can be sparse
-when source evidence is thin.
-
-## API Story
-
-```text
 h2. Context
 [State, partner, or API consumer need.]
 
@@ -140,27 +267,6 @@ Use label `emmy_api` when the work is API-facing. Add `engineering` only when
 nearby similar tickets use both labels or the human asks for it.
 
 See `api-state-integration.md`; sparse API stories are common.
-
-## Epic
-
-When creating an epic, set `customfield_10102` (`Epic Name`). The Epic Name can
-be shorter than the summary when the summary includes a program prefix.
-
-```text
-h2. Summary
-[Short description of the body of work and why it matters.]
-
-h2. Goal
-* [Outcome the grouped work should achieve]
-
-h2. Next Work
-* [Known child-ticket area]
-* [Known child-ticket area]
-```
-
-Keep epics concise. Detailed implementation usually belongs in child tickets.
-
-See `epic-initiative.md` for Epic Name and inheritance rules.
 
 ## Initiative
 
@@ -186,12 +292,21 @@ Before asking for approval, show:
 - Summary
 - Priority
 - Labels
+- Refinement sprint, or `unset`
 - Team, or `unset`
 - Epic Link, or `unset` with candidate epics if found
 - Components and fix versions, or `unset`
 - Full Jira wiki description
 
-Ask for approval with a concrete sentence such as:
+When `Ready for Refinement` is proposed, ask for approval with a concrete
+sentence such as:
+
+```text
+Do you approve creating this FFS Jira ticket with the payload above and adding
+it to Ready for Refinement (46737) after creation?
+```
+
+When no sprint placement is proposed, ask:
 
 ```text
 Do you approve creating this FFS Jira ticket with the payload above?

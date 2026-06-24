@@ -65,8 +65,9 @@ Suggested fields:
 - Issue type: `Task`
 - Summary shape: `CM-01a: Fix CODEOWNERS for PR review governance`
 - Priority: `Low` unless deadline, audit, or security pressure is explicit
-- Labels: `engineering`, `needs_refinement`, `governance`, `emmy_ato`, `CFACTS`,
-  `cm`, `cm-01a`
+- Labels: `engineering`, `governance`, `emmy_ato`, `CFACTS`, `cm`, `cm-01a`
+- Refinement sprint: `Ready for Refinement (46737)` when the follow-up still
+  needs engineering shaping
 - Team: `Emmy DevOps Team` only if the human wants that set or source evidence
   and nearby tickets strongly support it
 - Category references: `engineering-implementation.md`, `ato-traceability.md`,

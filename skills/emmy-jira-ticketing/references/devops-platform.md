@@ -9,8 +9,9 @@ Terraform, runbook, observability, or operational-readiness work.
 - Priority: `Low` by default; `High` is common when migration, deploy readiness,
   CMS Cloud, or launch pressure is explicit.
 - Labels: include `engineering`; add `devops` when matching tickets use it or
-  the work is explicitly DevOps/platform automation; add `needs_refinement` when
-  the ticket is intentionally broad.
+  the work is explicitly DevOps/platform automation.
+- Refinement sprint: propose `Ready for Refinement (46737)` when the ticket is
+  intentionally broad.
 - Add `emmy_ato` only when the work affects ATO evidence, control operations,
   deployment governance, CFACTS traceability, or assessment readiness.
 - Team: often `Emmy DevOps Team` or `FFS IVaaS - Platform`, but set it only when
@@ -33,8 +34,8 @@ documented runbook, or linked evidence artifact.
 
 ## Examples From Jira Scan
 
-- `FFS-4483`: CMS Cloud deploy action, `devops`, `engineering`,
-  `needs_refinement`, `emmy_ato`, high priority, Deployment Management epic.
-- `FFS-4484`: CMS Cloud migration action, `devops`, `engineering`,
-  `needs_refinement`, high priority.
+- `FFS-4483`: CMS Cloud deploy action, `devops`, `engineering`, `emmy_ato`, high
+  priority, Deployment Management epic.
+- `FFS-4484`: CMS Cloud migration action, `devops`, `engineering`, high
+  priority.
 - `FFS-4140`: Terraform Atlantis, `emmy_ato`, `engineering`, Emmy DevOps Team.

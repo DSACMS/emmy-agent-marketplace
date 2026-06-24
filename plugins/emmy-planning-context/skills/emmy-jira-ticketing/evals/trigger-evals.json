@@ -14,6 +14,18 @@
       "expected_behavior": "Read the global conventions plus engineering category reference, search similar FFS issues, draft a Task payload with engineering conventions, and avoid creating it without approval."
     },
     {
+      "id": "rough-engineering-refinement-sprint",
+      "prompt": "Draft a rough engineering Jira ticket for figuring out how report transmission audit logging should work.",
+      "should_trigger": true,
+      "expected_behavior": "Draft a Task payload with the engineering label, show Refinement sprint: Ready for Refinement (46737), forbid the deprecated refinement label, and ask approval before creating or adding the issue to the sprint."
+    },
+    {
+      "id": "confluence-template-source",
+      "prompt": "Draft FFS Task, Bug, and Epic ticket payloads from these notes using the team's ticket templates.",
+      "should_trigger": true,
+      "expected_behavior": "Use the SFIV Ticket Templates page 1198533169 as the description source, keep the official Task/Bug/Epic headings, omit placeholder text, and adapt category-specific sections only when needed."
+    },
+    {
       "id": "draft-design-ticket",
       "prompt": "Turn these research notes into a design ticket for helping clients understand what documents they need before starting Emmy.",
       "should_trigger": true,

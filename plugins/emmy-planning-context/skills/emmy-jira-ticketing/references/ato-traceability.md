@@ -7,8 +7,7 @@ operations, or an ATO-driven governance commitment.
 ## Label Convention
 
 Preserve ordinary work-routing labels and add ATO traceability labels. Do not
-replace `engineering`, `design`, `emmy_api`, or `needs_refinement` with ATO
-labels.
+replace `engineering`, `design`, or `emmy_api` with ATO labels.
 
 Use this pattern when a control is known:
 
@@ -30,8 +29,8 @@ engineering
 governance
 ```
 
-`FFS-4511` added `needs_refinement` to that set for an intentionally rough
-engineering follow-up.
+For intentionally rough ATO follow-ups, keep the routing and traceability
+labels, then propose `Ready for Refinement (46737)` as the refinement signal.
 
 If a control ID uses parentheses or enhancement notation, search Jira for an
 existing label precedent first. If no precedent exists, propose a normalized
@@ -70,5 +69,4 @@ the work and link to the source.
   `emmy_ato`, `engineering`, `governance`.
 - `FFS-4503`: CM-09 configuration management plan with `cm`, `cm-09`,
   `emmy_ato`, `engineering`, `plan`, and CFACTS Phase 2 epic.
-- `FFS-4483`: deploy action with `devops`, `emmy_ato`, `engineering`,
-  `needs_refinement`.
+- `FFS-4483`: deploy action with `devops`, `emmy_ato`, and `engineering`.
