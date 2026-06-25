@@ -291,13 +291,14 @@ Before asking for approval, show:
 - Summary
 - Priority
 - Labels
-- Refinement sprint, or `unset`
+- Refinement sprint, or `unset` when the ticket is still being drafted or
+  iterated on
 - Epic Link, or `unset` with candidate epics if found
 - Components and fix versions, or `unset`
 - Full Jira wiki description
 
-When `Ready for Refinement` is proposed, ask for approval with a concrete
-sentence such as:
+When `Ready for Refinement` is proposed for a written ticket that is ready for
+team scoping, ask for approval with a concrete sentence such as:
 
 ```text
 Do you approve creating this FFS Jira ticket with the payload above and adding

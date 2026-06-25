@@ -14,10 +14,10 @@
       "expected_behavior": "Read the global conventions plus engineering category reference, search similar FFS issues, draft a Task payload with engineering conventions, and avoid creating it without approval."
     },
     {
-      "id": "rough-engineering-refinement-sprint",
-      "prompt": "Draft a rough engineering Jira ticket for figuring out how report transmission audit logging should work.",
+      "id": "scoping-ready-engineering-sprint",
+      "prompt": "Draft a complete engineering Jira ticket for report transmission audit logging that is ready for the team to scope.",
       "should_trigger": true,
-      "expected_behavior": "Draft a Task payload with the engineering label, show Refinement sprint: Ready for Refinement (46737), forbid the deprecated refinement label, and ask approval before creating or adding the issue to the sprint."
+      "expected_behavior": "Draft a Task payload with the engineering label, show Refinement sprint: Ready for Refinement (46737) only because the final written ticket is ready for team scoping, forbid the deprecated refinement label, and ask approval before creating or adding the issue to the sprint."
     },
     {
       "id": "confluence-template-source",

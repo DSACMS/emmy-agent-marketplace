@@ -10,8 +10,9 @@ design tasks.
 - Priority: `Low` by default; recent discovery/design tickets are often `High`
   when they support urgent product direction or pilot readiness.
 - Labels: use `design`; add `content` when copy/content strategy is central.
-- Refinement sprint: propose `Ready for Refinement (46737)` for exploratory work
-  or tickets intentionally entering refinement.
+- Refinement sprint: propose `Ready for Refinement (46737)` only when the ticket
+  has been written and is ready for team scoping. Leave it unset for early
+  discovery drafts or tickets still being iterated on.
 - Epic Link: use a clear design/product epic when matching tickets support it;
   otherwise list candidates.
 

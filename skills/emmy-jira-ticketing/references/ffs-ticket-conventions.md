@@ -64,10 +64,8 @@ Common labels:
 - `NH`
 - `content`
 
-Do not use the deprecated `needs_refinement` label. When a ticket is rough, has
-open questions, lacks acceptance criteria, or needs product, design, or
-engineering shaping before implementation, propose the `Ready for Refinement`
-sprint instead.
+Do not use the deprecated `needs_refinement` label. Do not replace it with a
+sprint while the ticket is still being drafted or iterated on.
 
 Use state or domain labels such as `NH`, `CFACTS`, `content`, `rhode_island`,
 `Accenture`, or `CaseworkerView` only when the request or source evidence names
@@ -76,19 +74,29 @@ that scope.
 For category-specific label rules, read the matching reference from
 `category-index.md`.
 
-## Refinement Sprint
+## Ready For Refinement Sprint
 
-Use `Ready for Refinement` as the refinement signal for rough tickets.
+Use `Ready for Refinement` for tickets that have been written and are ready for
+the team to scope the work.
 
 - Board: `5957`
 - Sprint name: `Ready for Refinement`
 - Sprint ID: `46737`
 - Sprint field: `customfield_10104`
 
-Show this in drafts as `Refinement sprint: Ready for Refinement (46737)` when
-the ticket needs refinement. This is a Jira write action, not a label. Create or
-update the issue first, then call `jira_add_issues_to_sprint` only after the
-human explicitly approves both the issue payload and the sprint placement.
+Show this in proposed payloads as
+`Refinement sprint: Ready for Refinement (46737)` when the approved issue will
+be ready for team scoping after creation or update. This is a Jira write action,
+not a label. Create or update the issue first, then call
+`jira_add_issues_to_sprint` only after the human explicitly approves both the
+issue payload and the sprint placement.
+
+Leave the refinement sprint unset when:
+
+- the ticket is still a draft
+- the human is still iterating on the ticket wording
+- the agent is still gathering source context, acceptance criteria, or scope
+- the ticket is not yet written enough for the team to scope
 
 ## Components And Versions
 
@@ -142,9 +150,9 @@ Use concise Jira wiki markup. Common section names include:
 - `Next Work`
 
 Sparse descriptions are common for API stories, product stories, epics,
-initiatives, new-feature issues, and very small bugs. Treat missing sections as
-a reason to propose `Ready for Refinement` only when the ticket type and work
-risk call for more detail.
+initiatives, new-feature issues, and very small bugs. Missing sections are not
+by themselves a reason to propose `Ready for Refinement`; leave the sprint unset
+until the ticket is written enough for team scoping.
 
 ## Search Patterns
 

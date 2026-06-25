@@ -5,7 +5,7 @@
       "id": "governance-codeowners-followup",
       "prompt": "Draft a Jira ticket to fix CODEOWNERS because the Emmy PR Review Process governance doc now depends on it.",
       "should_trigger": true,
-      "expected_behavior": "Read the governance source and repo evidence, load base Jira engineering and ATO traceability references, search Jira for overlap, apply engineering plus governance/ATO labels, use Ready for Refinement sprint placement if the follow-up is rough, and present a draft payload without writing to Jira."
+      "expected_behavior": "Read the governance source and repo evidence, load base Jira engineering and ATO traceability references, search Jira for overlap, apply engineering plus governance/ATO labels, use Ready for Refinement sprint placement only if the final written follow-up is ready for team scoping, and present a draft payload without writing to Jira."
     },
     {
       "id": "ato-control-implementation-gap",

@@ -29,8 +29,9 @@ engineering
 governance
 ```
 
-For intentionally rough ATO follow-ups, keep the routing and traceability
-labels, then propose `Ready for Refinement (46737)` as the refinement signal.
+For ATO follow-ups, keep the routing and traceability labels. Propose
+`Ready for Refinement (46737)` only when the ticket has been written and is
+ready for team scoping.
 
 If a control ID uses parentheses or enhancement notation, search Jira for an
 existing label precedent first. If no precedent exists, propose a normalized

@@ -65,8 +65,8 @@ Suggested fields:
 - Summary shape: `CM-01a: Fix CODEOWNERS for PR review governance`
 - Priority: `Low` unless deadline, audit, or security pressure is explicit
 - Labels: `engineering`, `governance`, `emmy_ato`, `CFACTS`, `cm`, `cm-01a`
-- Refinement sprint: `Ready for Refinement (46737)` when the follow-up still
-  needs engineering shaping
+- Refinement sprint: `Ready for Refinement (46737)` only when the follow-up is
+  written and ready for team scoping
 - Category references: `engineering-implementation.md`, `ato-traceability.md`,
   and this file
 - Description sections: `Context`, `Requirements`, `Out of scope`,
