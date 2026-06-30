@@ -11,8 +11,6 @@ roadmap, or State TA collaboration work.
   critical, or needed for immediate state collaboration.
 - Labels: product/process stories may have no labels. Do not force `engineering`
   unless implementation is part of the ticket.
-- Team: `Emmy Product` appears on many recent product/process tickets, but set
-  it only when supplied or strongly supported by nearby tickets.
 - Epic Link: leave unset unless a matching product epic is clear.
 
 ## Description Shape
@@ -30,9 +28,8 @@ need to be a software artifact.
 
 ## Examples From Jira Scan
 
-- `FFS-4510`: State TA collaboration story, high priority, Team `Emmy Product`,
-  acceptance criteria about approved state messaging and process.
-- `FFS-4509`: product story for entry-screen documentation scope, high priority,
-  Team `Emmy Product`.
+- `FFS-4510`: State TA collaboration story, high priority, acceptance criteria
+  about approved state messaging and process.
+- `FFS-4509`: product story for entry-screen documentation scope, high priority.
 - `FFS-4508`: product story for activity hub paths when automated verification
-  falls short, high priority, Team `Emmy Product`.
+  falls short, high priority.

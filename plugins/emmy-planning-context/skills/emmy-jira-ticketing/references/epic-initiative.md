@@ -11,8 +11,6 @@ hierarchy. Also use it when choosing a candidate parent for a child ticket.
 - Priority is usually `Low` unless explicit program urgency exists.
 - Labels are often sparse. Use broad labels such as `emmy_ato` only when the
   epic itself clearly owns that body of work.
-- Team may be set on epics and can be evidence for child tickets, but do not
-  inherit it unless the child clearly belongs there.
 
 ## Description Shape
 
@@ -32,6 +30,6 @@ Keep epics concise. Detailed implementation belongs in child tickets.
 
 ## Examples From Jira Scan
 
-- `FFS-4234`: CFACTS Controls Phase 2, `emmy_ato`, Emmy DevOps Team.
-- `FFS-4116`: Deployment Management, Emmy DevOps Team.
+- `FFS-4234`: CFACTS Controls Phase 2, `emmy_ato`.
+- `FFS-4116`: Deployment Management.
 - `FFS-4456`: Personalized Flows: Understanding the Gaps, low priority.

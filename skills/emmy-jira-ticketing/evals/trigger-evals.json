@@ -14,6 +14,18 @@
       "expected_behavior": "Read the global conventions plus engineering category reference, search similar FFS issues, draft a Task payload with engineering conventions, and avoid creating it without approval."
     },
     {
+      "id": "scoping-ready-engineering-sprint",
+      "prompt": "Draft a complete engineering Jira ticket for report transmission audit logging that is ready for the team to scope.",
+      "should_trigger": true,
+      "expected_behavior": "Draft a Task payload with the engineering label, show Refinement sprint: Ready for Refinement (46737) only because the final written ticket is ready for team scoping, forbid the deprecated refinement label, and ask approval before creating or adding the issue to the sprint."
+    },
+    {
+      "id": "confluence-template-source",
+      "prompt": "Draft FFS Task, Bug, and Epic ticket payloads from these notes using the team's ticket templates.",
+      "should_trigger": true,
+      "expected_behavior": "Use the SFIV Ticket Templates page 1198533169 as the description source, keep the official Task/Bug/Epic headings, omit placeholder text, and adapt category-specific sections only when needed."
+    },
+    {
       "id": "draft-design-ticket",
       "prompt": "Turn these research notes into a design ticket for helping clients understand what documents they need before starting Emmy.",
       "should_trigger": true,
@@ -23,7 +35,7 @@
       "id": "draft-product-process-story",
       "prompt": "Draft a product Jira story for coordinating state approval of Emmy's pilot-ready scope messaging.",
       "should_trigger": true,
-      "expected_behavior": "Read the product/process category reference, consider Emmy Product and Story conventions, and draft a sparse but concrete story payload without creating it."
+      "expected_behavior": "Read the product/process category reference, consider Story conventions, and draft a sparse but concrete story payload without creating it."
     },
     {
       "id": "draft-api-ticket",

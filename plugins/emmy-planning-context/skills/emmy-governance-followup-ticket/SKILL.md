@@ -32,7 +32,7 @@ wait for explicit approval before any Jira write.
 ## Reference Routing
 
 - Read `../emmy-jira-ticketing/references/ffs-ticket-conventions.md` before
-  selecting issue type, labels, priority, Team, Epic Link, or components.
+  selecting issue type, labels, priority, Epic Link, or components.
 - Read `../emmy-jira-ticketing/references/category-index.md` before drafting,
   then load the matching category reference files for the concrete work.
 - Read `../emmy-jira-ticketing/references/ato-traceability.md` before selecting
@@ -51,8 +51,8 @@ wait for explicit approval before any Jira write.
    - For Confluence pages, read page content with metadata and labels. Capture
      title, page ID, URL, space, version, labels, status, approval fields,
      control ID, control family, and requirement basis when present.
-   - For Jira source tickets, read issue type, summary, status, labels, Team,
-     Epic Link, description, and linked Confluence pages when present.
+   - For Jira source tickets, read issue type, summary, status, labels, Epic
+     Link, description, and linked Confluence pages when present.
    - For repo or system evidence, inspect the local file or live source before
      claiming a gap.
 2. Extract the follow-up obligation. Classify it as implementation/remediation,
@@ -63,7 +63,7 @@ wait for explicit approval before any Jira write.
    - Search by control ID and family, such as `CM-01a`, `cm-01a`, and `cm`.
    - Search by repository, file, system, or tool names, such as `CODEOWNERS`.
    - Search likely open epics when the work appears part of larger ATO,
-     governance, DevOps, or platform work.
+     governance, or platform work.
 4. Decide whether this skill is still the right workflow:
    - Use this skill for follow-up tickets created because a governance decision
      exposes work to do.
@@ -79,12 +79,14 @@ wait for explicit approval before any Jira write.
    - Priority
    - Labels, using the shared ATO traceability reference plus category routing
      labels when applicable
-   - Team, or `unset`
+   - Refinement sprint, or `unset` when the ticket is still being drafted or
+     iterated on
    - Epic Link, or `unset` with candidate epics if found
    - Components and fix versions, or `unset`
 6. Present the draft and ask for explicit approval before calling
    `jira_create_issue`, `jira_update_issue`, `jira_create_remote_issue_link`,
-   `jira_create_issue_link`, or any other Jira write tool.
+   `jira_add_issues_to_sprint`, `jira_create_issue_link`, or any other Jira
+   write tool.
 7. If the human approves creation or update, perform only the approved Jira
    write, then re-read the issue and report the key and URL.
 
@@ -109,11 +111,11 @@ engineering visibility and also carry CM-01a traceability.
 - Use acceptance criteria that prove the gap is closed, such as file changes,
   branch protection settings, reviewer behavior, evidence links, or CFACTS
   updates.
-- Set Team only when the human supplied it, a source governance document assigns
-  ownership clearly, or matching tickets strongly support it. If unsure, leave
-  Team unset and mention the candidate owner in the draft notes.
 - Do not set story points, Definition of Ready, components, or fix versions
   unless the human supplied them or nearby matching work strongly supports them.
+- Do not add an issue to `Ready for Refinement` without explicit approval for
+  that sprint placement. Leave the sprint unset while the ticket is still in a
+  draft state or being iterated on.
 
 ## Write Safety
 

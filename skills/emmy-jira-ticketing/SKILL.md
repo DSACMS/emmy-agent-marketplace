@@ -4,9 +4,9 @@ description: >-
   Use when interpreting, drafting, refining, or creating Emmy Jira tickets in
   the FFS project, especially when an agent needs to apply team ticket
   conventions for engineering, product, API, design, bug, spike, epic,
-  DevOps/platform, or ATO-labeled work; choose issue type/labels/priority;
-  format Jira wiki descriptions; inspect similar tickets or epics; or create
-  Jira issues through the CMS Atlassian MCP server with explicit human approval.
+  infrastructure, or ATO-labeled work; choose issue type/labels/priority; format
+  Jira wiki descriptions; inspect similar tickets or epics; or create Jira
+  issues through the CMS Atlassian MCP server with explicit human approval.
 ---
 
 # Emmy Jira Ticketing
@@ -56,13 +56,13 @@ conventions, not Jira platform rules.
 ## Interpret Existing Tickets
 
 1. Read the issue with `jira_get_issue`.
-2. Parse issue type, status, priority, labels, components, fix versions, team,
-   epic link, summary, and description headings.
+2. Parse issue type, status, priority, labels, components, fix versions, epic
+   link, summary, and description headings.
 3. Load `references/category-index.md`, select relevant category references, and
    compare the ticket to the global and category conventions.
 4. Explain the ticket in plain language:
    - what work it is asking for
-   - what area likely owns it, based only on labels/team/epic evidence
+   - what area likely owns it, based only on labels and epic evidence
    - whether it looks ready or appears to need refinement
    - any missing sections that matter for that issue type
 5. Avoid over-reading sparse tickets. Some recent API stories, product stories,
@@ -75,8 +75,8 @@ conventions, not Jira platform rules.
    Search by category labels, distinctive nouns, likely state/domain names, and
    likely open epics when the request sounds like part of larger work.
 2. Use `references/category-index.md` to choose category references. Combine
-   references only when the ticket truly crosses categories, such as DevOps/ATO,
-   API/product, or design/content work.
+   references only when the ticket truly crosses categories, such as
+   infrastructure/ATO, API/product, or design/content work.
 3. Draft the full issue payload before creating anything:
    - project `FFS`
    - issue type
@@ -84,17 +84,22 @@ conventions, not Jira platform rules.
    - Jira wiki description
    - priority
    - labels
-   - optional team
+   - refinement sprint, or `unset` when the ticket is still being drafted or
+     iterated on
    - optional epic link
    - optional components or fix versions only when clearly requested
    - applicable requirement constraints when the ticket is grounded in Goals
      Space planning context that includes requirements
 4. Present the draft and ask for explicit approval before calling
    `jira_create_issue`, `jira_update_issue`, `jira_link_to_epic`,
-   `jira_create_issue_link`, or any other Jira write tool.
+   `jira_add_issues_to_sprint`, `jira_create_issue_link`, or any other Jira
+   write tool.
 5. If the human approves creation, create the issue, then re-read it with
    `jira_get_issue`.
-6. Report the created key and URL.
+6. If the approved payload includes `Ready for Refinement`, add the created or
+   updated issue to sprint `46737` only after an issue key exists and the ticket
+   is written enough for the team to scope.
+7. Report the created key and URL.
 
 When planning context was loaded before ticket drafting, preserve its
 requirement findings in the ticket draft. Include active requirement IDs,
@@ -111,8 +116,11 @@ claiming no requirements apply.
   this into a ticket" is not approval to create the issue.
 - If Jira requires `Reporter` and the MCP tool does not default it, ask the
   human which reporter or current user to use.
-- Do not set story points, Definition of Ready, components, fix versions, or
-  team unless the human supplied them or the evidence is strong.
+- Do not set story points, Definition of Ready, components, or fix versions
+  unless the human supplied them or the evidence is strong.
+- Do not add an issue to `Ready for Refinement` without explicit approval for
+  that sprint placement. Leave the sprint unset while the ticket is still in a
+  draft state or being iterated on.
 - Do not create live test tickets unless the human separately approves that
   specific test.
 

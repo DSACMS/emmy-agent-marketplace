@@ -9,10 +9,10 @@ design tasks.
 - Issue type: usually `Task`.
 - Priority: `Low` by default; recent discovery/design tickets are often `High`
   when they support urgent product direction or pilot readiness.
-- Labels: use `design`; add `content` when copy/content strategy is central; add
-  `needs_refinement` for exploratory work or tickets intentionally entering
-  refinement.
-- Team: leave unset unless supplied or strongly supported by nearby tickets.
+- Labels: use `design`; add `content` when copy/content strategy is central.
+- Refinement sprint: propose `Ready for Refinement (46737)` only when the ticket
+  has been written and is ready for team scoping. Leave it unset for early
+  discovery drafts or tickets still being iterated on.
 - Epic Link: use a clear design/product epic when matching tickets support it;
   otherwise list candidates.
 
@@ -33,8 +33,8 @@ or engineering feedback, stakeholder approval, and incorporation of feedback.
 
 ## Examples From Jira Scan
 
-- `FFS-4480`: `Explore:` design task with `design`, `needs_refinement`, high
-  priority, user story, context, considerations, out-of-scope, and ACs.
+- `FFS-4480`: `Explore:` design task with `design`, high priority, user story,
+  context, considerations, out-of-scope, and ACs.
 - `FFS-4494`: design task for NH pilot survey refinement, `design`, low
   priority.
 - `FFS-4469`: content/design caseworker report task with `content`, `design`,

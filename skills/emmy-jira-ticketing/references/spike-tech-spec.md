@@ -11,8 +11,9 @@ recommendations, options analysis, or exploratory planning work.
 - Priority: `Low` by default; design/product discovery can be `High` when
   near-term product direction or pilot readiness depends on it.
 - Labels: use the domain label, such as `engineering`, `design`, or `emmy_api`;
-  add `needs_refinement` when the work is intentionally rough.
-- Team and epic: set only when supplied or strongly supported by nearby tickets.
+- Refinement sprint: propose `Ready for Refinement (46737)` only when the spike
+  or tech-spec ticket has been written and is ready for team scoping.
+- Epic Link: set only when supplied or strongly supported by nearby tickets.
 
 ## Description Shape
 
@@ -33,4 +34,4 @@ ticket list. Implementation of the chosen solution is usually out of scope.
 - `FFS-4437`: `Tech Spec:` story for Plaid integration investigation,
   `engineering`.
 - `FFS-4401`: `Discovery:` product/API integration exploration sprint plan, high
-  priority, Team `Emmy Product`.
+  priority.

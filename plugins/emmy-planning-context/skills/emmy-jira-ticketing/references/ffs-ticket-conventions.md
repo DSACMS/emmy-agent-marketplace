@@ -16,9 +16,9 @@ Useful custom fields:
 
 - Epic Link: `customfield_10100`
 - Epic Name: `customfield_10102`
-- Team: `customfield_11002`
 - Story point estimate: `customfield_19460`
 - Definition of Ready: `customfield_13901`
+- Sprint: `customfield_10104`
 
 Do not set story point estimate or Definition of Ready by default.
 
@@ -58,17 +58,14 @@ Common labels:
 - `engineering`
 - `design`
 - `emmy_api`
-- `needs_refinement`
 - `emmy_ato`
 - `governance`
 - `CFACTS`
 - `NH`
 - `content`
-- `devops`
 
-Use `needs_refinement` when the ticket is intentionally rough, has open
-questions, lacks acceptance criteria, or needs product/design/engineering
-shaping before implementation.
+Do not use the deprecated `needs_refinement` label. Do not replace it with a
+sprint while the ticket is still being drafted or iterated on.
 
 Use state or domain labels such as `NH`, `CFACTS`, `content`, `rhode_island`,
 `Accenture`, or `CaseworkerView` only when the request or source evidence names
@@ -77,23 +74,29 @@ that scope.
 For category-specific label rules, read the matching reference from
 `category-index.md`.
 
-## Team Field
+## Ready For Refinement Sprint
 
-Known Team values:
+Use `Ready for Refinement` for tickets that have been written and are ready for
+the team to scope the work.
 
-- `Emmy DevOps Team`
-- `FFS IVaaS - State Engagement`
-- `FFS IVaaS - Platform`
-- `Emmy Data Team`
-- `Emmy Product`
+- Board: `5957`
+- Sprint name: `Ready for Refinement`
+- Sprint ID: `46737`
+- Sprint field: `customfield_10104`
 
-Set Team only when supplied by the human, inherited from a strongly matching
-epic, or clearly inferable from similar tickets. If unsure, leave it unset and
-mention the uncertainty in the draft.
+Show this in proposed payloads as
+`Refinement sprint: Ready for Refinement (46737)` when the approved issue will
+be ready for team scoping after creation or update. This is a Jira write action,
+not a label. Create or update the issue first, then call
+`jira_add_issues_to_sprint` only after the human explicitly approves both the
+issue payload and the sprint placement.
 
-Do not assume a Team from labels alone. Jira search may require numeric Team
-IDs; `Emmy DevOps Team` has appeared as `Team = 2048`, `FFS IVaaS - Platform` as
-`1226`, and `Emmy Product` as `2067`.
+Leave the refinement sprint unset when:
+
+- the ticket is still a draft
+- the human is still iterating on the ticket wording
+- the agent is still gathering source context, acceptance criteria, or scope
+- the ticket is not yet written enough for the team to scope
 
 ## Components And Versions
 
@@ -125,8 +128,8 @@ belongs under an epic, but do not guess one.
 When no epic is clearly correct, leave Epic Link unset and list candidate epics
 for the human to choose.
 
-Child tickets may inherit Team, labels, or priority from an epic only when the
-epic is clearly the right parent and matching child tickets show that pattern.
+Child tickets may inherit labels or priority from an epic only when the epic is
+clearly the right parent and matching child tickets show that pattern.
 
 ## Description Conventions
 
@@ -147,9 +150,9 @@ Use concise Jira wiki markup. Common section names include:
 - `Next Work`
 
 Sparse descriptions are common for API stories, product stories, epics,
-initiatives, new-feature issues, and very small bugs. Treat missing sections as
-a refinement signal only when the ticket type and work risk call for more
-detail.
+initiatives, new-feature issues, and very small bugs. Missing sections are not
+by themselves a reason to propose `Ready for Refinement`; leave the sprint unset
+until the ticket is written enough for team scoping.
 
 ## Search Patterns
 
@@ -162,4 +165,5 @@ project = FFS AND issuetype = Epic AND status != Done ORDER BY updated DESC
 project = FFS AND labels in (engineering) ORDER BY created DESC
 project = FFS AND labels in (emmy_ato, governance, CFACTS) ORDER BY updated DESC
 project = FFS AND summary ~ "Explore" ORDER BY created DESC
+Sprint = 46737 ORDER BY updated DESC
 ```
