@@ -1,0 +1,45 @@
+{
+  "name": "cms-hybrid-cloud-splunk",
+  "version": "0.1.0",
+  "description": "Guidance for CMS Hybrid Cloud infrastructure that must integrate with Splunk through CloudWatch Logs, supported S3 service-log fallback, EUA access, and efficient Search Head verification.",
+  "author": {
+    "name": "Emmy Development Team"
+  },
+  "homepage": "https://cloud.cms.gov/onboarding-splunk/",
+  "repository": "https://github.com/DSACMS/emmy-agent-marketplace",
+  "keywords": [
+    "cms",
+    "hybrid-cloud",
+    "splunk",
+    "cloudwatch",
+    "logging",
+    "infrastructure",
+    "aws",
+    "s3",
+    "search",
+    "eua",
+    "observability"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "CMS Hybrid Cloud Splunk",
+    "shortDescription": "Guide CMS Cloud Splunk integration.",
+    "longDescription": "Adds a CMS Hybrid Cloud skill for agents that need to plan, review, implement, or verify infrastructure logging changes that integrate with Splunk. Covers CloudWatch Logs ingestion, CloudWatch Agent additions, supported S3 service-log fallback, EUA job code access, Splunk index structures, sourcetypes, and efficient Search Head verification.",
+    "developerName": "Emmy Development Team",
+    "category": "Productivity",
+    "capabilities": [
+      "Infrastructure",
+      "Logging",
+      "Splunk",
+      "CloudWatch",
+      "AWS",
+      "Observability",
+      "Static Guidance"
+    ],
+    "defaultPrompt": [
+      "Review this logging change for CMS Splunk.",
+      "Plan CMS Hybrid Cloud Splunk ingestion.",
+      "Verify these logs are searchable in Splunk."
+    ]
+  }
+}

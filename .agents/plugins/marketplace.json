@@ -36,6 +36,18 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Productivity"
+    },
+    {
+      "name": "cms-hybrid-cloud-splunk",
+      "source": {
+        "source": "local",
+        "path": "./plugins/cms-hybrid-cloud-splunk"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
     }
   ]
 }

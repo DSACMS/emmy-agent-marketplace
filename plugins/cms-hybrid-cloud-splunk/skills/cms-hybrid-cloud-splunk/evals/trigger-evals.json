@@ -1,0 +1,35 @@
+{
+  "skill_name": "cms-hybrid-cloud-splunk",
+  "evals": [
+    {
+      "id": "configure-app-logs",
+      "prompt": "Configure my CMS Hybrid Cloud app logs so Splunk can ingest them.",
+      "should_trigger": true,
+      "expected_behavior": "Guide CloudWatch-first ingestion, CMS log group naming, sourcetypes, and verification."
+    },
+    {
+      "id": "terraform-review",
+      "prompt": "Review this Terraform change for CMS Splunk logging compatibility.",
+      "should_trigger": true,
+      "expected_behavior": "Check infrastructure logging paths against CMS Hybrid Cloud Splunk ingestion rules."
+    },
+    {
+      "id": "search-verification",
+      "prompt": "Help me verify whether my CloudWatch logs are searchable in Splunk.",
+      "should_trigger": true,
+      "expected_behavior": "Use CloudWatch and Splunk Search Head verification guidance with efficient search patterns."
+    },
+    {
+      "id": "eua-job-code",
+      "prompt": "What does the EUA job code need to be for Splunk access?",
+      "should_trigger": true,
+      "expected_behavior": "Explain CMS Splunk job code naming, ownership, approver, and provisioning requirements."
+    },
+    {
+      "id": "generic-aws-logs",
+      "prompt": "How do I enable CloudWatch Logs for a personal AWS account?",
+      "should_trigger": false,
+      "expected_behavior": "Do not trigger for generic non-CMS AWS logging advice."
+    }
+  ]
+}
