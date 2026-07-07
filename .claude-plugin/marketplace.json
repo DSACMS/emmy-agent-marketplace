@@ -95,6 +95,29 @@
         "mcp",
         "atlassian"
       ]
+    },
+    {
+      "name": "cms-hybrid-cloud-splunk",
+      "source": "./plugins/cms-hybrid-cloud-splunk",
+      "description": "Guidance for CMS Hybrid Cloud infrastructure that must integrate with Splunk through CloudWatch Logs, supported S3 service-log fallback, EUA access, and efficient Search Head verification.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Emmy Development Team"
+      },
+      "category": "Productivity",
+      "tags": [
+        "cms",
+        "hybrid-cloud",
+        "splunk",
+        "cloudwatch",
+        "logging",
+        "infrastructure",
+        "aws",
+        "s3",
+        "search",
+        "eua",
+        "observability"
+      ]
     }
   ]
 }

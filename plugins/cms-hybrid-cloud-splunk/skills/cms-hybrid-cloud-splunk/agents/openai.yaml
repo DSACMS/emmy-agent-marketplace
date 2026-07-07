@@ -1,0 +1,6 @@
+interface:
+  display_name: "CMS Hybrid Cloud Splunk"
+  short_description: "Guide CMS Cloud Splunk integration."
+  default_prompt:
+    "Use $cms-hybrid-cloud-splunk to review this CMS Hybrid Cloud logging change
+    for Splunk integration."
