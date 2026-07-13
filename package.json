@@ -18,8 +18,8 @@
     "validate:marketplace": "node scripts/validate-marketplace.mjs"
   },
   "devDependencies": {
-    "markdownlint-cli2": "^0.22.1",
-    "prettier": "^3.7.4",
+    "markdownlint-cli2": "^0.23.0",
+    "prettier": "^3.9.5",
     "yaml": "^2.8.2"
   }
 }
